@@ -1,0 +1,45 @@
+<div class="form-wrapper" [ngClass]="{
+            'form-wrapper-dark': theme === 'dark',
+            'form-wrapper-light': theme === 'light',
+            'form-wrapper-green': theme === 'green'
+           }">
+  <form [formGroup]="textForm" (submit)="selectLyricsText()">
+    <div class="form-header-wrapper">
+      <input formControlName="name" placeholder="Lyrics Title">
+      <input formControlName="tonality" placeholder="Tonality">
+      <input formControlName="comment" placeholder="Comment">
+    </div>
+    <mat-form-field>
+      <mat-label>genres</mat-label>
+      <mat-select formControlName="tags" multiple>
+        <mat-option *ngFor="let genre of genreList" [value]="genre">{{genre}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="text-wrapper">
+      <ul formArrayName="items" class="items-wrapper">
+        <span><mat-icon type="button" (click)="addItemControl()" class="btn-add" title="Add New Item">add</mat-icon>add</span>
+        <li *ngFor="let item of getItems(); let index = index">
+          <div [formGroupName]="index">
+            <div>
+              <mat-form-field>
+                <mat-label>type/title</mat-label>
+                <mat-select formControlName="name">
+                  <mat-option *ngFor="let name of itemNameList" [value]="name">{{name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-icon type="button" (click)="removeItemControl(index)" class="btn-close">close</mat-icon>
+            </div>
+            <div>
+              <textarea matInput class="item-text" formControlName="iText" placeholder=" text..."></textarea>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div style="display: flex;
+                justify-content: flex-end;">
+      <button mat-stroked-button type="submit" class="btn-common" > Save add Chords -></button>
+    </div>
+  </form>
+</div>

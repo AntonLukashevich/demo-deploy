@@ -1,0 +1,130 @@
+.form-wrapper{
+  padding: 10px;
+  background: whitesmoke;
+  height: fit-content;
+
+  &-light{
+    color: black;
+    background: white;
+  }
+
+  &-dark{
+    color: white;
+    background: #333333;
+    color: black;
+    background: white;
+  }
+
+  &-geen{
+    color: black;
+    background: white;
+  }
+}
+
+.text-wrapper{
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 15px;
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.item-form-wrapper{
+  margin-bottom: 10px;
+  border-top: 1px solid lightgray;
+}
+
+.form-header-wrapper{
+  display: flex;
+  flex-direction: column;
+  input{
+    margin-bottom: 5px;
+    padding: 5px 5px 5px 15px ;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    font-size: 18px;
+  }
+}
+
+.items-wrapper{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li {
+    border-top: 1px solid lightgray;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  .item-text{
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    min-height: 10vw;
+    background: white;
+    padding: 10px;
+    width: 90%;
+  }
+}
+
+::ng-deep {
+  .mat-menu-panel {
+    background: lightgray;
+    margin-top: .3rem;
+
+    .mat-menu-content {
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem 1rem;
+    }
+  }
+  .mat-menu-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+  }
+
+  .mat-menu-content:not(:empty){
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+  }
+
+}
+
+.text-line{
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 7px;
+  width: 50vw;
+}
+
+.item-couple-lines-wrapper{
+  padding: 10px;
+}
+
+.chord-cell{
+  border: 1px solid gray;
+  border-radius: 3px;
+  display: initial;
+  vertical-align: inherit;
+  padding: 3px;
+  margin-right: 2px;
+
+  ::ng-deep{
+    mat-form-field{
+      width: 40px;
+      max-width: fit-content;
+      font-size: 12px;
+    }
+
+    .mat-select-arrow {
+      border: none;
+
+    }
+    mat-select {
+    }
+  }
+}

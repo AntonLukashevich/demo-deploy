@@ -1,0 +1,49 @@
+<div class="reg-wrapper">
+  <h2>Edit User</h2>
+  <form class="card"  [formGroup]="editForm" (ngSubmit)="updateUser()">
+    <div class="form-control"
+         [ngClass]="{ invalid: editForm.get('email')?.touched && editForm.get('email')?.invalid }"
+    >
+      <input id="email" type="email" formControlName="email" class="reg-field" placeholder="Email">
+      <div
+        *ngIf="editForm.get('email')?.touched && editForm.get('email')?.invalid"
+        class="validation">
+        <small *ngIf="editForm.get('email')?.errors?.required">please, input email</small>
+        <small *ngIf="editForm.get('email')?.errors?.editForm">it seems, it's not email</small>
+      </div>
+    </div>
+    <div class="form-control"
+         [ngClass]="{ invalid: editForm.get('password')?.touched && editForm.get('password')?.invalid }"
+    >
+      <input id="password" type="password" formControlName="password" class="reg-field" placeholder="Password">
+      <div
+        *ngIf="editForm.get('password')?.touched && editForm.get('password')?.invalid"
+        class="validation">
+        <small *ngIf="editForm.get('password')?.errors?.required">please, input password</small>
+        <small *ngIf="editForm.get('password')?.errors?.minlength">it seems, password is too short</small>
+      </div>
+    </div>
+    <br>
+    <div class="form-control"
+         [ngClass]="{ invalid: editForm.get('username')?.touched && editForm.get('username')?.invalid }"
+    >
+      <input id="username" type="text" formControlName="username" class="reg-field" placeholder="Username">
+      <div
+        *ngIf="editForm.get('username')?.touched && editForm.get('username')?.invalid"
+        class="validation">
+        <small *ngIf="editForm.get('username')?.errors?.required">please, input username</small>
+        <small *ngIf="editForm.get('username')?.errors?.minlength">it seems, username is too short</small>
+      </div>
+    </div>
+
+    <button type="submit"
+            class="btn btn-dark"
+
+    >edit
+    </button>
+  </form>
+</div>
+
+
+
+

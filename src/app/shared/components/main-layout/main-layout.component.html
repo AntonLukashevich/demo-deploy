@@ -1,0 +1,51 @@
+<div class="main-container" [ngClass]="{
+  light: theme === 'light',
+  dark: theme === 'dark',
+  green: theme === 'green'
+}">
+  <mat-toolbar [ngClass]="{
+  lightToolbar: theme === 'light',
+  darkToolbar: theme === 'dark',
+  greenToolbar: theme === 'green'
+  }">
+    <div>
+      <button mat-icon-button>
+        <mat-icon (click)="drawer.open()">menu</mat-icon>
+      </button>
+    </div>
+    <span class="example-spacer"></span>
+    <span mat-button style="font-weight: bold;" routerLink="/" (click)="drawer.close()"> LYRICS</span>
+
+  </mat-toolbar>
+  <mat-drawer-container
+    class="mat-drawer-container-wrapper"
+    autosize (backdropClick)="closeSidebar()"
+    (keydown.escape)="closeSidebar()"
+  >
+    <mat-drawer #drawer class="sidebar"
+                mode="over"
+                (blur)="closeSidebar()"
+                disableClose
+                appFocus
+    >
+      <mat-list (click)="drawer.close()">
+        <mat-list-item class="toolbar-item" autosize>
+          <mat-icon>arrow_back_ios</mat-icon>
+        </mat-list-item>
+        <mat-list-item routerLink="/" routerLinkActive="active" class="toolbar-item" autosize>
+          <mat-icon>queue_music</mat-icon>
+        </mat-list-item>
+        <mat-list-item routerLink="admin" routerLinkActive="active" class="toolbar-item" autosize>
+          <mat-icon>account_circle</mat-icon>
+        </mat-list-item>
+        <mat-list-item routerLink="settings" routerLinkActive="active" class="toolbar-item" autosize
+                       routerLinkActive="active">
+          <mat-icon>settings</mat-icon>
+        </mat-list-item>
+      </mat-list>
+    </mat-drawer>
+    <router-outlet></router-outlet>
+  </mat-drawer-container>
+</div>
+
+

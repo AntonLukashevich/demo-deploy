@@ -1,0 +1,114 @@
+::ng-deep{
+  .mat-tab-label .mat-tab-label-content {
+    color: rgba(123, 31, 162, 0.82);
+    background: rgb(239, 200, 7);
+    border-radius: 15%;
+    font-size: 24px;
+  }
+  .mat-tab-labels{
+    display: flex;
+    justify-content: space-around;
+    background: #424242;
+  }
+}
+.tab-wrapper{
+  padding: 10px;
+}
+
+.dashboard-wrapper{
+  &-light{
+    color: black;
+    background: rgba(255, 255, 255, 0.8);
+  }
+  &-dark{
+    color: rgba(245, 245, 245, 0.95);
+    background: #333333;
+  }
+
+  &-green{
+    color: black;
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+}
+
+.action-cell{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.lyrics-table{
+  margin-top: 10px;
+  padding: 0;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+
+  .lyrics-header, thead{
+    background: rgba(239, 200, 7, 0.5);
+    border: none;
+    padding: 5px;
+    tr{
+      padding: 5px;
+    }
+    th{
+      //border: 1px solid black;
+      border-spacing: 0;
+      font-size: 16px;
+      padding: 5px;
+    }
+  }
+
+  tbody{
+    td{
+      padding: 5px;
+      border-bottom: 1px solid lightgray;
+    }
+
+    tr:hover{
+      background: rgba(239, 200, 7, 0.2);;
+    }
+  }
+}
+
+.tools-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  input {
+    width: 70%;
+    height: 26px;
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 3px;
+    font-size: 22px;
+    padding: 5px;
+    padding-left: 30px;
+    &:focus {
+      font-size: 22px;
+      //width: calc(100vw - 24px);
+      margin: 0;
+      border-radius: 3px;
+      box-shadow: 1px 1px 3px 1px rgb(33, 145, 189);
+    }
+  }
+}
+
+.btn{
+  border: 2px solid #7b1fa2;
+  line-height: 0;
+}
+
+.logout-tab{
+  display: flex;
+  justify-content: space-between;
+
+  .session-time{
+    font-size: 17px; display: flex;
+    align-items: center;
+  }
+}

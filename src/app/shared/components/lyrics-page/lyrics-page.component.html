@@ -1,0 +1,46 @@
+<div>
+  <div class="options-wrapper" [ngClass]="{
+            'options-wrapper-dark': theme === 'dark',
+            'options-wrapper-light': theme === 'light',
+            'options-wrapper-green': theme === 'green'
+           }">
+  <span *ngIf="showChords">
+    <button mat-icon-button (click)="decreaseTon()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+<!--        <strong>{{ lyric.tonality}}</strong>-->
+    <button mat-icon-button (click)="increaseTon()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+      <button mat-icon-button>
+    <mat-icon>info</mat-icon>
+  </button>
+  </span>
+    <button mat-icon-button (click)="toggle()">
+      <mat-icon>music_note</mat-icon>
+    </button>
+  </div>
+  <ol class="lyrics-wrapper" [ngClass]="{
+            'default-font': font === 'default',
+            'roboto-font': font === 'roboto',
+            'comfortaa-font': font === 'comfortaa',
+            'lobster-font': font === 'lobster',
+            'comic-font': font === 'comic',
+            'lyrics-wrapper-dark': theme === 'dark',
+            'lyrics-wrapper-light': theme === 'light',
+            'lyrics-wrapper-green': theme === 'green'
+           }">
+    <li *ngFor="let item of lyric?.items">
+      <ul>
+        <small>{{item.name}}:</small>
+        <li *ngFor="let line of item.lines">
+          <span class="chords-line" *ngIf="showChords" [ngClass]="{
+            'chords-line-dark': theme === 'dark',
+            'chords-line-light': theme === 'light',
+            'chords-line-green': theme === 'green'
+           }">{{convertLine(line.chords)}}</span>
+          <p class="text-line" [ngStyle]="{fontSize: fontSize + 'px'}">{{line.text}}</p>
+        </li>
+      </ul>
+      <br>
+    </li>
+  </ol>
+
+</div>
+

@@ -1,0 +1,71 @@
+<div class="settings-wrapper">
+  <mat-card class="settings-card" [ngClass]="{
+    light: currentTheme === 'light',
+    dark: currentTheme === 'dark',
+    green: currentTheme === 'green'
+    }">
+    <mat-card-title>Themes</mat-card-title>
+    <mat-card-content>
+      <mat-radio-group [ngModel]="currentTheme" aria-label="Select an option" class="items-wrapper" color="primary">
+        <mat-radio-button value="light" (change)="setTheme($event.value)">Light</mat-radio-button>
+        <mat-radio-button value="dark" (change)="setTheme($event.value)">Dark</mat-radio-button>
+        <mat-radio-button value="green" (change)="setTheme($event.value)">Green <small style="color: gray">development stage</small></mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="settings-card" [ngClass]="{
+      light: currentTheme === 'light',
+      dark: currentTheme === 'dark',
+      green: currentTheme === 'green'
+    }">
+    <mat-card-title>Fonts</mat-card-title>
+    <mat-card-subtitle>
+      <span [matMenuTriggerFor]="menu" #menuTrigger style="color: gray">preview</span>
+    </mat-card-subtitle>
+    <mat-menu #menu="matMenu" class="preview" >
+      <div class="lyrics-preview" [ngClass]="{
+            'default-font': currentFont === 'default',
+            'roboto-font': currentFont === 'roboto',
+            'comfortaa-font': currentFont === 'comfortaa',
+            'lobster-font': currentFont === 'lobster',
+            'comic-font': currentFont === 'comic'
+            }"
+           [ngStyle]="{
+            fontSize: currentFontSize + 'px'
+          }">
+        <p>Хорошо бродить по свету,</p>
+        <p>С коромелькой за щекой.</p>
+        <p>А еще одну для друга.</p>
+        <p>Взять в кармашке про запас.</p>
+      </div>
+    </mat-menu>
+    <mat-card-content>
+      <mat-radio-group aria-label="Select an option" class="items-wrapper" color="primary" [ngModel]="currentFont">
+        <mat-radio-button value="default" class="default-font" (change)="setFont($event.value)">Default
+        </mat-radio-button>
+        <mat-radio-button value="roboto" class="roboto-font" (change)="setFont($event.value)">Roboto</mat-radio-button>
+        <mat-radio-button value="comfortaa" class="comfortaa-font" (change)="setFont($event.value)">Comfortaa
+        </mat-radio-button>
+        <mat-radio-button value="lobster" class="lobster-font" (change)="setFont($event.value)">Lobster
+        </mat-radio-button>
+        <mat-radio-button value="comic" class="comic-font" (change)="setFont($event.value)">Comic</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-card-actions>
+        <label> Size:</label>
+        <mat-slider
+          max="24"
+          min="10"
+          value="{{currentFontSize}}"
+          [(ngModel)]="currentFontSize"
+          [step]="stepFontSize"
+          color="primary"
+          (valueChange)="setFontSize(currentFontSize)"
+        >
+        </mat-slider>
+        <label class="example-value-label"><strong>{{currentFontSize}}</strong></label>
+      </mat-card-actions>
+
+    </mat-card-content>
+  </mat-card>
+</div>

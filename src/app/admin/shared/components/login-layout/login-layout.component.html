@@ -1,0 +1,63 @@
+<div class="login-wrapper" [ngClass]="{
+    'login-wrapper-light': theme === 'light',
+    'login-wrapper-dark': theme === 'dark',
+    'login-wrapper-green': theme === 'green'
+  }">
+
+  <form class="card" [formGroup]="loginForm" (ngSubmit)="submit()">
+
+<!--    <div class="alert alert-danger" *ngIf="authService.error$ | async as error">-->
+<!--      {{error}}-->
+<!--    </div>-->
+
+<!--    <div class="alert alert-info" *ngIf="message">-->
+<!--      {{message}}-->
+<!--    </div>-->
+
+    <div class="form-control"
+         [ngClass]="{ invalid: loginForm.get('email')?.touched && loginForm.get('email')?.invalid }"
+    >
+      <input id="email" type="email" formControlName="email" class="login-field" placeholder="Email"
+             [ngClass]="{
+    'login-field-light': theme === 'light',
+    'login-field-dark': theme === 'dark',
+    'login-field-green': theme === 'green'
+  }">
+      <div
+        *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
+        class="validation">
+        <small *ngIf="loginForm.get('email')?.errors?.required">please, input email</small>
+        <small *ngIf="loginForm.get('email')?.errors?.email">it seems like that it's not email</small>
+      </div>
+    </div>
+
+    <div class="form-control"
+         [ngClass]="{ invalid: loginForm.get('password')?.touched && loginForm.get('password')?.invalid }"
+    >
+      <input id="password" type="password" formControlName="password" class="login-field" placeholder="Password"
+             [ngClass]="{
+    'login-field-light': theme === 'light',
+    'login-field-dark': theme === 'dark',
+    'login-field-green': theme === 'green'
+  }">
+      <div
+        *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
+        class="validation">
+        <small *ngIf="loginForm.get('password')?.errors?.required">please, input password</small>
+        <small *ngIf="loginForm.get('password')?.errors?.minlength">it seems, password is too short</small>
+      </div>
+    </div>
+
+    <button type="submit"
+            class="btn-login"
+            [disabled]="loginForm.invalid || submitted"
+            [ngClass]="{
+              'btn-login-light': theme === 'light',
+              'btn-login-dark': theme === 'dark',
+              'btn-login-green': theme === 'green'
+            }"
+    >login</button>
+  </form>
+
+
+</div>

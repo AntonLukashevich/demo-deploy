@@ -1,0 +1,121 @@
+<div class="dashboard-wrapper" [ngClass]="{
+            'dashboard-wrapper-dark': theme === 'dark',
+            'dashboard-wrapper-light': theme === 'light',
+            'dashboard-wrapper-green': theme === 'green'
+           }">
+  <mat-tab-group animationDuration="450ms" color="warn">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">queue_music</mat-icon>
+      </ng-template>
+      <div *ngIf="lyricsList.length; else loading"
+           class="tab-wrapper">
+        <div class="tools-wrapper">
+          <input type="text" placeholder="Find..." [(ngModel)]="searchStr">
+          <button mat-button class="btn-common btn" [routerLink]="['/admin', 'lyrics' , 'create_text']"> <mat-icon>note_add</mat-icon></button>
+        </div>
+
+        <table class="lyrics-table" cellspacing="0">
+          <thead>
+          <tr class="lyrics-header">
+            <th>#</th>
+            <th style="text-align: right">ID</th>
+            <th style="text-align: left">Title</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of (lyricsList | searchFilter:searchStr );let idx = index"
+              class="row"
+          >
+            <td style="text-align: center">{{idx + 1}}</td>
+            <td style="text-align: right; color: gray"> {{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td class="action-cell">
+              <button mat-icon-button
+                      class="btn-common btn"
+                      [routerLink]="['/admin', 'lyrics', item.id, 'edit']"
+              > <mat-icon>edit</mat-icon></button>
+              <button (click)="removeLyrics(item.id)"
+                      mat-icon-button
+                      class="btn-common btn"
+              > <mat-icon>delete_forever</mat-icon></button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-tab>
+    <mat-tab label="User">
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">group</mat-icon>
+      </ng-template>
+      <div
+        class="tab-wrapper">
+        <div *ngIf="lyricsList.length; else loading"
+             class="tab-wrapper">
+          <table class="lyrics-table" cellspacing="0">
+            <thead>
+            <tr class="lyrics-header">
+              <th><button mat-icon-button
+                          class="btn-common btn"
+                          [routerLink]="['/admin', 'users', 'new']"
+              ><mat-icon style="font-size: 20px;">person_add</mat-icon></button></th>
+              <th style="text-align: right">ID</th>
+              <th style="text-align: left">User</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users;let idx = index"
+                class="row"
+            >
+              <td style="text-align: center">{{idx + 1}}</td>
+              <td style="text-align: right; color: gray"> {{user.id}}</td>
+              <td>{{user?.username}} | <span style="color: gray">{{user?.email}}</span></td>
+              <td class="action-cell">
+                <button mat-icon-button
+                        class="btn-common btn"
+                        [routerLink]="['/admin', 'users', user.id, 'edit']"
+                > <mat-icon>edit</mat-icon></button>
+                <button mat-icon-button
+                        class="btn-common btn"
+                        (click)="removeUser(user.id)"
+                > <mat-icon>delete_forever</mat-icon></button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Settings">
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon" >settings_applications</mat-icon>
+      </ng-template>
+      <div
+        class="tab-wrapper">
+        shoto budet
+      </div>
+    </mat-tab>
+    <mat-tab label="LogOut">
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">exit_to_app</mat-icon>
+      </ng-template>
+      <div class="tab-wrapper">
+        <div class="logout-tab">
+          <p></p>
+          <div  class="session-time">{{ getEndSession()}}</div>
+          <button mat-stroked-button (click)="logout($event)" class="btn btn-common" style="padding: 7px;">
+            logout
+            <mat-icon class="example-tab-icon">exit_to_app</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<ng-template #loading>
+  <p class="text-center" style="text-align: center; margin-top: 20px; font-size: 30px;"> zaraz use budze</p>
+</ng-template>

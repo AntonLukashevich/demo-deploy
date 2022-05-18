@@ -1,0 +1,63 @@
+<div class="form-wrapper">
+  <form [formGroup]="form" (submit)="updateLyrics()">
+    <div class="form-header-wrapper">
+      <input formControlName="name" placeholder="Lyrics Title">
+      <input formControlName="tonality" placeholder="Tonality">
+      <input formControlName="comment" placeholder="Comment">
+    </div>
+    <mat-form-field>
+      <mat-label>genres</mat-label>
+      <mat-select formControlName="tags" multiple>
+        <mat-option *ngFor="let genre of genreList" [value]="genre">{{genre}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="text-wrapper">
+      <ul formArrayName="items" class="">
+        <li *ngFor="let item of getItems(); let index = index">
+          <div [formGroupName]="index" class="item-form-wrapper">
+            <div>
+              <mat-form-field>
+                <mat-select formControlName="name">
+                  <mat-option *ngFor="let name of itemNameList" [value]="name">{{name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-icon type="button" (click)="removeItemControl(index)" class="btn-close">close</mat-icon>
+            </div>
+            <div>
+              <ol formArrayName="lines" class="item-couple-lines-wrapper">
+                <li *ngFor="let line of getLines(index); let index1 = index" >
+                  <div formGroupName="{{index1}}" >
+                    <mat-icon type="button" (click)="removeLinesControl(index, index1)" class="btn-close">close</mat-icon>
+                    <div class="item-couple-lines">
+<!--                      <table>-->
+<!--                        <tbody>-->
+<!--                        <tr>-->
+<!--                          <td *ngFor="let cell of getLine(index, index1).value.text.split(''); let i = index"-->
+<!--                              class="chord-cell"-->
+<!--                              formArrayName="chords"-->
+<!--                          >-->
+<!--                            <mat-form-field>-->
+<!--                              <mat-label>chrd</mat-label>-->
+<!--                              <mat-select formControlName="{{i}}">-->
+<!--                                <mat-option *ngFor="let chord of chordsList"-->
+<!--                                            [value]="chord">{{chordsArray[chord.position]}}{{chord?.postfix}}</mat-option>-->
+<!--                              </mat-select>-->
+<!--                            </mat-form-field>-->
+<!--                          </td>-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                      </table>-->
+                      <input formControlName="text" class="text-line">
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <button mat-stroked-button color="primary" type="submit"> Update Lyrics</button>
+  </form>
+</div>

@@ -1,0 +1,33 @@
+<div class="home-wrapper">
+  <div class="finder">
+    <input [(ngModel)]="searchTerm" id="Search" name="Search" type="search" placeholder="Search..." autocomplete="off">
+  </div>
+
+  <div class="lyrics-list-wrapper" [ngClass]="{
+    lightList: theme === 'light',
+    darkList: theme === 'dark',
+    greenList: theme === 'green'
+  }">
+    <div *ngIf="lyricsList.length; else loading">
+      <ul>
+        <ng-container *ngFor="let lyric of (lyricsList | searchFilter: searchTerm )">
+          <!--        <ng-container *ngFor="let lyric of (listLyrics | async | searchFilter: searchTerm | tagFilter: selectedTags)">-->
+          <li>
+            <mat-card class="list-item" routerLink="/lyrics/{{lyric.id}}">
+              <div>
+                <span>{{lyric.id}}</span>
+                {{lyric.name}}
+              </div>
+            </mat-card>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+    <ng-template #loading>
+      <p class="text-center"> zaraz use budze</p>
+    </ng-template>
+  </div>
+
+</div>
+
+

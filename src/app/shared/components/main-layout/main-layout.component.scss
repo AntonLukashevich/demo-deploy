@@ -1,0 +1,54 @@
+// colors
+//#303030;
+
+.main-container{
+  margin: 0 auto;
+  font-family: gilroy;
+  height: 100vh;
+  overflow: hidden;
+  background: none;
+}
+
+.mat-drawer-container-wrapper{
+  height: 93.5%;
+  background: none;
+  color: black;
+}
+
+mat-list-item.toolbar-item{
+  cursor: pointer;
+  font-weight: bold;
+}
+
+mat-list-item.toolbar-item:hover{
+  font-size: larger;
+  background: rgba(211, 211, 211, 0.93);
+  //color: rgba(239, 200, 7, 0.75);
+  color: rgba(33, 145, 189, 0.35);
+}
+
+
+.light .green{
+  background: whitesmoke;
+  color: black;
+}
+
+.dark{
+  background: #333333;
+  color: white;
+}
+
+.lightToolbar{
+  background: black;
+  color: white;
+}
+
+.darkToolbar{
+  background: black;
+  color: white;
+}
+
+.greenToolbar{
+  background: rgb(27, 87, 27);
+  color: white;
+}

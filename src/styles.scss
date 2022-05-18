@@ -1,0 +1,109 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@font-face {
+  font-family: 'Lobster-Regular';
+  src: url('assets/fonts/Lobster-Regular.ttf');
+  src: url('/assets/fonts/Lobster-Regular.ttf?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('/assets/fonts/Lobster-Regular.ttf') format('ttf'), /* Modern Browsers */
+  url('/assets/fonts/Lobster-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'RobotoMono-Medium';
+  src: url('assets/fonts/RobotoMono-Medium.ttf');
+  src: url('/assets/fonts/RobotoMono-Medium.ttf?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('/assets/fonts/RobotoMono-Medium.ttf') format('ttf'), /* Modern Browsers */
+  url('/assets/fonts/RobotoMono-Medium.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Comfortaa-Medium';
+  src: url('assets/fonts/Comfortaa-Medium.ttf');
+  src: url('/assets/fonts/Comfortaa-Medium.ttf?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('/assets/fonts/Comfortaa-Medium.ttf') format('ttf'), /* Modern Browsers */
+  url('/assets/fonts/Comfortaa-Medium.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Comic Sans MS';
+  src: url('assets/fonts/Comic Sans MS.ttf');
+  src: url('/assets/fonts/Comic Sans MS.ttf?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('/assets/fonts/Comic Sans MS.ttf') format('ttf'), /* Modern Browsers */
+  url('/assets/fonts/Comic Sans MS.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Mulish-BoldItalic';
+  src: url('assets/fonts/Mulish-BoldItalic.ttf');
+  src: url('/assets/fonts/Mulish-BoldItalic.ttf?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('/assets/fonts/Mulish-BoldItalic.ttf') format('ttf'), /* Modern Browsers */
+  url('/assets/fonts/Mulish-BoldItalic.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Hermes';
+  src: url('assets/fonts/hermes.ttf');
+  src: url('/assets/fonts/hermes.ttf?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('/assets/fonts/hermes.ttf') format('ttf'), /* Modern Browsers */
+  url('/assets/fonts/hermes.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+.default-font{
+  font-family: sans-serif;
+}
+
+.roboto-font{
+  font-family: 'RobotoMono-Medium';
+}
+
+.comfortaa-font{
+  font-family: 'Comfortaa-Medium';
+}
+
+.lobster-font{
+  font-family: 'Lobster-Regular';
+}
+
+.comic-font{
+  font-family: "Comic Sans MS";
+}
+
+.btn{
+  padding: 10px;
+  border: 1px solid rgba(211, 211, 211, 0.75);
+  background: whitesmoke;
+  &-add{
+    border-radius: 20%;
+    &:hover {
+      background: rgb(7, 150, 7);
+      color: white;
+      border-radius: 90% 45% 90% 90%;
+    }
+  }
+
+  &-close {
+    position: absolute;
+    right: 25px;
+    border-radius: 20%;
+    &:hover{
+      background: rgb(211, 100, 104);
+      border-radius: 90% 45% 90% 90%;
+      color: white;
+    }
+  }
+
+}
+
+
+.btn-common{
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  border-radius: 4px;
+  color: #000;
+  background: rgba(239, 200, 7, 0.75);
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

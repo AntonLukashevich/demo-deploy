@@ -2,7 +2,7 @@
   "name": "LYRICS",
   "short_name": "lyrics",
   "theme_color": "black",
-  "background_color": "#black",
+  "background_color": "black",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

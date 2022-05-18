@@ -101,7 +101,7 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/icon-guitar-music.ico",
+              "src/icon-guitar-music.png",
               "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest",

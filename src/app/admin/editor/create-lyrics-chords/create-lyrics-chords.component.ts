@@ -64,6 +64,7 @@ export class CreateLyricsChordsComponent implements OnInit {
 
   selectLyrics() {
     console.log(this.form.value);
+    this.prepareBeforeCreate();
     this.editorService.createLyrics(this.form.value).subscribe( (res) => {
       console.log(res);
       this.form.reset();
@@ -111,6 +112,26 @@ export class CreateLyricsChordsComponent implements OnInit {
             .get('lines') as FormArray).controls[index_line] as FormArray).get('chords') as FormArray).push(new FormControl())
         })
       });
+    })
+  }
+  private prepareBeforeCreate(){
+    this.form.value.items.forEach((item: LyricsItem) =>{
+      item.lines.forEach((line) => {
+        let space = 0;
+        line.chords.forEach((chord, index) =>{
+          if (!chord) {
+            space++;
+          } else {
+            chord.spaces = space;
+            space = 0;
+          }
+        });
+      });
+
+      if (item.iText){
+        // @ts-ignore
+        item.iText = null;
+      }
     })
   }
 }

@@ -27,6 +27,13 @@ mat-list-item.toolbar-item:hover{
   color: rgba(33, 145, 189, 0.35);
 }
 
+.nav-bar{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .light .green{
   background: whitesmoke;

@@ -8,13 +8,16 @@
   darkToolbar: theme === 'dark',
   greenToolbar: theme === 'green'
   }">
-    <div>
+    <div >
       <button mat-icon-button>
         <mat-icon (click)="drawer.open()">menu</mat-icon>
       </button>
     </div>
-    <span class="example-spacer"></span>
-    <span mat-button style="font-weight: bold;" routerLink="/" (click)="drawer.close()"> LYRICS</span>
+    <div class="nav-bar">
+      <span mat-button style="font-weight: bold;" routerLink="/" (click)="drawer.close()"> LYRICS</span>
+      <span style="display: flex;"><img src="assets/icon-cassette.png" width="38" height="38" style="border-radius: 2px;" alt="lorem"></span>
+    </div>
+
 
   </mat-toolbar>
   <mat-drawer-container
@@ -29,18 +32,21 @@
                 appFocus
     >
       <mat-list (click)="drawer.close()">
-        <mat-list-item class="toolbar-item" autosize>
-          <mat-icon>arrow_back_ios</mat-icon>
-        </mat-list-item>
+<!--        <mat-list-item class="toolbar-item" autosize>-->
+<!--          <mat-icon>arrow_back_ios</mat-icon>-->
+<!--        </mat-list-item>-->
         <mat-list-item routerLink="/" routerLinkActive="active" class="toolbar-item" autosize>
-          <mat-icon>queue_music</mat-icon>
+<!--          <mat-icon>queue_music</mat-icon>-->
+          <img src="assets/icon-audiobook.png" width="30" height="30" alt="lorem">
         </mat-list-item>
         <mat-list-item routerLink="admin" routerLinkActive="active" class="toolbar-item" autosize>
-          <mat-icon>account_circle</mat-icon>
+<!--          <mat-icon>account_circle</mat-icon>-->
+          <img src="assets/icon-work-station.png" width="30" height="30" alt="lorem">
         </mat-list-item>
         <mat-list-item routerLink="settings" routerLinkActive="active" class="toolbar-item" autosize
                        routerLinkActive="active">
-          <mat-icon>settings</mat-icon>
+<!--          <mat-icon>settings</mat-icon>-->
+          <img src="assets/icon-configuration.png" width="30" height="30" alt="lorem">
         </mat-list-item>
       </mat-list>
     </mat-drawer>

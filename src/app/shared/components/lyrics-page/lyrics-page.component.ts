@@ -6,6 +6,8 @@ import {Observable, Subscription} from "rxjs";
 import {Chord} from "../../../interfaces/chord";
 import {FontService} from "../../services/settings/font.service";
 import {ThemeService} from "../../services/settings/theme.service";
+import {LyricInfoComponent} from "../lyrics-info/lyric-info.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-lyrics-page',
@@ -27,7 +29,8 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
   constructor(private root: ActivatedRoute,
               private lyricsService: LyricsService,
               private fontService: FontService,
-              private themeService: ThemeService) {
+              private themeService: ThemeService,
+              public dialog: MatDialog) {
     this.root.params.subscribe(params => this.lyricId = params['id']);
   }
 
@@ -68,4 +71,7 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
     return line;
   }
 
+  openDialog() {
+    this.dialog.open(LyricInfoComponent, { data: {comment: this.lyric.comment}});
+  }
 }

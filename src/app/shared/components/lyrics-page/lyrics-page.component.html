@@ -9,12 +9,12 @@
 <!--        <strong>{{ lyric.tonality}}</strong>-->
     <button mat-icon-button (click)="increaseTon()"><mat-icon>keyboard_arrow_right</mat-icon></button>
       <button mat-icon-button>
-    <mat-icon>info</mat-icon>
+    <mat-icon (click)="openDialog()">info</mat-icon>
   </button>
   </span>
     <button mat-icon-button (click)="toggle()">
 <!--      <mat-icon>music_note</mat-icon>-->
-      <img src="assets/icon-chords-settings.png" width="20" height="20" alt="lorem">
+      <img src="assets/icon-chords-settings.png" width="20" height="20" alt="chords" style="">
     </button>
   </div>
   <ol class="lyrics-wrapper" [ngClass]="{

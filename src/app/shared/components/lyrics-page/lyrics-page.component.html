@@ -6,10 +6,11 @@
            }">
   <span *ngIf="showChords">
     <button mat-icon-button (click)="decreaseTon()"><mat-icon>keyboard_arrow_left</mat-icon></button>
-<!--        <strong>{{ lyric.tonality}}</strong>-->
+        <strong>{{ lyric.tonality}}</strong>
     <button mat-icon-button (click)="increaseTon()"><mat-icon>keyboard_arrow_right</mat-icon></button>
       <button mat-icon-button>
-    <mat-icon (click)="openDialog()">info</mat-icon>
+<!--    <mat-icon (click)="openDialog()">info</mat-icon>-->
+        <img src="../../../../assets/info.png" (click)="openDialog()" width="20" height="20">
   </button>
   </span>
     <button mat-icon-button (click)="toggle()">

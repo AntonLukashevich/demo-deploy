@@ -52,7 +52,7 @@
       </ng-template>
       <div
         class="tab-wrapper">
-        <div *ngIf="lyricsList.length; else loading"
+        <div *ngIf="!lyricsList.length; else loading"
              class="tab-wrapper">
           <table class="lyrics-table" cellspacing="0">
             <thead>
@@ -117,5 +117,8 @@
 </div>
 
 <ng-template #loading>
-  <p class="text-center" style="text-align: center; margin-top: 20px; font-size: 30px;"> zaraz use budze</p>
+  <div class="loading">
+    <p style="font-size: 18px; font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif">shukau, zaraz use budze</p>
+    <img src="assets/loading-bar.png" width="150" height="150" alt="lorem">
+  </div>
 </ng-template>

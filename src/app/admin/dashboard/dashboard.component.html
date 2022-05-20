@@ -4,8 +4,8 @@
             'dashboard-wrapper-green': theme === 'green'
            }">
   <mat-tab-group animationDuration="450ms" color="warn">
-    <mat-tab>
-      <ng-template mat-tab-label>
+    <mat-tab >
+      <ng-template mat-tab-label >
         <mat-icon class="example-tab-icon">queue_music</mat-icon>
       </ng-template>
       <div *ngIf="lyricsList.length; else loading"
@@ -119,6 +119,6 @@
 <ng-template #loading>
   <div class="loading">
     <p style="font-size: 18px; font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif">shukau, zaraz use budze</p>
-    <img src="assets/loading-bar.png" width="150" height="150" alt="lorem">
+    <img src="../../../assets/icons/common/loading-bar.png" width="150" height="150" alt="lorem">
   </div>
 </ng-template>

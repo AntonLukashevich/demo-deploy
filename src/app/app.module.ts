@@ -42,9 +42,10 @@ import {LyricInfoComponent} from "./shared/components/lyrics-info/lyric-info.com
     })
   ],
   providers: [AuthGuard],
-  exports: [
-    //SearchFilterPipe
-  ],
+    exports: [
+        FocusDirective,
+        //SearchFilterPipe
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

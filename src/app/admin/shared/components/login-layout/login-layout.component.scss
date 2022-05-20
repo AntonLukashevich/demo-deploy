@@ -7,7 +7,8 @@
   align-items: center;
 
   &-light{
-    background: whitesmoke;
+    //background: whitesmoke;
+    background: ghostwhite;
   }
 
   &-dark{
@@ -56,7 +57,7 @@
   }
   &-dark{
     color: white;
-    border: 3px solid rgba(33, 145, 189, 0.35);
+    border: 3px solid rgba(33, 145, 189, 0.75);
   }
   &-green{
     border: 3px solid lightgray;
@@ -86,10 +87,12 @@
 
   &-light{
     background: rgba(239, 200, 7, 0.85);
+    border: 2px solid black;
   }
 
   &-dark{
     background: rgba(3, 169, 244, 0.85);
+    border: 2px solid rgba(33, 145, 189, 0.75);
   }
 
   &-green{

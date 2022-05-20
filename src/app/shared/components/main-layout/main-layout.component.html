@@ -15,7 +15,7 @@
     </div>
     <div class="nav-bar">
       <span mat-button style="font-weight: bold;" routerLink="/" (click)="drawer.close()"> LYRICS</span>
-      <span style="display: flex;"><img src="assets/icon-cassette.png" width="38" height="38" style="border-radius: 2px;" alt="lorem"></span>
+      <span style="display: flex;"><img src="../../../../assets/icons/common/icon-cassette.png" width="38" height="38" style="border-radius: 2px;" alt="lorem"></span>
     </div>
 
 
@@ -30,6 +30,11 @@
                 (blur)="closeSidebar()"
                 disableClose
                 appFocus
+                [ngClass]="{
+                  light: theme === 'light',
+                  dark: theme === 'dark',
+                  green: theme === 'green'
+                }"
     >
       <mat-list (click)="drawer.close()">
 <!--        <mat-list-item class="toolbar-item" autosize>-->
@@ -37,16 +42,16 @@
 <!--        </mat-list-item>-->
         <mat-list-item routerLink="/" routerLinkActive="active" class="toolbar-item" autosize>
 <!--          <mat-icon>queue_music</mat-icon>-->
-          <img src="assets/icon-audiobook.png" width="30" height="30" alt="lorem">
+          <img src="../../../../assets/icons/common/icon-audiobook.png" width="30" height="30" alt="lorem">
         </mat-list-item>
         <mat-list-item routerLink="admin" routerLinkActive="active" class="toolbar-item" autosize>
 <!--          <mat-icon>account_circle</mat-icon>-->
-          <img src="assets/icon-work-station.png" width="30" height="30" alt="lorem">
+          <img src="../../../../assets/icons/common/icon-work-station.png" width="30" height="30" alt="lorem">
         </mat-list-item>
         <mat-list-item routerLink="settings" routerLinkActive="active" class="toolbar-item" autosize
                        routerLinkActive="active">
 <!--          <mat-icon>settings</mat-icon>-->
-          <img src="assets/icon-configuration.png" width="30" height="30" alt="lorem">
+          <img src="../../../../assets/icons/common/icon-configuration.png" width="30" height="30" alt="lorem">
         </mat-list-item>
       </mat-list>
     </mat-drawer>

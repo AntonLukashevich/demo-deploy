@@ -14,7 +14,9 @@ export class MainLayoutComponent implements OnInit {
   theme: string = 'light';
   mode = new FormControl('over');
   toggle = false;
-  constructor(private themeService: ThemeService) { }
+  constructor(private themeService: ThemeService) {
+    this.toggle = true;
+  }
 
   ngOnInit(): void {
     this.themeService.getCurrentTheme().subscribe((theme) => {

@@ -11,14 +11,16 @@
     <div>
       <button mat-icon-button *ngIf="!toggle">
 <!--        <mat-icon (click)="drawer.open(); setToggle()" >menu</mat-icon>-->
-        <img src="../../../../assets/icons/common/mixer.png"
+        <img src="../../../../assets/icons/common/icon-audiobook.png"
              (click)="drawer.open(); setToggle()"
-             width="30" height="30" style="border-radius: 2px;" alt="lorem">
+             width="30" height="30" style="border-radius: 2px;">
       </button>
 
-      <button mat-icon-button *ngIf="toggle" (click)="setToggle()">
+      <button mat-icon-button *ngIf="toggle" >
 <!--        <mat-icon (click)="drawer.close()">arrow_back_ios</mat-icon>-->
-        <img src="../../../../assets/icons/common/arrow-red-left.png" (click)="drawer.close()" width="30" height="30" style="border-radius: 2px;" alt="lorem">
+        <img src="../../../../assets/icons/common/cancel.png" (click)="drawer.close(); setToggle()"
+             width="30" height="28"
+             style="border-radius: 2px;">
       </button>
     </div>
     <div class="nav-bar">

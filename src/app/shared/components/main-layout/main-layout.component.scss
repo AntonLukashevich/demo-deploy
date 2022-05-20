@@ -60,4 +60,11 @@ mat-list-item.toolbar-item:hover{
   color: white;
 }
 
+mat-list{
+  padding-top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 

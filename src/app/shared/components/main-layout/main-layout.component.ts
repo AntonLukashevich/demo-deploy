@@ -13,6 +13,7 @@ export class MainLayoutComponent implements OnInit {
   @ViewChild('drawer') sidenav: MatSidenav;
   theme: string = 'light';
   mode = new FormControl('over');
+  toggle = false;
   constructor(private themeService: ThemeService) { }
 
   ngOnInit(): void {
@@ -27,6 +28,10 @@ export class MainLayoutComponent implements OnInit {
     this.sidenav.close().then(r => {
       console.log('close');
     });
+  }
+
+  setToggle(){
+    this.toggle = !this.toggle;
   }
 
 }

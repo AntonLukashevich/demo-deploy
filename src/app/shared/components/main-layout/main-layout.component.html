@@ -8,26 +8,36 @@
   darkToolbar: theme === 'dark',
   greenToolbar: theme === 'green'
   }">
-    <div >
-      <button mat-icon-button>
-        <mat-icon (click)="drawer.open()">menu</mat-icon>
+    <div>
+      <button mat-icon-button *ngIf="!toggle">
+<!--        <mat-icon (click)="drawer.open(); setToggle()" >menu</mat-icon>-->
+        <img src="../../../../assets/icons/common/mixer.png"
+             (click)="drawer.open(); setToggle()"
+             width="30" height="30" style="border-radius: 2px;" alt="lorem">
+      </button>
+
+      <button mat-icon-button *ngIf="toggle" (click)="setToggle()">
+<!--        <mat-icon (click)="drawer.close()">arrow_back_ios</mat-icon>-->
+        <img src="../../../../assets/icons/common/arrow-red-left.png" (click)="drawer.close()" width="30" height="30" style="border-radius: 2px;" alt="lorem">
       </button>
     </div>
     <div class="nav-bar">
       <span mat-button style="font-weight: bold;" routerLink="/" (click)="drawer.close()"> LYRICS</span>
-      <span style="display: flex;"><img src="../../../../assets/icons/common/icon-cassette.png" width="38" height="38" style="border-radius: 2px;" alt="lorem"></span>
+      <span style="display: flex;">
+        <img src="../../../../assets/icons/common/icon-cassette.png" width="38" height="38" style="border-radius: 2px;" alt="lorem">
+      </span>
     </div>
 
 
   </mat-toolbar>
   <mat-drawer-container
     class="mat-drawer-container-wrapper"
-    autosize (backdropClick)="closeSidebar()"
-    (keydown.escape)="closeSidebar()"
+    autosize (backdropClick)="closeSidebar();setToggle()"
+    (keydown.escape)="closeSidebar();setToggle()"
   >
     <mat-drawer #drawer class="sidebar"
                 mode="over"
-                (blur)="closeSidebar()"
+                (blur)="closeSidebar();setToggle()"
                 disableClose
                 appFocus
                 [ngClass]="{
@@ -36,23 +46,24 @@
                   green: theme === 'green'
                 }"
     >
-      <mat-list (click)="drawer.close()">
-<!--        <mat-list-item class="toolbar-item" autosize>-->
-<!--          <mat-icon>arrow_back_ios</mat-icon>-->
-<!--        </mat-list-item>-->
-        <mat-list-item routerLink="/" routerLinkActive="active" class="toolbar-item" autosize>
-<!--          <mat-icon>queue_music</mat-icon>-->
-          <img src="../../../../assets/icons/common/icon-audiobook.png" width="30" height="30" alt="lorem">
-        </mat-list-item>
-        <mat-list-item routerLink="admin" routerLinkActive="active" class="toolbar-item" autosize>
-<!--          <mat-icon>account_circle</mat-icon>-->
-          <img src="../../../../assets/icons/common/icon-work-station.png" width="30" height="30" alt="lorem">
-        </mat-list-item>
-        <mat-list-item routerLink="settings" routerLinkActive="active" class="toolbar-item" autosize
-                       routerLinkActive="active">
-<!--          <mat-icon>settings</mat-icon>-->
-          <img src="../../../../assets/icons/common/icon-configuration-64x64.png" width="30" height="30" alt="lorem">
-        </mat-list-item>
+      <mat-list (click)="drawer.close();setToggle()">
+        <div class="common-panel">
+          <!--        <mat-list-item class="toolbar-item" autosize>-->
+          <!--          <mat-icon>arrow_back_ios</mat-icon>-->
+          <!--        </mat-list-item>-->
+          <mat-list-item routerLink="/" class="toolbar-item" >
+            <img src="../../../../assets/icons/common/icon-audiobook.png" width="30" height="30" alt="lorem">
+          </mat-list-item>
+          <mat-list-item routerLink="settings" class="toolbar-item">
+            <img src="../../../../assets/icons/common/icon-configuration-64x64.png" width="30" height="30" alt="lorem">
+          </mat-list-item>
+        </div>
+        <div class="vip-panel">
+          <mat-list-item routerLink="admin" class="toolbar-item" >
+            <img src="../../../../assets/icons/common/icon-work-station.png" width="30" height="30" alt="lorem">
+          </mat-list-item>
+        </div>
+
       </mat-list>
     </mat-drawer>
     <router-outlet></router-outlet>

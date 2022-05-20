@@ -8,6 +8,7 @@ import {LyricsItem} from "../../interfaces/lyrics-item";
 import {EditorService} from "../editor.service";
 import {Chord} from "../../interfaces/chord";
 import {LyricsLine} from "../../interfaces/lyrics-line";
+import {CHORD_CHAIN, CHORDS} from "../mock-chords";
 
 @Component({
   selector: 'app-edit-lyrics',
@@ -20,33 +21,8 @@ export class EditLyricsComponent implements OnInit {
   lyrics: Lyrics;
   genreList: string[];
   itemNameList: string[];
-  chordsList: Chord[] = [
-    {position: 0, spaces: 0},
-    {position: 0, spaces: 0, postfix: 'm'},
-    {position: 1, spaces: 0},
-    {position: 1, spaces: 0, postfix: 'm'},
-    {position: 2, spaces: 0},
-    {position: 2, spaces: 0, postfix: 'm'},
-    {position: 3, spaces: 0},
-    {position: 3, spaces: 0, postfix: 'm'},
-    {position: 4, spaces: 0},
-    {position: 4, spaces: 0, postfix: 'm'},
-    {position: 5, spaces: 0},
-    {position: 5, spaces: 0, postfix: 'm'},
-    {position: 6, spaces: 0,},
-    {position: 6, spaces: 0, postfix: 'm'},
-    {position: 7, spaces: 0},
-    {position: 7, spaces: 0, postfix: 'm'},
-    {position: 8, spaces: 0},
-    {position: 8, spaces: 0, postfix: 'm'},
-    {position: 9, spaces: 0},
-    {position: 9, spaces: 0, postfix: 'm'},
-    {position: 10, spaces: 0},
-    {position: 10, spaces: 0, postfix: 'm'},
-    {position: 11, spaces: 0},
-    {position: 11, spaces: 0, postfix: 'm'},
-  ];
-  chordsArray = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "Bb", "H"];
+  chordsList: Chord[] = CHORDS;
+  chordsArray = CHORD_CHAIN;
 
   constructor(private lyricsService: LyricsService,
               private router: ActivatedRoute,

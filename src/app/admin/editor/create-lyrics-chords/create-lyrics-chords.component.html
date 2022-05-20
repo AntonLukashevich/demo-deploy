@@ -40,6 +40,7 @@
                             <mat-form-field>
                               <mat-label>chrd</mat-label>
                               <mat-select formControlName="{{i}}">
+                                <mat-option>None</mat-option>
                                 <mat-option *ngFor="let chord of chordsList"
                                             [value]="chord">{{chordsArray[chord.position]}}{{chord?.postfix}}</mat-option>
                               </mat-select>

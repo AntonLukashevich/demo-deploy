@@ -3,11 +3,12 @@ import {User} from "../interfaces/user";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Lyrics} from "../interfaces/lyrics";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class UsersService {
   users: User[] = [];
-  private url: string = 'https://demo-lyrics-api.herokuapp.com';
+  private url: string = environment.apiUrl;
 
   constructor(private http: HttpClient) {
   }

@@ -8,6 +8,7 @@ import {FontService} from "../../services/settings/font.service";
 import {ThemeService} from "../../services/settings/theme.service";
 import {LyricInfoComponent} from "../lyrics-info/lyric-info.component";
 import {MatDialog} from "@angular/material/dialog";
+import {CHORD_CHAIN} from "../../../admin/mock-chords";
 
 @Component({
   selector: 'app-lyrics-page',
@@ -18,7 +19,7 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
   cordPosition = 0;
   showChords = false;
   lyricId: any;
-  chordsArray = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "Bb", "H"];
+  chordsArray = CHORD_CHAIN;
   fontSize: number | undefined;
   // @ts-ignore
   lyric: Lyrics;

@@ -35,12 +35,12 @@
   </mat-toolbar>
   <mat-drawer-container
     class="mat-drawer-container-wrapper"
-    autosize (backdropClick)="closeSidebar();setToggle()"
-    (keydown.escape)="closeSidebar();setToggle()"
+    autosize (backdropClick)="closeSidebar();"
+    (keydown.escape)="closeSidebar();"
   >
     <mat-drawer #drawer class="sidebar"
                 mode="over"
-                (blur)="closeSidebar();setToggle()"
+                (blur)="closeSidebar();"
                 disableClose
                 appFocus
                 [ngClass]="{

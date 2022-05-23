@@ -14,8 +14,9 @@ export class MainLayoutComponent implements OnInit {
   theme: string = 'light';
   mode = new FormControl('over');
   toggle = false;
+
   constructor(private themeService: ThemeService) {
-    this.toggle = true;
+    this.toggle = false;
   }
 
   ngOnInit(): void {
@@ -26,6 +27,7 @@ export class MainLayoutComponent implements OnInit {
 
   closeSidebar() {
     // @ts-ignore
+    this.toggle = false;
     this.sidenav.close().then(r => {});
   }
 

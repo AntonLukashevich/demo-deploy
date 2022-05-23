@@ -7,8 +7,7 @@ import {MainLayoutComponent} from './shared/components/main-layout/main-layout.c
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FocusDirective} from "./directives/focus.directive";
 import {HomeComponent} from './shared/components/home/home.component';
-import {SearchFilterPipe} from "./pipes/search-filter.pipe";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 import {LyricsPageComponent} from './shared/components/lyrics-page/lyrics-page.component';
 import {SettingsComponent} from './shared/components/settings/settings.component';
 import {SharedModule} from "./shared/shared.module";
@@ -16,6 +15,7 @@ import {AuthGuard} from "./admin/shared/services/auth.guard";
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {LyricInfoComponent} from "./shared/components/lyrics-info/lyric-info.component";
+
 
 @NgModule({
   declarations: [
@@ -41,10 +41,14 @@ import {LyricInfoComponent} from "./shared/components/lyrics-info/lyric-info.com
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+  ],
+
     exports: [
         FocusDirective,
         //SearchFilterPipe
+
     ],
   bootstrap: [AppComponent]
 })

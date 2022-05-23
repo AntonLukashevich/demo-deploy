@@ -1,0 +1,51 @@
+.form-wrapper{
+  padding: 10px;
+  background: whitesmoke;
+  height: fit-content;
+
+  &-light{
+    color: black;
+    background: white;
+  }
+
+  &-dark{
+    color: white;
+    background: #333333;
+    color: black;
+    background: white;
+  }
+
+  &-geen{
+    color: black;
+    background: white;
+  }
+}
+
+.form-header-wrapper{
+  display: flex;
+  flex-direction: column;
+  input{
+    margin-bottom: 5px;
+    padding: 5px 5px 5px 15px ;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    font-size: 18px;
+  }
+}
+
+
+.text-wrapper{
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 15px;
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.item-form-wrapper{
+  margin-bottom: 10px;
+  border-top: 1px solid lightgray;
+}

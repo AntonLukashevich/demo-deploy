@@ -13,7 +13,7 @@ import {CHORD_CHAIN, CHORDS} from "../mock-chords";
 @Component({
   selector: 'app-edit-lyrics',
   templateUrl: './edit-lyrics.component.html',
-  styleUrls: ['./edit-lyrics.component.scss']
+  styleUrls: ['./../editor/editor.scss']
 })
 export class EditLyricsComponent implements OnInit {
   form: FormGroup = new FormGroup({});
@@ -36,10 +36,7 @@ export class EditLyricsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     console.log(this.lyrics);
-
-
     this.form = new FormGroup({
       id: new FormControl(this.lyrics.id),
       name: new FormControl(this.lyrics.name),
@@ -49,7 +46,7 @@ export class EditLyricsComponent implements OnInit {
       items: new FormArray([])
     });
     this.prepare();
-
+    console.log('form: ', this.form.value);
   }
 
   updateLyrics() {
@@ -69,6 +66,11 @@ export class EditLyricsComponent implements OnInit {
 
   getLine(item_index: number, line_index: number): any {
     return (((this.form.get('items') as FormArray).controls[item_index] as FormGroup).get('lines') as FormArray).controls[line_index];
+  }
+
+  getChords(item_index: number, line_index: number):any{
+    return ((((this.form.get('items') as FormArray).controls[item_index] as FormGroup)
+      .get('lines') as FormArray).controls[line_index].get('chords') as FormArray)
   }
 
   removeItemControl(index: number) {
@@ -94,10 +96,16 @@ export class EditLyricsComponent implements OnInit {
             text: new FormControl(line.text),
           })
         );
+
         line.chords.forEach(( chord) =>{
-          // (((((this.form.get('items') as FormArray).controls[index] as FormGroup)
-          //   .get('lines') as FormArray).controls[index_line] as FormArray).get('chords') as FormArray).push(new FormControl());
+          for (let i = 0; i <chord.spaces; i++) {
+            (((((this.form.get('items') as FormArray).controls[index] as FormGroup)
+              .get('lines') as FormArray).controls[index_line] as FormArray).get('chords') as FormArray).push(new FormControl());
+          }
           //console.log(chord);
+          ((((this.form.get('items') as FormArray).controls[index] as FormGroup)
+            .get('lines') as FormArray).controls[index_line].get('chords') as FormArray).controls[chord.spaces - 1]
+            .setValue({position: chord.position, postfix: chord?.postfix})
         })
       });
     })

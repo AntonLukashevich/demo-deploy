@@ -30,24 +30,25 @@
                   <div formGroupName="{{index1}}" >
                     <mat-icon type="button" (click)="removeLinesControl(index, index1)" class="btn-close">close</mat-icon>
                     <div class="item-couple-lines">
-<!--                      <table>-->
-<!--                        <tbody>-->
-<!--                        <tr>-->
-<!--                          <td *ngFor="let cell of getLine(index, index1).value.text.split(''); let i = index"-->
-<!--                              class="chord-cell"-->
-<!--                              formArrayName="chords"-->
-<!--                          >-->
-<!--                            <mat-form-field>-->
-<!--                              <mat-label>chrd</mat-label>-->
-<!--                              <mat-select formControlName="{{i}}">-->
-<!--                                <mat-option *ngFor="let chord of chordsList"-->
-<!--                                            [value]="chord">{{chordsArray[chord.position]}}{{chord?.postfix}}</mat-option>-->
-<!--                              </mat-select>-->
-<!--                            </mat-form-field>-->
-<!--                          </td>-->
-<!--                        </tr>-->
-<!--                        </tbody>-->
-<!--                      </table>-->
+                      <table>
+                        <tbody>
+                        <tr>
+                          <td *ngFor="let cell of getChords(index, index1); let i = index"
+                              class="chord-cell"
+                              formArrayName="chords"
+                          >
+                            <mat-form-field>
+                              <mat-label>chrd</mat-label>
+                              <mat-select formControlName="{{i}}">
+                                <mat-option>None</mat-option>
+                                <mat-option *ngFor="let chord of chordsList"
+                                            [value]="chord">{{chordsArray[chord.position]}}{{chord?.postfix}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
                       <input formControlName="text" class="text-line">
                     </div>
                   </div>

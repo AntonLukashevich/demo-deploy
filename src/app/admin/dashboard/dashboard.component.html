@@ -18,7 +18,7 @@
         <table class="lyrics-table" cellspacing="0">
           <thead>
           <tr class="lyrics-header">
-            <th>#</th>
+            <th><a (click)="refreshLyricsList()">refresh</a></th>
             <th style="text-align: right">ID</th>
             <th style="text-align: left">Title</th>
             <th>Actions</th>
@@ -119,6 +119,6 @@
 <ng-template #loading>
   <div class="loading">
     <p style="font-size: 18px; font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif">shukau, zaraz use budze</p>
-    <img src="../../../assets/icons/common/loading-bar.png" width="150" height="150" alt="lorem">
+    <img src="../../../assets/icons/common/loading.png" width="100" height="100" alt="lorem">
   </div>
 </ng-template>

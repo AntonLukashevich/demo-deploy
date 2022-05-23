@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ThemeService} from "../../services/settings/theme.service";
 import {FontService} from "../../services/settings/font.service";
+import {LyricsService} from "../../services/lyrics.service";
 
 @Component({
   selector: 'app-settings',
@@ -14,7 +15,8 @@ export class SettingsComponent implements OnInit {
   stepFontSize = 1;
 
   constructor(private themeService: ThemeService,
-              private fontService: FontService) { }
+              private fontService: FontService,
+              private lyricsService: LyricsService) { }
 
   ngOnInit(): void {
     this.currentTheme = this.themeService.getCurrentTheme().value;
@@ -35,6 +37,10 @@ export class SettingsComponent implements OnInit {
   setFontSize(value: number){
     this.currentFontSize = value;
     this.fontService.setCurrentFontSize(value);
+  }
+
+  refreshLyricsList(){
+    this.lyricsService.refreshLyricsList();
   }
 
 }

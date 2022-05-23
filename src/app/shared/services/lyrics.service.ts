@@ -18,9 +18,9 @@ export class LyricsService{
   }
 
   getAllLyricsList():Observable<Lyrics[]>{
-    if(localStorage.getItem(this.localStorageLyricsList)){
-      this.listLyrics.next(JSON.parse(<string>localStorage.getItem(this.localStorageLyricsList)));
-    } else {
+    // if(localStorage.getItem(this.localStorageLyricsList)){
+    //   this.listLyrics.next(JSON.parse(<string>localStorage.getItem(this.localStorageLyricsList)));
+    // } else {
       this.http.get<Lyrics[]>(this.url + '/api/lyrics')
         .pipe(
           tap((result: Lyrics[]) => {
@@ -28,7 +28,7 @@ export class LyricsService{
             localStorage.setItem(this.localStorageLyricsList, JSON.stringify(this.listLyrics.value));
           })
         ).subscribe();
-    }
+    //}
     return this.listLyrics;
   }
 
@@ -53,4 +53,18 @@ export class LyricsService{
     return this.http.delete<void>(`${this.url}/api/lyrics/${id}`)
   }
 
+
+  refreshLyricsList(){
+    if(localStorage.getItem(this.localStorageLyricsList)){
+      localStorage.removeItem('localStorageLyricsList')
+    }
+    this.http.get<Lyrics[]>(this.url + '/api/lyrics')
+      .pipe(
+        tap((result: Lyrics[]) => {
+          this.listLyrics.next(result);
+          localStorage.setItem(this.localStorageLyricsList, JSON.stringify(this.listLyrics.value));
+        })
+      ).subscribe();
+
+  }
 }

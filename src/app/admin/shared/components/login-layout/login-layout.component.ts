@@ -38,7 +38,6 @@ export class LoginLayoutComponent implements OnInit {
     }
 
     this.authService.login(user).subscribe(() => {
-
       this.loginForm.reset();
       this.router.navigate(['/admin', 'dashboard']);
       this.submitted = false;

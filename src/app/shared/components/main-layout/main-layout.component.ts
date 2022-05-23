@@ -22,18 +22,16 @@ export class MainLayoutComponent implements OnInit {
     this.themeService.getCurrentTheme().subscribe((theme) => {
       this.theme = theme;
     });
-    console.log('theme: ', this.theme);
   }
 
   closeSidebar() {
     // @ts-ignore
-    this.sidenav.close().then(r => {
-      console.log('close');
-    });
+    this.sidenav.close().then(r => {});
   }
 
   setToggle(){
     this.toggle = !this.toggle;
+    console.log('toggle: ' + this.toggle);
   }
 
 }

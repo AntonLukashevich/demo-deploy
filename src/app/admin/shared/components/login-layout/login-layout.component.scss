@@ -3,7 +3,7 @@
   justify-content: center;
   position: relative;
   width: 100vw;
-  height: calc(100vh - 65px);
+  height: calc(100vh - 165px);
   align-items: center;
 
   &-light{
@@ -108,3 +108,9 @@
 
 
 
+.loading{
+  margin-top: 10px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+}

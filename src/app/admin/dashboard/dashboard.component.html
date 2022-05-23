@@ -36,7 +36,7 @@
                       class="btn-common btn"
                       [routerLink]="['/admin', 'lyrics', item.id, 'edit']"
               > <mat-icon>edit</mat-icon></button>
-              <button (click)="removeLyrics(item.id)"
+              <button (click)="removeLyrics(item.id, item.name);"
                       mat-icon-button
                       class="btn-common btn"
               > <mat-icon>delete_forever</mat-icon></button>
@@ -80,7 +80,7 @@
                 > <mat-icon>edit</mat-icon></button>
                 <button mat-icon-button
                         class="btn-common btn"
-                        (click)="removeUser(user.id)"
+                        (click)="removeUser(user.id, user.email)"
                 > <mat-icon>delete_forever</mat-icon></button>
               </td>
             </tr>

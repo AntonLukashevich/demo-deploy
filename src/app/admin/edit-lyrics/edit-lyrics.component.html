@@ -42,7 +42,9 @@
                               <mat-select formControlName="{{i}}">
                                 <mat-option>None</mat-option>
                                 <mat-option *ngFor="let chord of chordsList"
-                                            [value]="chord">{{chordsArray[chord.position]}}{{chord?.postfix}}</mat-option>
+                                            [value]="chordsArray[cell.value?.position] + cell.value?.postfix">
+                                  {{chordsArray[chord.position]}}{{chord?.postfix}}
+                                </mat-option>
                               </mat-select>
                             </mat-form-field>
                           </td>

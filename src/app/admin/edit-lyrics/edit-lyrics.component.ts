@@ -3,7 +3,6 @@ import {FormArray, FormControl, FormGroup} from "@angular/forms";
 import {Lyrics} from "../../interfaces/lyrics";
 import {LyricsService} from "../../shared/services/lyrics.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {switchMap} from "rxjs/operators";
 import {LyricsItem} from "../../interfaces/lyrics-item";
 import {EditorService} from "../editor.service";
 import {Chord} from "../../interfaces/chord";
@@ -50,7 +49,8 @@ export class EditLyricsComponent implements OnInit {
   }
 
   updateLyrics() {
-    this.lyricsService.updateLyrics(this.form.value).subscribe( (res) => {
+    this.prepareBeforeCreate();
+    this.lyricsService.updateLyrics(this.form.value).subscribe((res) => {
       console.log(res);
     });
     this.route.navigate(['/admin', 'dashboard']);
@@ -68,9 +68,11 @@ export class EditLyricsComponent implements OnInit {
     return (((this.form.get('items') as FormArray).controls[item_index] as FormGroup).get('lines') as FormArray).controls[line_index];
   }
 
-  getChords(item_index: number, line_index: number):any{
+  getChords(item_index: number, line_index: number): any {
+    // console.log(((((this.form.get('items') as FormArray).controls[item_index] as FormGroup)
+    //   .get('lines') as FormArray).controls[line_index].get('chords') as FormArray).value);
     return ((((this.form.get('items') as FormArray).controls[item_index] as FormGroup)
-      .get('lines') as FormArray).controls[line_index].get('chords') as FormArray)
+      .get('lines') as FormArray).controls[line_index].get('chords') as FormArray).controls;
   }
 
   removeItemControl(index: number) {
@@ -96,18 +98,41 @@ export class EditLyricsComponent implements OnInit {
             text: new FormControl(line.text),
           })
         );
+        line.text.split('').forEach((chord) => {
+          (((((this.form.get('items') as FormArray).controls[index] as FormGroup)
+            .get('lines') as FormArray).controls[index_line] as FormArray).get('chords') as FormArray).push(new FormControl());
+        })
 
-        line.chords.forEach(( chord) =>{
-          for (let i = 0; i <chord.spaces; i++) {
-            (((((this.form.get('items') as FormArray).controls[index] as FormGroup)
-              .get('lines') as FormArray).controls[index_line] as FormArray).get('chords') as FormArray).push(new FormControl());
-          }
-          //console.log(chord);
+        let step = 0;
+        line.chords.forEach( (chord, index_ch) =>{
+          step+= chord.spaces;
           ((((this.form.get('items') as FormArray).controls[index] as FormGroup)
-            .get('lines') as FormArray).controls[index_line].get('chords') as FormArray).controls[chord.spaces - 1]
-            .setValue({position: chord.position, postfix: chord?.postfix})
+            .get('lines') as FormArray).controls[index_line].get('chords') as FormArray).controls[step - 1]
+            .setValue({position: chord?.position, postfix: chord?.postfix});
         })
       });
+    })
+  }
+
+  private prepareBeforeCreate(){
+    this.form.value.items.forEach((item: LyricsItem) =>{
+      item.lines.forEach((line) => {
+        let space = 0;
+        line.chords.forEach((chord, index) =>{
+          if (!chord) {
+            space++;
+          } else {
+            chord.spaces = space;
+            console.log(space);
+            space = 0;
+          }
+        });
+      });
+
+      if (item.iText){
+        // @ts-ignore
+        item.iText = null;
+      }
     })
   }
 

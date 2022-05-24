@@ -18,10 +18,11 @@ export class AppComponent {
         case 'VERSION_READY':
           console.log(`Current app version: ${evt.currentVersion.hash}`);
           console.log(`New app version ready for use: ${evt.latestVersion.hash}`);
-          updates.activateUpdate().then(() => {
-            document.location.reload();
-            console.log(`Current app version: ${evt.currentVersion.hash}`);
-          });
+          if(confirm('Do you want to update APP?')){
+            updates.activateUpdate().then(() => {
+              document.location.reload();
+            });
+          }
           break;
         case 'VERSION_INSTALLATION_FAILED':
           console.log(`Failed to install app version '${evt.version.hash}': ${evt.error}`);

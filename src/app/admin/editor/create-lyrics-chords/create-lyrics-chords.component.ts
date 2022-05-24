@@ -5,6 +5,7 @@ import {Chord} from "../../../interfaces/chord";
 import {LyricsItem} from "../../../interfaces/lyrics-item";
 import {Router} from "@angular/router";
 import {CHORD_CHAIN, CHORDS} from "../../mock-chords";
+import {LyricsService} from "../../../shared/services/lyrics.service";
 
 @Component({
   selector: 'app-create-lyrics-chords',
@@ -19,7 +20,9 @@ export class CreateLyricsChordsComponent implements OnInit {
   chordsList: Chord[] = CHORDS;
   chordsArray = CHORD_CHAIN;
 
-  constructor(private editorService: EditorService, private router: Router) {
+  constructor(private editorService: EditorService,
+              private router: Router,
+              private lyricsService: LyricsService) {
     this.genreList = editorService.genreList;
     this.itemNameList = editorService.itemNameList;
   }
@@ -39,11 +42,11 @@ export class CreateLyricsChordsComponent implements OnInit {
   }
 
   selectLyrics() {
-    console.log(this.form.value);
     this.prepareBeforeCreate();
     this.editorService.createLyrics(this.form.value).subscribe( (res) => {
       console.log(res);
       this.form.reset();
+      this.lyricsService.refreshLyricsList();
     })
     this.router.navigate(['/admin', 'dashboard']);
   }

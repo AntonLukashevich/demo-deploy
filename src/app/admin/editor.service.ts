@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {Lyrics} from "../interfaces/lyrics";
 import {map} from "rxjs/operators";
+import {LyricsService} from "../shared/services/lyrics.service";
 
 @Injectable()
 
@@ -13,7 +14,9 @@ export class EditorService{
   itemNameList: string[] = ['couplet', 'chorus', 'bridge', 'interlude'];
   urlAPI = 'https://demo-lyrics-api.herokuapp.com/';
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient,
+              private router: Router,
+              ) {
   }
 
   selectLyricsText(text: any){

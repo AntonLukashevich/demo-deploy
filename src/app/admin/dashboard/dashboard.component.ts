@@ -61,10 +61,12 @@ export class DashboardComponent implements OnInit {
   refreshLyricsList(){
     this.lyricsService.refreshLyricsList();
   }
+
   removeLyrics(id: string | any, name: string) {
     if(confirm("Are you sure to delete " + name)){
       this.deleteLyricsSub = this.lyricsService.removeLyrics(id).subscribe( () => {
         this.lyricsList = this.lyricsList.filter(list => list.id !== id);
+        this.refreshLyricsList();
       })
     }
   }

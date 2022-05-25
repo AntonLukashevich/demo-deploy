@@ -1,18 +1,19 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {Router} from "@angular/router";
 import {User} from "../../../interfaces/user";
 import {Observable, Subject, throwError} from "rxjs";
 import {catchError, tap} from "rxjs/operators";
+import {environment} from "../../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService{
-  uri = 'https://demo-lyrics-api.herokuapp.com/';
+  uri = environment.apiUrl;
+
   public error$: Subject<string> = new Subject<string>();
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient) {
   }
 
   get token(): string | null {
@@ -28,7 +29,8 @@ export class AuthService{
   login(user: User): Observable<any> {
     user.returnSecureToken = true;
     return this.http.post(this.uri + '/auth_user', user)
-      .pipe(tap(this.setToken),
+      .pipe(
+        tap(this.setToken),
         catchError(this.handleError.bind(this))
       );
   }
@@ -61,7 +63,8 @@ export class AuthService{
   }
 
   private handleError(error: HttpErrorResponse) {
-    const {message} = error.error.errors
+    console.log('handleError: ', error.error.error);
+    const {message} = error.error.error
     switch(message){
       case 'INVALID_EMAIL':
         this.error$.next('something is wrong with your EMAIL,dude');
@@ -71,6 +74,10 @@ export class AuthService{
         break;
       case 'EMAIL_NOT_FOUND':
         this.error$.next('no EMAIL like yours');
+        break;
+      case 'INVALID_EMAIL_OR_PASSWORD':
+        this.error$.next('Error! wrong credential! Check your Email or Password');
+        console.log(this.error$);
         break;
     }
     return throwError(error);

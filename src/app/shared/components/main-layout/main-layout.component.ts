@@ -33,7 +33,6 @@ export class MainLayoutComponent implements OnInit {
 
   setToggle(){
     this.toggle = !this.toggle;
-    console.log('toggle: ' + this.toggle);
   }
 
 }

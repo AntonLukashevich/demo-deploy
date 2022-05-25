@@ -3,6 +3,7 @@ import {Lyrics} from "../../../interfaces/lyrics";
 import {LyricsService} from "../../services/lyrics.service";
 import {Subscription} from "rxjs";
 import {ThemeService} from "../../services/settings/theme.service";
+import {NotificationService} from "../../services/notification.service";
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
   public searchFilter: any = '';
 
-  constructor(private lyricsService: LyricsService, private themeService: ThemeService) { }
+  constructor(private lyricsService: LyricsService,
+              private themeService: ThemeService,
+              public notification: NotificationService) { }
+
 
   ngOnInit(): void {
     this.lyricsListSub = this.lyricsService.getAllLyricsList().subscribe( lyrics => {

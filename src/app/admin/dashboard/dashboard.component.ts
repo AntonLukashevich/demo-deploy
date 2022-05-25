@@ -9,6 +9,7 @@ import {UsersService} from "../users.service";
 import {User} from "../../interfaces/user";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmDialogComponent} from "../shared/components/confirm-dialog/confirm-dialog.component";
+import {NotificationService} from "../../shared/services/notification.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -32,7 +33,8 @@ export class DashboardComponent implements OnInit {
               private router: Router,
               private themeService: ThemeService,
               private usersService: UsersService,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private notification: NotificationService) { }
 
   ngOnInit(): void {
     this.themeService.getCurrentTheme().subscribe( theme => this.theme = theme);
@@ -66,6 +68,7 @@ export class DashboardComponent implements OnInit {
     if(confirm("Are you sure to delete " + name)){
       this.deleteLyricsSub = this.lyricsService.removeLyrics(id).subscribe( () => {
         this.lyricsList = this.lyricsList.filter(list => list.id !== id);
+        this.notification.showSuccess('lyrics has been deleted', 'Deleted')
         this.refreshLyricsList();
       })
     }
@@ -75,6 +78,7 @@ export class DashboardComponent implements OnInit {
     if(confirm("Are you sure to delete " + email)) {
       this.deleteUserSub = this.usersService.removeUser(id).subscribe(() => {
         this.users = this.users.filter(list => list.id !== id);
+        this.notification.showSuccess('user has been deleted', 'Deleted')
       })
     }
   }
@@ -88,6 +92,7 @@ export class DashboardComponent implements OnInit {
   logout(event: Event) {
     event.preventDefault();
     this.auth.logout();
+    this.notification.showInfo('session has been finished', 'Logout')
     this.router.navigate(['admin' + '/login']);
   }
 

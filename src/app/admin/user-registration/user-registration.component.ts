@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UsersService} from "../users.service";
 import {Router} from "@angular/router";
 import {User} from "../../interfaces/user";
+import {NotificationService} from "../../shared/services/notification.service";
 
 @Component({
   selector: 'app-user-registration',
@@ -14,7 +15,8 @@ export class UserRegistrationComponent implements OnInit {
   submitted = false;
 
   constructor(private usersService: UsersService,
-              private router: Router) { }
+              private router: Router,
+              private notification: NotificationService) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -39,6 +41,7 @@ export class UserRegistrationComponent implements OnInit {
     this.usersService.sign_up(user).subscribe((res:any) => {
         console.log(res);
         this.form.reset();
+        this.notification.showSuccess('user has been added', 'Added')
         this.router.navigate(['admin' + '/dashboard']);
         this.submitted = false;
       },

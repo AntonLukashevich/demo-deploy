@@ -113,6 +113,19 @@
   align-items: center;
 }
 
+.alert {
+  padding: 0.7rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  color: #333;
+}
+
+.alert-danger {
+  background: rgba(255, 0, 0, 0.5);
+  color: #fff;
+}
+
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

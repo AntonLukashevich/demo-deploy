@@ -15,6 +15,7 @@ import {AuthGuard} from "./admin/shared/services/auth.guard";
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {LyricInfoComponent} from "./shared/components/lyrics-info/lyric-info.component";
+import {ToastrModule} from "ngx-toastr";
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {LyricInfoComponent} from "./shared/components/lyrics-info/lyric-info.com
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthGuard,

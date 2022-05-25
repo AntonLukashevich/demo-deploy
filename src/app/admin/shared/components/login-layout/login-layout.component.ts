@@ -4,6 +4,7 @@ import {User} from "../../../../interfaces/user";
 import {ThemeService} from "../../../../shared/services/settings/theme.service";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import {NotificationService} from "../../../../shared/services/notification.service";
 
 @Component({
   selector: 'app-login-layout',
@@ -14,9 +15,12 @@ export class LoginLayoutComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
   submitted = false;
   theme: string | undefined;
+  message: string = '';
+
   constructor( private themeService: ThemeService,
                public authService: AuthService,
-               private router: Router) { }
+               private router: Router,
+               private notification: NotificationService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -40,11 +44,12 @@ export class LoginLayoutComponent implements OnInit {
     this.authService.login(user).subscribe(() => {
       this.loginForm.reset();
       this.router.navigate(['/admin', 'dashboard']);
+      this.notification.showInfo('You are logged in', '')
       this.submitted = false;
-    }, ()  => {
+    }, ( error)  => {
+      this.notification.showError('Error! wrong credential! Check your Email or Password', 'Error!')
       this.submitted = false;
     })
-
   }
 
 }

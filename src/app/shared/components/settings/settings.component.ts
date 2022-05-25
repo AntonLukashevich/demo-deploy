@@ -15,8 +15,7 @@ export class SettingsComponent implements OnInit {
   stepFontSize = 1;
 
   constructor(private themeService: ThemeService,
-              private fontService: FontService,
-              private lyricsService: LyricsService) { }
+              private fontService: FontService) { }
 
   ngOnInit(): void {
     this.currentTheme = this.themeService.getCurrentTheme().value;
@@ -38,9 +37,4 @@ export class SettingsComponent implements OnInit {
     this.currentFontSize = value;
     this.fontService.setCurrentFontSize(value);
   }
-
-  refreshLyricsList(){
-    this.lyricsService.refreshLyricsList();
-  }
-
 }

@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {Lyrics} from "../../interfaces/lyrics";
 import {tap} from "rxjs/operators";
 import {environment} from "../../../environments/environment";
+import {NotificationService} from "./notification.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class LyricsService{
   private localStorageLyricsList = 'lyricsList';
   private url: string = environment.apiUrl;
 
-  constructor( private http: HttpClient) {
+  constructor( private http: HttpClient, private notification: NotificationService) {
   }
 
   getAllLyricsList():Observable<Lyrics[]>{
@@ -63,8 +64,8 @@ export class LyricsService{
         tap((result: Lyrics[]) => {
           this.listLyrics.next(result);
           localStorage.setItem(this.localStorageLyricsList, JSON.stringify(this.listLyrics.value));
+          this.notification.showInfo('List of Lyrics has been refreshed', 'Lyrics')
         })
       ).subscribe();
-
   }
 }

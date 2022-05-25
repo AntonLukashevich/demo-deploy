@@ -4,6 +4,7 @@ import {UsersService} from "../users.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
+import {NotificationService} from "../../shared/services/notification.service";
 
 @Component({
   selector: 'app-edit-user',
@@ -25,7 +26,8 @@ export class EditUserComponent implements OnInit {
 
   constructor(private userService: UsersService,
               private router: ActivatedRoute,
-              private route: Router) {
+              private route: Router,
+              private notification: NotificationService) {
     this.idSub = this.router.params.subscribe(params => this.userId = params['id']);
   }
 
@@ -41,6 +43,7 @@ export class EditUserComponent implements OnInit {
 
   updateUser(){
     this.userService.updateUser(this.editForm.value).subscribe();
+    this.notification.showSuccess('user has been updated', 'Updated')
     this.route.navigate(['/admin', 'dashboard']);
   }
 

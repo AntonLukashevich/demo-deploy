@@ -6,6 +6,7 @@ import {LyricsItem} from "../../../interfaces/lyrics-item";
 import {Router} from "@angular/router";
 import {CHORD_CHAIN, CHORDS} from "../../mock-chords";
 import {LyricsService} from "../../../shared/services/lyrics.service";
+import {NotificationService} from "../../../shared/services/notification.service";
 
 @Component({
   selector: 'app-create-lyrics-chords',
@@ -22,7 +23,8 @@ export class CreateLyricsChordsComponent implements OnInit {
 
   constructor(private editorService: EditorService,
               private router: Router,
-              private lyricsService: LyricsService) {
+              private lyricsService: LyricsService,
+              private notification: NotificationService) {
     this.genreList = editorService.genreList;
     this.itemNameList = editorService.itemNameList;
   }
@@ -46,6 +48,7 @@ export class CreateLyricsChordsComponent implements OnInit {
     this.editorService.createLyrics(this.form.value).subscribe( (res) => {
       console.log(res);
       this.form.reset();
+      this.notification.showSuccess('Lyrics has been added', 'Added')
       this.lyricsService.refreshLyricsList();
     })
     this.router.navigate(['/admin', 'dashboard']);

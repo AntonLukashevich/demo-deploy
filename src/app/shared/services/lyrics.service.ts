@@ -15,8 +15,8 @@ export class LyricsService{
   private localStorageLyricsList = 'lyricsList';
   private url: string = environment.apiUrl;
 
-  constructor( private http: HttpClient, private notification: NotificationService) {
-  }
+  constructor( private http: HttpClient,
+               private notification: NotificationService) {}
 
   getAllLyricsList():Observable<Lyrics[]>{
     if(localStorage.getItem(this.localStorageLyricsList)){
@@ -49,11 +49,9 @@ export class LyricsService{
     return this.http.patch<Lyrics>(`${this.url}/api/lyrics/${lyrics.id}`, lyrics)
   }
 
-
   removeLyrics(id: string): Observable<void>{
     return this.http.delete<void>(`${this.url}/api/lyrics/${id}`)
   }
-
 
   refreshLyricsList(){
     if(localStorage.getItem(this.localStorageLyricsList)){

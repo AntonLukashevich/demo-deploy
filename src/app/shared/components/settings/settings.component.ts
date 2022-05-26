@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ThemeService} from "../../services/settings/theme.service";
 import {FontService} from "../../services/settings/font.service";
-import {LyricsService} from "../../services/lyrics.service";
 
 @Component({
   selector: 'app-settings',

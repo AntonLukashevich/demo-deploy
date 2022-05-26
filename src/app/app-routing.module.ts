@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {PreloadingStrategy, RouterModule, Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {MainLayoutComponent} from "./shared/components/main-layout/main-layout.component";
 import {HomeComponent} from "./shared/components/home/home.component";
 import {LyricsPageComponent} from "./shared/components/lyrics-page/lyrics-page.component";
@@ -13,7 +13,6 @@ const routes: Routes = [
       {path: 'settings', component: SettingsComponent},
       { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)}
     ]},
-
 ];
 
 @NgModule({

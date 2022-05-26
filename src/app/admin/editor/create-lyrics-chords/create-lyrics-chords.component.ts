@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormControl, FormGroup} from "@angular/forms";
 import {EditorService} from "../../editor.service";
 import {Chord} from "../../../interfaces/chord";
 import {LyricsItem} from "../../../interfaces/lyrics-item";
@@ -69,8 +69,6 @@ export class CreateLyricsChordsComponent implements OnInit {
   removeItemControl(index: number) {}
 
   removeLinesControl(index: number, index1: number) {}
-
-
 
   private prepare() {
     this.lyricsText.items.forEach((item: LyricsItem, index: number) => {

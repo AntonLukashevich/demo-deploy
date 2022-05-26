@@ -14,10 +14,6 @@ import { EditLyricsComponent } from './edit-lyrics/edit-lyrics.component';
 import {UsersService} from "./users.service";
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
-import {MatDialogModule} from "@angular/material/dialog";
-import {ConfirmDialogComponent} from "./shared/components/confirm-dialog/confirm-dialog.component";
-
-
 
 @NgModule({
   declarations: [
@@ -29,7 +25,6 @@ import {ConfirmDialogComponent} from "./shared/components/confirm-dialog/confirm
     EditLyricsComponent,
     UserRegistrationComponent,
     EditUserComponent,
-    ConfirmDialogComponent
   ],
   imports: [
     RouterModule.forChild([
@@ -49,7 +44,6 @@ import {ConfirmDialogComponent} from "./shared/components/confirm-dialog/confirm
     SharedModule,
     CommonModule,
     ReactiveFormsModule,
-    MatDialogModule
   ],
   exports: [],
   providers: [

@@ -10,11 +10,9 @@ import {environment} from "../../../../environments/environment";
 })
 export class AuthService{
   uri = environment.apiUrl;
-
   public error$: Subject<string> = new Subject<string>();
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   get token(): string | null {
     // @ts-ignore
@@ -82,5 +80,4 @@ export class AuthService{
     }
     return throwError(error);
   }
-
 }

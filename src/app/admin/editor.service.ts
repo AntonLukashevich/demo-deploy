@@ -4,7 +4,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {Lyrics} from "../interfaces/lyrics";
 import {map} from "rxjs/operators";
-import {LyricsService} from "../shared/services/lyrics.service";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 
@@ -12,12 +12,10 @@ export class EditorService{
   lyricsText = new BehaviorSubject<any>({});
   genreList: string[] = ['Pop', 'Hip hop', 'Rock', 'Rhythm and blues', 'Soul', 'Reggae', 'Country', 'Funk'];
   itemNameList: string[] = ['couplet', 'chorus', 'bridge', 'interlude'];
-  urlAPI = 'https://demo-lyrics-api.herokuapp.com/';
+  urlAPI = environment.apiUrl;
 
   constructor(private http: HttpClient,
-              private router: Router,
-              ) {
-  }
+              private router: Router) {}
 
   selectLyricsText(text: any){
     this.lyricsText.next(text);

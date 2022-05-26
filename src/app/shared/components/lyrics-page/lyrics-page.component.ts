@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Lyrics} from "../../../interfaces/lyrics";
 import {ActivatedRoute} from "@angular/router";
 import {LyricsService} from "../../services/lyrics.service";
-import {Observable, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {Chord} from "../../../interfaces/chord";
 import {FontService} from "../../services/settings/font.service";
 import {ThemeService} from "../../services/settings/theme.service";
@@ -66,7 +66,6 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
     const line = chords.reduce((acc, chord) => {
       const length = this.chordsArray.length;
       const pos = ((chord.position + this.cordPosition) % length + length) % length;
-
       return `${acc}${' '.repeat(chord.spaces)}${this.chordsArray[pos]}${chord.postfix || ''} `
     }, "");
     return line;

@@ -23,5 +23,4 @@ export class NotificationService {
   showWarning(message: string | any, title: string | any){
     this.toastr.warning(message, title)
   }
-
 }

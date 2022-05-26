@@ -22,7 +22,6 @@ export class CreateLyricsTextComponent implements OnInit {
 
   ngOnInit(): void {
     this.themeService.getCurrentTheme().subscribe( theme => this.theme = theme);
-
     this.textForm = new FormGroup({
       name: new FormControl(null, Validators.required),
       tonality:new FormControl(null, Validators.required),
@@ -58,5 +57,4 @@ export class CreateLyricsTextComponent implements OnInit {
   getItems(): any{
     return (this.textForm.get('items') as FormArray).controls;
   }
-
 }

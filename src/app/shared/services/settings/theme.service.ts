@@ -22,5 +22,4 @@ export class ThemeService{
     this.currentTheme.next(theme);
     localStorage.setItem('user-current-theme', theme);
   }
-
 }

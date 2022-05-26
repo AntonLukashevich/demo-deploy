@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {LyricsService} from "../../shared/services/lyrics.service";
 import {Lyrics} from "../../interfaces/lyrics";
 import {Subscription} from "rxjs";
@@ -7,8 +7,6 @@ import {Router} from "@angular/router";
 import {ThemeService} from "../../shared/services/settings/theme.service";
 import {UsersService} from "../users.service";
 import {User} from "../../interfaces/user";
-import {MatDialog} from "@angular/material/dialog";
-import {ConfirmDialogComponent} from "../shared/components/confirm-dialog/confirm-dialog.component";
 import {NotificationService} from "../../shared/services/notification.service";
 
 @Component({
@@ -16,7 +14,7 @@ import {NotificationService} from "../../shared/services/notification.service";
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   public lyricsList: Lyrics[] = [];
   users: User[] = [];
   searchStr: string = '';
@@ -26,14 +24,12 @@ export class DashboardComponent implements OnInit {
   theme: string | undefined;
   public endSession: Date | undefined;
   title: string = '';
-  message: string = '';
 
   constructor(private lyricsService: LyricsService,
               private auth: AuthService,
               private router: Router,
               private themeService: ThemeService,
               private usersService: UsersService,
-              public dialog: MatDialog,
               private notification: NotificationService) { }
 
   ngOnInit(): void {
@@ -100,17 +96,4 @@ export class DashboardComponent implements OnInit {
     // @ts-ignore
     return this.endSession.toLocaleString();
   }
-
-  openDialog(): void{
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '250px',
-      data: {title: this.title, message: this.message},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.message = result;
-    })
-
-  }
-
 }

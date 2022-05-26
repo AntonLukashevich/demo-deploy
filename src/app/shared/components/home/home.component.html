@@ -11,7 +11,6 @@
     <div *ngIf="lyricsList.length; else loading">
       <ul>
         <ng-container *ngFor="let lyric of (lyricsList | searchFilter: searchTerm )">
-          <!--        <ng-container *ngFor="let lyric of (listLyrics | async | searchFilter: searchTerm | tagFilter: selectedTags)">-->
           <li>
             <mat-card class="list-item" routerLink="/lyrics/{{lyric.id}}">
               <div>

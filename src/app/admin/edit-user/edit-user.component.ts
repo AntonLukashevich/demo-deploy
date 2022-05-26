@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {User} from "../../interfaces/user";
 import {UsersService} from "../users.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -11,7 +11,7 @@ import {NotificationService} from "../../shared/services/notification.service";
   templateUrl: './edit-user.component.html',
   styleUrls: ['./edit-user.component.scss']
 })
-export class EditUserComponent implements OnInit {
+export class EditUserComponent implements OnInit, OnDestroy {
   // @ts-ignore
   user: User;
   userId: number | undefined;

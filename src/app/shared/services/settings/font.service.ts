@@ -22,7 +22,6 @@ export class FontService{
       const value = localStorage.getItem(this.localStorageForLyricFontSize);
       this.currentFontSize.next(Number(value));
     }
-
   }
 
   getCurrentLyricFont(): BehaviorSubject<string>{
@@ -42,5 +41,4 @@ export class FontService{
     this.currentFontSize.next(size);
     localStorage.setItem(this.localStorageForLyricFontSize, String(size));
   }
-
 }

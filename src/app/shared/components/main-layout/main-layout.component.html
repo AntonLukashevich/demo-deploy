@@ -10,14 +10,11 @@
   }">
     <div>
       <button mat-icon-button *ngIf="!toggle">
-<!--        <mat-icon (click)="drawer.open(); setToggle()" >menu</mat-icon>-->
         <img src="../../../../assets/icons/common/icon-audiobook.png"
              (click)="drawer.open(); setToggle()"
              width="30" height="30" >
       </button>
-
       <button mat-icon-button *ngIf="toggle" >
-<!--        <mat-icon (click)="drawer.close()">arrow_back_ios</mat-icon>-->
         <img src="../../../../assets/icons/common/cancel.png"
              (click)="drawer.close(); setToggle()"
              width="30" height="28">
@@ -30,8 +27,6 @@
              width="38" height="38">
       </span>
     </div>
-
-
   </mat-toolbar>
   <mat-drawer-container
     class="mat-drawer-container-wrapper"
@@ -51,9 +46,6 @@
     >
       <mat-list (click)="drawer.close();setToggle()">
         <div class="common-panel">
-          <!--        <mat-list-item class="toolbar-item" autosize>-->
-          <!--          <mat-icon>arrow_back_ios</mat-icon>-->
-          <!--        </mat-list-item>-->
           <mat-list-item routerLink="/" class="toolbar-item" >
             <img src="../../../../assets/icons/common/icon-audiobook.png" width="30" height="30" alt="lorem">
           </mat-list-item>
@@ -66,7 +58,6 @@
             <img src="../../../../assets/icons/common/icon-work-station.png" width="30" height="30" alt="lorem">
           </mat-list-item>
         </div>
-
       </mat-list>
     </mat-drawer>
     <router-outlet></router-outlet>

@@ -24,7 +24,6 @@ import {ToastrModule} from "ngx-toastr";
     MainLayoutComponent,
     FocusDirective,
     HomeComponent,
-    //SearchFilterPipe,
     LyricsPageComponent,
     SettingsComponent,
     LyricInfoComponent
@@ -47,11 +46,9 @@ import {ToastrModule} from "ngx-toastr";
     AuthGuard,
   ],
 
-    exports: [
-        FocusDirective,
-        //SearchFilterPipe
-
-    ],
+  exports: [
+    FocusDirective
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

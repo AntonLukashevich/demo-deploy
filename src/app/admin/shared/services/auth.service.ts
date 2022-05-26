@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {User} from "../../../interfaces/user";
-import {Observable, Subject, throwError} from "rxjs";
+import {BehaviorSubject, Observable, Subject, throwError} from "rxjs";
 import {catchError, tap} from "rxjs/operators";
 import {environment} from "../../../../environments/environment";
 
@@ -10,7 +10,7 @@ import {environment} from "../../../../environments/environment";
 })
 export class AuthService{
   uri = environment.apiUrl;
-  public error$: Subject<string> = new Subject<string>();
+  public error$: BehaviorSubject<string> = new BehaviorSubject<string>('oh no');
 
   constructor(private http: HttpClient) {}
 
@@ -61,21 +61,18 @@ export class AuthService{
   }
 
   private handleError(error: HttpErrorResponse) {
-    console.log('handleError: ', error.error.error);
-    const {message} = error.error.error
-    switch(message){
+    switch(error.error.error){
       case 'INVALID_EMAIL':
-        this.error$.next('something is wrong with your EMAIL,dude');
+        this.error$.next('Error! wrong credential! Check your Email or Password');
         break;
       case 'INVALID_PASSWORD':
-        this.error$.next('r u sure your password is correct?');
+        this.error$.next('Error! wrong credential! Check your Email or Password');
         break;
       case 'EMAIL_NOT_FOUND':
-        this.error$.next('no EMAIL like yours');
+        this.error$.next('Error! wrong credential! Check your Email or Password');
         break;
       case 'INVALID_EMAIL_OR_PASSWORD':
         this.error$.next('Error! wrong credential! Check your Email or Password');
-        console.log(this.error$);
         break;
     }
     return throwError(error);

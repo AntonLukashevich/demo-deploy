@@ -47,7 +47,7 @@ export class LoginLayoutComponent implements OnInit {
       this.notification.showInfo('You are logged in', '')
       this.submitted = false;
     }, ( error)  => {
-      this.notification.showError('Error! wrong credential! Check your Email or Password. ' + error.error.error, 'Error!')
+      this.notification.showError(this.authService.error$.value,'Oh, no!');
       this.submitted = false;
     })
   }

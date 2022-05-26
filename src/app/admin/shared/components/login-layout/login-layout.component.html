@@ -9,15 +9,6 @@
   }">
 
   <form class="card" [formGroup]="loginForm" (ngSubmit)="submit()">
-
-        <div class="alert" *ngIf="authService.error$ as error">
-
-        </div>
-
-        <div class="alert alert-danger" *ngIf="message">
-          {{message}}
-        </div>
-
     <div class="form-control"
          [ngClass]="{ invalid: loginForm.get('email')?.touched && loginForm.get('email')?.invalid }"
     >

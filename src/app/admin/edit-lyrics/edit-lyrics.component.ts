@@ -49,12 +49,12 @@ export class EditLyricsComponent implements OnInit {
   }
 
   updateLyrics() {
-    // this.prepareBeforeCreate();
-    // this.lyricsService.updateLyrics(this.form.value).subscribe((res) => {
-    //   console.log(res);
-    // });
-    // this.route.navigate(['/admin', 'dashboard']);
-    console.log(this.form.value);
+    this.prepareBeforeCreate();
+    this.lyricsService.updateLyrics(this.form.value).subscribe((res) => {
+      console.log(res);
+    });
+    this.route.navigate(['/admin', 'dashboard']);
+    //console.log(this.form.value);
   }
 
   getItems(): any {

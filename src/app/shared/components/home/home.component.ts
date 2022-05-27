@@ -16,11 +16,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   lyricsListSub: Subscription | undefined ;
   theme: string = 'light';
   searchTerm: string = '';
-
+  private localStorageLyricsList = 'lyricsList';
   constructor(private lyricsService: LyricsService,
               private themeService: ThemeService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem(this.localStorageLyricsList)){
+      this.lyricsList = JSON.parse(<string>localStorage.getItem(this.localStorageLyricsList));
+    }
     this.lyricsListSub = this.lyricsService.getAllLyricsList().subscribe( lyrics => {
       this.lyricsList = lyrics;
     });

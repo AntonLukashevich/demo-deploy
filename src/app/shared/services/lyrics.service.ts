@@ -10,51 +10,48 @@ import {NotificationService} from "./notification.service";
   providedIn: 'root'
 })
 
-export class LyricsService{
+export class LyricsService {
   private listLyrics = new BehaviorSubject<Lyrics[]>([]);
   private localStorageLyricsList = 'lyricsList';
   private url: string = environment.apiUrl;
 
-  constructor( private http: HttpClient,
-               private notification: NotificationService) {}
+  constructor(private http: HttpClient,
+              private notification: NotificationService) {
+  }
 
-  getAllLyricsList():Observable<Lyrics[]>{
-    if(localStorage.getItem(this.localStorageLyricsList)){
-      this.listLyrics.next(JSON.parse(<string>localStorage.getItem(this.localStorageLyricsList)));
-    } else {
-      this.http.get<Lyrics[]>(this.url + '/api/lyrics')
-        .pipe(
-          tap((result: Lyrics[]) => {
-            this.listLyrics.next(result);
-            localStorage.setItem(this.localStorageLyricsList, JSON.stringify(this.listLyrics.value));
-          })
-        ).subscribe();
-    }
+  getAllLyricsList(): Observable<Lyrics[]> {
+    this.http.get<Lyrics[]>(this.url + '/api/lyrics')
+      .pipe(
+        tap((result: Lyrics[]) => {
+          this.listLyrics.next(result);
+          localStorage.setItem(this.localStorageLyricsList, JSON.stringify(this.listLyrics.value));
+        })
+      ).subscribe();
     return this.listLyrics;
   }
 
-  getLyricsById(id: number): any{
-    if(localStorage.getItem(this.localStorageLyricsList)) {
+  getLyricsById(id: number): any {
+    if (localStorage.getItem(this.localStorageLyricsList)) {
       const lyricsList = JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)));
       return lyricsList.find((item: any) => item.id.toString() === id.toString());
     } else {
       return this.http.get<Lyrics>(`${this.url}/api/lyrics/${id}`)
-        .pipe(tap( (lyrics: Lyrics ) => {
+        .pipe(tap((lyrics: Lyrics) => {
           return lyrics;
         }))
     }
   }
 
-  updateLyrics(lyrics: Lyrics): Observable<Lyrics>{
+  updateLyrics(lyrics: Lyrics): Observable<Lyrics> {
     return this.http.patch<Lyrics>(`${this.url}/api/lyrics/${lyrics.id}`, lyrics)
   }
 
-  removeLyrics(id: string): Observable<void>{
+  removeLyrics(id: string): Observable<void> {
     return this.http.delete<void>(`${this.url}/api/lyrics/${id}`)
   }
 
-  refreshLyricsList(){
-    if(localStorage.getItem(this.localStorageLyricsList)){
+  refreshLyricsList() {
+    if (localStorage.getItem(this.localStorageLyricsList)) {
       localStorage.removeItem('localStorageLyricsList')
     }
     this.http.get<Lyrics[]>(this.url + '/api/lyrics')

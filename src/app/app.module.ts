@@ -29,10 +29,10 @@ import {ToastrModule} from "ngx-toastr";
     LyricInfoComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+    BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

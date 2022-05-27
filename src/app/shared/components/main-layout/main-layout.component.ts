@@ -2,11 +2,20 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from "@angular/material/sidenav";
 import {FormControl} from "@angular/forms";
 import {ThemeService} from "../../services/settings/theme.service";
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
-  styleUrls: ['./main-layout.component.scss']
+  styleUrls: ['./main-layout.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1300)),
+    ]),
+  ]
 })
 export class MainLayoutComponent implements OnInit {
   // @ts-ignore
@@ -14,6 +23,7 @@ export class MainLayoutComponent implements OnInit {
   theme: string = 'light';
   mode = new FormControl('over');
   toggle = false;
+  animationState = false;
 
   constructor(private themeService: ThemeService) {
     this.toggle = false;
@@ -35,4 +45,7 @@ export class MainLayoutComponent implements OnInit {
     this.toggle = !this.toggle;
   }
 
+  animate() {
+    this.animationState = !this.animationState;
+  }
 }

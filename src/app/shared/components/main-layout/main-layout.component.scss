@@ -68,3 +68,32 @@ mat-list{
   justify-content: space-between;
 }
 
+
+.text-animation{
+  font-family: 'Comic Sans MS';
+  text-transform: uppercase;
+  background-image: linear-gradient(to right, #000000 3%, #ffffff 15%, #ffffff 75%,  #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  background-size: 300%;
+  background-position: -100%;
+
+  //animation: animatedText 4s infinite reverse;
+
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-delay: 50s;
+  animation-iteration-count: 1;
+  animation-direction: reverse;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  animation-name: animatedText;
+}
+
+@keyframes animatedText{
+  to{
+    background-position: 100%;
+  }
+}

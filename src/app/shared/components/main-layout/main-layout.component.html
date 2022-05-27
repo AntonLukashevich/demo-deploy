@@ -12,18 +12,25 @@
       <button mat-icon-button *ngIf="!toggle">
         <img src="../../../../assets/icons/common/icon-audiobook.png"
              (click)="drawer.open(); setToggle()"
+             [@fadeInOut]="animationState"
              width="30" height="30" >
       </button>
       <button mat-icon-button *ngIf="toggle" >
         <img src="../../../../assets/icons/common/cancel.png"
              (click)="drawer.close(); setToggle()"
+
              width="30" height="28">
       </button>
     </div>
     <div class="nav-bar">
-      <span mat-button style="font-weight: bold;" routerLink="/" (click)="drawer.close();"> LYRICS</span>
+      <span mat-button style="font-weight: bold;"
+            routerLink="/" (click)="drawer.close(); "
+            [@fadeInOut]="animationState"
+            class="text-animation">LYRICS</span>
+
       <span style="display: flex;">
         <img src="../../../../assets/icons/common/icon-sound-wave.png"
+             [@fadeInOut]="animationState"
              width="38" height="38">
       </span>
     </div>

@@ -34,7 +34,9 @@
       <ul>
         <small>{{item.name}}:</small>
         <li *ngFor="let line of item.lines">
-          <span class="chords-line" *ngIf="showChords" [ngClass]="{
+          <span class="chords-line" *ngIf="showChords"
+                [ngStyle]="{fontSize: fontSize + 'px'}"
+                [ngClass]="{
             'chords-line-dark': theme === 'dark',
             'chords-line-light': theme === 'light',
             'chords-line-green': theme === 'green'

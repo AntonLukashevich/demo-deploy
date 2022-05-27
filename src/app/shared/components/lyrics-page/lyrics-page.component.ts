@@ -21,6 +21,7 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
   lyricId: any;
   chordsArray = CHORD_CHAIN;
   fontSize: number | undefined;
+  fontSizeChord: number | undefined;
   // @ts-ignore
   lyric: Lyrics;
   font: string | undefined;
@@ -39,7 +40,10 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
     this.fontService.getCurrentLyricFont().subscribe((font) => {
       this.font = font;
     });
-    this.fontService.getCurrentFontSize().subscribe(size => this.fontSize = size);
+    this.fontService.getCurrentFontSize().subscribe(size => {
+      this.fontSize = size;
+      this.fontSizeChord = this.fontSize - 1;
+    });
     this.lyric = this.lyricsService.getLyricsById(this.lyricId);
     this.themeService.getCurrentTheme().subscribe( theme => this.theme = theme);
   }

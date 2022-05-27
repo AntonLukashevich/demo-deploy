@@ -13,7 +13,7 @@
     </mat-form-field>
 
     <div class="text-wrapper">
-      <ul formArrayName="items" class="">
+      <ul formArrayName="items">
         <li *ngFor="let item of getItems(); let index = index">
           <div [formGroupName]="index" class="item-form-wrapper">
             <div>
@@ -42,7 +42,7 @@
                               <mat-select formControlName="{{i}}">
                                 <mat-option>None</mat-option>
                                 <mat-option *ngFor="let chord of chordsList"
-                                            [value]="chordsArray[cell.value?.position] + cell.value?.postfix">
+                                            [value]="chord">
                                   {{chordsArray[chord.position]}}{{chord?.postfix}}
                                 </mat-option>
                               </mat-select>

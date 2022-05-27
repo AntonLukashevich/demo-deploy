@@ -49,11 +49,12 @@ export class EditLyricsComponent implements OnInit {
   }
 
   updateLyrics() {
-    this.prepareBeforeCreate();
-    this.lyricsService.updateLyrics(this.form.value).subscribe((res) => {
-      console.log(res);
-    });
-    this.route.navigate(['/admin', 'dashboard']);
+    // this.prepareBeforeCreate();
+    // this.lyricsService.updateLyrics(this.form.value).subscribe((res) => {
+    //   console.log(res);
+    // });
+    // this.route.navigate(['/admin', 'dashboard']);
+    console.log(this.form.value);
   }
 
   getItems(): any {
@@ -70,7 +71,7 @@ export class EditLyricsComponent implements OnInit {
 
   getChords(item_index: number, line_index: number): any {
     // console.log(((((this.form.get('items') as FormArray).controls[item_index] as FormGroup)
-    //   .get('lines') as FormArray).controls[line_index].get('chords') as FormArray).value);
+    //   .get('lines') as FormArray).controls[line_index].get('chords') as FormArray).controls);
     return ((((this.form.get('items') as FormArray).controls[item_index] as FormGroup)
       .get('lines') as FormArray).controls[line_index].get('chords') as FormArray).controls;
   }
@@ -103,13 +104,13 @@ export class EditLyricsComponent implements OnInit {
             .get('lines') as FormArray).controls[index_line] as FormArray).get('chords') as FormArray).push(new FormControl());
         })
 
-        let step = 0;
-        line.chords.forEach( (chord, index_ch) =>{
-          step+= chord.spaces;
-          ((((this.form.get('items') as FormArray).controls[index] as FormGroup)
-            .get('lines') as FormArray).controls[index_line].get('chords') as FormArray).controls[step - 1]
-            .setValue({position: chord?.position, postfix: chord?.postfix});
-        })
+        // let step = 0;
+        // line.chords.forEach( (chord, index_ch) =>{
+        //   step+= chord.spaces;
+        //   ((((this.form.get('items') as FormArray).controls[index] as FormGroup)
+        //     .get('lines') as FormArray).controls[index_line].get('chords') as FormArray).controls[step - 1]
+        //     .setValue(chord?.position);
+        // })
       });
     })
   }

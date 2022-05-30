@@ -1,9 +1,7 @@
 <div class="settings-wrapper">
-  <mat-card class="settings-card" [ngClass]="{
-    light: currentTheme === 'light',
-    dark: currentTheme === 'dark',
-    green: currentTheme === 'green'
-    }">
+  <mat-card class="settings-card"
+            [appTheme]="currentTheme"
+            >
     <mat-card-title>Themes</mat-card-title>
     <mat-card-content>
       <mat-radio-group [ngModel]="currentTheme" aria-label="Select an option" class="items-wrapper" color="primary">

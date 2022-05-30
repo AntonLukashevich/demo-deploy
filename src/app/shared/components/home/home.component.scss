@@ -62,7 +62,7 @@
 }
 
 
-.lightList{
+.light{
   mat-card{
     background: white;
     color: black;
@@ -75,7 +75,7 @@
 
 }
 
-.greenList{
+.green{
   mat-card{
     background: white;
     color: black;
@@ -87,7 +87,7 @@
   }
 }
 
-.darkList {
+.dark{
       mat-card{
         border: 1px none rgba(33, 145, 189, 0.5);
         border-bottom-style: solid;

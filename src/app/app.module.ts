@@ -16,6 +16,7 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {LyricInfoComponent} from "./shared/components/lyrics-info/lyric-info.component";
 import {ToastrModule} from "ngx-toastr";
+import {ThemeDirective} from "./directives/theme.directive";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {ToastrModule} from "ngx-toastr";
     AppComponent,
     MainLayoutComponent,
     FocusDirective,
+    ThemeDirective,
     HomeComponent,
     LyricsPageComponent,
     SettingsComponent,
@@ -47,7 +49,8 @@ import {ToastrModule} from "ngx-toastr";
   ],
 
   exports: [
-    FocusDirective
+    FocusDirective,
+    ThemeDirective
   ],
   bootstrap: [AppComponent]
 })

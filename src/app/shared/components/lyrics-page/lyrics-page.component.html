@@ -1,9 +1,5 @@
 <div>
-  <div class="options-wrapper" [ngClass]="{
-            'options-wrapper-dark': theme === 'dark',
-            'options-wrapper-light': theme === 'light',
-            'options-wrapper-green': theme === 'green'
-           }">
+  <div class="options-wrapper" [appTheme]="theme">
   <span *ngIf="showChords">
     <button mat-icon-button (click)="decreaseTon()">
       <img src="../../../../assets/icons/common/minus.png" width="22" height="22" alt="-">

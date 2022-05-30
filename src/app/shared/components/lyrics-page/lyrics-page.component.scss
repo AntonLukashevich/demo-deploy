@@ -3,7 +3,7 @@
   display: flex;
   justify-content: flex-end;
 
-  &-dark{
+  dark{
     //color: rgba(245, 245, 245, 1);
     color: rgb(3, 169, 244);
     background: #333333;
@@ -11,14 +11,14 @@
     border-bottom-style: solid;
   }
 
-  &-light{
+  light{
     color: black;
     background: rgba(255, 255, 255, 0.7);
     border: 1px none rgba(239, 200, 7, 0.5);
     border-bottom-style: solid;
   }
 
-  &-green{
+  green{
     color: black;
     background: rgba(255, 255, 255, 0.8);
     border: 1px none rgba(81, 188, 234, 0.5);

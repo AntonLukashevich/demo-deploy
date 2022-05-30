@@ -1,8 +1,4 @@
-<div class="main-container" [ngClass]="{
-  light: theme === 'light',
-  dark: theme === 'dark',
-  green: theme === 'green'
-}">
+<div class="main-container" [appTheme]="theme">
   <mat-toolbar [ngClass]="{
   lightToolbar: theme === 'light',
   darkToolbar: theme === 'dark',
@@ -44,11 +40,7 @@
                 (blur)="closeSidebar();"
                 disableClose
                 appFocus
-                [ngClass]="{
-                  light: theme === 'light',
-                  dark: theme === 'dark',
-                  green: theme === 'green'
-                }"
+                [appTheme]="theme"
     >
       <mat-list (click)="drawer.close();setToggle()">
         <div class="common-panel">

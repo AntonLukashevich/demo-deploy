@@ -3,11 +3,7 @@
     <input [(ngModel)]="searchTerm" id="Search" name="Search" type="search" placeholder="Search..." autocomplete="off">
   </div>
 
-  <div class="lyrics-list-wrapper" [ngClass]="{
-    lightList: theme === 'light',
-    darkList: theme === 'dark',
-    greenList: theme === 'green'
-  }">
+  <div class="lyrics-list-wrapper" [appTheme]="theme">
     <div *ngIf="lyricsList.length; else loading">
       <ul>
         <ng-container *ngFor="let lyric of (lyricsList | searchFilter: searchTerm )">

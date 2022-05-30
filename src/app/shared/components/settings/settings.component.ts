@@ -8,7 +8,7 @@ import {FontService} from "../../services/settings/font.service";
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-  currentTheme: string | undefined;
+  currentTheme: string =  'light' ;
   currentFont: string | undefined;
   currentFontSize: number = 17;
   stepFontSize = 1;

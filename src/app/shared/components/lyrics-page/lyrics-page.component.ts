@@ -25,7 +25,7 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
   // @ts-ignore
   lyric: Lyrics;
   font: string | undefined;
-  theme: string | undefined;
+  theme: string = 'light';
 
   lyricsSub: Subscription | undefined;
   constructor(private root: ActivatedRoute,

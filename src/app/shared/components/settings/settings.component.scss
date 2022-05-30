@@ -1,5 +1,4 @@
 .settings-wrapper{
-  background: none;
   display: inline-grid;
   flex-direction: column-reverse;
   width: 100%;
@@ -101,6 +100,9 @@
     }
   }
 }
+
+
+
 ::ng-deep {
   .mat-menu-panel.preview {
     min-width: 80vw;

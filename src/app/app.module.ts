@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import {Injectable, NgModule} from '@angular/core';
+import {BrowserModule, HammerModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -17,6 +17,18 @@ import {environment} from '../environments/environment';
 import {LyricInfoComponent} from "./shared/components/lyrics-info/lyric-info.component";
 import {ToastrModule} from "ngx-toastr";
 import {ThemeDirective} from "./directives/theme.directive";
+
+// @ts-ignore
+import * as Hammer from 'hammerjs';
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG} from "@angular/platform-browser";
+
+
+@Injectable()
+export class LyricsHammerConfig extends HammerGestureConfig{
+  override = <any>{
+    'swipe': {direction: Hammer.DIRECTION_HORIZONTAL}
+  }
+}
 
 
 @NgModule({
@@ -42,10 +54,15 @@ import {ThemeDirective} from "./directives/theme.directive";
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    HammerModule,
   ],
   providers: [
     AuthGuard,
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: LyricsHammerConfig
+    }
   ],
 
   exports: [

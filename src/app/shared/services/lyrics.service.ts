@@ -63,4 +63,13 @@ export class LyricsService {
         })
       ).subscribe();
   }
+
+  isLyrics(nextId: number) {
+    if (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))
+      .find((item: any) => item.id.toString() === nextId.toString())) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

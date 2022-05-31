@@ -1,3 +1,7 @@
+wrapper{
+  height: 100%;
+}
+
 .options-wrapper{
   box-shadow: 2px 2px 5px 0 rgba(27,87,27,0.15);
   display: flex;
@@ -13,7 +17,7 @@
 
   light{
     color: black;
-    background: rgba(255, 255, 255, 0.7);
+    background: ghostwhite;
     border: 1px none rgba(239, 200, 7, 0.5);
     border-bottom-style: solid;
   }
@@ -50,6 +54,10 @@
   ul{
     padding-left: 15px;
     list-style: none;
+    li{
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .chords-line{

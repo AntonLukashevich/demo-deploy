@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Lyrics} from "../../../interfaces/lyrics";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {LyricsService} from "../../services/lyrics.service";
 import {Subscription} from "rxjs";
 import {Chord} from "../../../interfaces/chord";
@@ -32,7 +32,8 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
               private lyricsService: LyricsService,
               private fontService: FontService,
               private themeService: ThemeService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private router: Router,) {
     this.root.params.subscribe(params => this.lyricId = params['id']);
   }
 
@@ -78,4 +79,33 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
   openDialog() {
     this.dialog.open(LyricInfoComponent, { data: {comment: this.lyric.comment}});
   }
+
+  nextLyrics(currentLyricsId: number){
+    console.log('currentLyricsId: ', currentLyricsId);
+    const nextId = currentLyricsId + 1;
+    if(this.lyricsService.isLyrics(nextId)){
+      this.redirectTo('lyrics/' + nextId);
+    } else {
+      console.log('last lyrics');
+    }
+    console.log('nextId: ', nextId);
+  }
+
+  previousLyrics(currentLyricsId: number){
+    console.log('currentLyricsId: ', currentLyricsId);
+    const previousId = currentLyricsId - 1;
+    if(this.lyricsService.isLyrics(previousId)){
+      this.redirectTo('lyrics/' + previousId);
+    } else {
+      console.log('first lyrics');
+    }
+    console.log('previous')
+  }
+
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate([uri]));
+  }
 }
+
+

@@ -1,6 +1,8 @@
-<div>
+<div class="wrapper"
+     (swipeleft)="nextLyrics(lyric.id)"
+     (swiperight)="previousLyrics(lyric.id)">
   <div class="options-wrapper" [appTheme]="theme">
-  <span *ngIf="showChords">
+  <span *ngIf="showChords" >
     <button mat-icon-button (click)="decreaseTon()">
       <img src="../../../../assets/icons/common/minus.png" width="22" height="22" alt="-">
     </button>
@@ -29,7 +31,7 @@
     <li *ngFor="let item of lyric?.items">
       <ul>
         <small>{{item.name}}:</small>
-        <li *ngFor="let line of item.lines">
+        <li *ngFor="let line of item.lines" [ngStyle]="{fontSize: fontSize + 'px'}">
           <span class="chords-line" *ngIf="showChords"
                 [ngStyle]="{fontSize: fontSize + 'px'}"
                 [ngClass]="{
@@ -37,7 +39,7 @@
             'chords-line-light': theme === 'light',
             'chords-line-green': theme === 'green'
            }">{{convertLine(line.chords)}}</span>
-          <p class="text-line" [ngStyle]="{fontSize: fontSize + 'px'}">{{line.text}}</p>
+          <span class="text-line" >{{line.text}}</span>
         </li>
       </ul>
       <br>

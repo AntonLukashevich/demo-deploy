@@ -1,6 +1,8 @@
 import {Chord} from "../interfaces/chord";
 
 export const CHORD_CHAIN = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "Bb", "H"];
+
+export const POSTFIX_CHAIN =['7', 'm', 'm7', 'maj7', 'sus4', '6', 'm6'];
 // @ts-ignore
 export const CHORDS: Chord[] = [
   // C

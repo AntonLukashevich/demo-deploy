@@ -1,5 +1,6 @@
 <div style="margin-inline: 15px;">
-  <a mat-raised-button [routerLink]="['/admin', 'dashboard']" ><- back</a>
+  <a mat-raised-button [routerLink]="['/admin', 'dashboard']" title="click"><- back</a>
+</div>
 <div class="form-wrapper">
   <form [formGroup]="form" (submit)="updateLyrics()">
     <div class="form-header-wrapper">
@@ -15,6 +16,7 @@
     </mat-form-field>
 
     <div class="text-wrapper">
+      <span><mat-icon type="button" (click)="addItemControl()" class="btn-add" title="Add New Item">add</mat-icon>add</span>
       <ul formArrayName="items">
         <li *ngFor="let item of getItems(); let index = index">
           <div [formGroupName]="index" class="item-form-wrapper">
@@ -28,31 +30,12 @@
             </div>
             <div>
               <ol formArrayName="lines" class="item-couple-lines-wrapper">
+                <span><mat-icon type="button" (click)="addLineControl(index)" class="btn-add" title="Add New Item">add</mat-icon>add</span>
                 <li *ngFor="let line of getLines(index); let index1 = index" >
                   <div formGroupName="{{index1}}" >
                     <mat-icon type="button" (click)="removeLinesControl(index, index1)" class="btn-close">close</mat-icon>
                     <div class="item-couple-lines">
-                      <table>
-                        <tbody>
-                        <tr>
-                          <td *ngFor="let cell of getChords(index, index1); let i = index"
-                              class="chord-cell"
-                              formArrayName="chords"
-                          >
-                            <mat-form-field>
-                              <mat-label>chrd</mat-label>
-                              <mat-select formControlName="{{i}}">
-                                <mat-option>None</mat-option>
-                                <mat-option *ngFor="let chord of chordsList"
-                                            [value]="chord">
-                                  {{chordsArray[chord.position]}}{{chord?.postfix}}
-                                </mat-option>
-                              </mat-select>
-                            </mat-form-field>
-                          </td>
-                        </tr>
-                        </tbody>
-                      </table>
+                      <input formControlName="chords" class="text-line">
                       <input formControlName="text" class="text-line">
                     </div>
                   </div>

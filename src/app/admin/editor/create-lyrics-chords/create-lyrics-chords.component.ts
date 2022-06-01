@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup} from "@angular/forms";
+import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {EditorService} from "../../editor.service";
 import {Chord} from "../../../interfaces/chord";
 import {LyricsItem} from "../../../interfaces/lyrics-item";
 import {Router} from "@angular/router";
-import {CHORD_CHAIN, CHORDS} from "../../mock-chords";
+import {CHORD_CHAIN, CHORDS, POSTFIX_CHAIN} from "../../mock-chords";
 import {LyricsService} from "../../../shared/services/lyrics.service";
 import {NotificationService} from "../../../shared/services/notification.service";
 
@@ -18,8 +18,8 @@ export class CreateLyricsChordsComponent implements OnInit {
   genreList: string[];
   itemNameList: string[];
   form: FormGroup = new FormGroup({});
-  chordsList: Chord[] = CHORDS;
   chordsArray = CHORD_CHAIN;
+  postfixList: string[] = POSTFIX_CHAIN;
 
   constructor(private editorService: EditorService,
               private router: Router,
@@ -40,11 +40,11 @@ export class CreateLyricsChordsComponent implements OnInit {
       tags: new FormControl(this.lyricsText.tags),
       items: new FormArray([])
     });
-    this.prepare();
+    this.prepareBeforeAddChords();
   }
 
   selectLyrics() {
-    this.prepareBeforeCreate();
+    this.parseChords();
     this.editorService.createLyrics(this.form.value).subscribe( (res) => {
       console.log(res);
       this.form.reset();
@@ -52,6 +52,7 @@ export class CreateLyricsChordsComponent implements OnInit {
       this.lyricsService.refreshLyricsList();
     })
     this.router.navigate(['/admin', 'dashboard']);
+
   }
 
   getItems(): any {
@@ -66,11 +67,35 @@ export class CreateLyricsChordsComponent implements OnInit {
     return (((this.form.get('items') as FormArray).controls[item_index] as FormGroup).get('lines') as FormArray).controls[line_index];
   }
 
-  removeItemControl(index: number) {}
+  addItemControl() {
+    (this.form.get('items') as FormArray).push(
+      new FormGroup({
+          name: new FormControl(null, Validators.required),
+          lines: new FormArray([])
+        }
+      )
+    )
+  }
 
-  removeLinesControl(index: number, index1: number) {}
+  addLineControl(index: number){
+    ((this.form.get('items') as FormArray).controls[index].get('lines') as FormArray).push(
+      new FormGroup({
+          chords: new FormControl(null),
+          text: new FormControl(null)
+      })
+    );
 
-  private prepare() {
+  }
+
+  removeItemControl(index: number) {
+    (this.form.get('items') as FormArray).controls.splice(index, 1);
+  }
+
+  removeLinesControl(item_index: number, lines_index: number) {
+    (((this.form.get('items') as FormArray).controls[item_index] as FormGroup).get('lines') as FormArray).controls.splice(lines_index,1)
+  }
+
+  private prepareBeforeAddChords() {
     this.lyricsText.items.forEach((item: LyricsItem, index: number) => {
       (this.form.get('items') as FormArray).push(
         new FormGroup({
@@ -83,35 +108,44 @@ export class CreateLyricsChordsComponent implements OnInit {
       lines.forEach((line: string, index_line: number) => {
         (((this.form.get('items') as FormArray).controls[index] as FormGroup).get('lines') as FormArray).push(
           new FormGroup({
-            chords: new FormArray([]),
+            chords: new FormControl(),
             text: new FormControl(line ? line : ''),
           })
         );
-        line.split('').forEach(() =>{
-          (((((this.form.get('items') as FormArray).controls[index] as FormGroup)
-            .get('lines') as FormArray).controls[index_line] as FormArray).get('chords') as FormArray).push(new FormControl())
-        })
       });
     })
   }
-  private prepareBeforeCreate(){
-    this.form.value.items.forEach((item: LyricsItem) =>{
-      item.lines.forEach((line) => {
-        let space = 0;
-        line.chords.forEach((chord, index) =>{
-          if (!chord) {
-            space++;
-          } else {
-            chord.spaces = space;
-            space = 0;
-          }
-        });
-      });
 
-      if (item.iText){
+
+  private parseChords() {
+    this.form.value.items.forEach((item: LyricsItem) => {
+      item.lines.forEach((line) => {
+        let chords: Chord[] = [];
         // @ts-ignore
-        item.iText = null;
-      }
-    })
+        let lineChords = line.chords.toString().split(/\[|]/);
+        lineChords = lineChords.filter(Boolean);
+        console.log(lineChords);
+        for (let i = 0; i < lineChords.length; i++) {
+          let chord = {position: 0, postfix: "", spaces: 0};
+          if (lineChords[i].includes(' ')) {
+            chord.spaces = lineChords[i].length;
+            i++;
+          } else {
+            chord.spaces = 0;
+          }
+          if (this.chordsArray.includes(lineChords[i])) {
+            chord.position = this.chordsArray.indexOf(lineChords[i]);
+            i++;
+            if (this.postfixList.includes(lineChords[i])) {
+              chord.postfix = lineChords[i];
+            }
+          }
+          chords.push(chord);
+        }
+        line.chords = chords;
+      });
+    });
   }
+
+
 }

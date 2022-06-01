@@ -22,7 +22,8 @@
       <span mat-button style="font-weight: bold;"
             routerLink="/" (click)="drawer.close(); "
             [@fadeInOut]="animationState"
-            class="text-animation">LYRICS</span>
+            class="text-animation"
+      >LYRICS</span>
       <span style="display: flex;">
         <img src="../../../../assets/icons/common/icon-sound-wave.png"
              [@fadeInOut]="animationState"
@@ -45,15 +46,15 @@
       <mat-list (click)="drawer.close();setToggle()">
         <div class="common-panel">
           <mat-list-item routerLink="/" class="toolbar-item" >
-            <img src="../../../../assets/icons/common/icon-audiobook.png" width="30" height="30" alt="lorem">
+            <img src="../../../../assets/icons/common/icon-audiobook.png" width="30" height="30" alt="book">
           </mat-list-item>
           <mat-list-item routerLink="settings" class="toolbar-item">
-            <img src="../../../../assets/icons/common/icon-configuration-64x64.png" width="30" height="30" alt="lorem">
+            <img src="../../../../assets/icons/common/icon-configuration-64x64.png" width="30" height="30" alt="config">
           </mat-list-item>
         </div>
         <div class="vip-panel">
           <mat-list-item routerLink="admin" class="toolbar-item" >
-            <img src="../../../../assets/icons/common/icon-work-station.png" width="30" height="30" alt="lorem">
+            <img src="../../../../assets/icons/common/icon-work-station.png" width="30" height="30" alt="admin">
           </mat-list-item>
         </div>
       </mat-list>

@@ -3,6 +3,7 @@ import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {EditorService} from "../../editor.service";
 import {ThemeService} from "../../../shared/services/settings/theme.service";
 
+
 @Component({
   selector: 'app-create-lyrics-text',
   templateUrl: './create-lyrics-text.component.html',
@@ -37,6 +38,7 @@ export class CreateLyricsTextComponent implements OnInit {
   }
 
   selectLyricsText(){
+    console.log(this.textForm.value);
     this.editorService.selectLyricsText(this.textForm.value);
   }
 

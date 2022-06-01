@@ -84,13 +84,13 @@ mat-list{
 
   background-size: 300%;
   background-position: -100%;
-
-  //animation: animatedText 4s infinite reverse;
-
-  animation-duration: 3s;
+  //
+  ////animation: animatedText 4s infinite reverse;
+  //
+  animation-duration: 4s;
   animation-timing-function: linear;
-  animation-delay: 50s;
-  animation-iteration-count: 1;
+  animation-delay: 3s;
+  animation-iteration-count: 2;
   animation-direction: reverse;
   animation-fill-mode: none;
   animation-play-state: running;

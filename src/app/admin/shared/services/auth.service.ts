@@ -51,7 +51,7 @@ export class AuthService{
 
   private setToken(response: any | null){
     if(response){
-      const expDate = new Date(new Date().getTime() + +response.auth_token_exp * 1000);
+      const expDate = new Date(new Date().getTime() + +response.auth_token_exp * 10000);
       localStorage.setItem('user-auth-token', response.auth_token);
       localStorage.setItem('auth-token-exp', expDate.toString());
     } else {

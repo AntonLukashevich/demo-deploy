@@ -31,7 +31,6 @@ export class LyricsHammerConfig extends HammerGestureConfig{
   }
 }
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,5 +71,6 @@ export class LyricsHammerConfig extends HammerGestureConfig{
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

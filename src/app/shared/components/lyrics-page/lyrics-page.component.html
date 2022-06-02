@@ -1,10 +1,8 @@
 <div>
-
-
-<div class="wrapper"
-     (swipeleft)="nextLyrics(lyric.id)"
-     (swiperight)="previousLyrics(lyric.id)">
-  <div class="options-wrapper" [appTheme]="theme">
+<div class="wrapper">
+  <div class="options-wrapper" [appTheme]="theme"
+       (swipeleft)="nextLyrics(lyric.id)"
+       (swiperight)="previousLyrics(lyric.id)">
   <span *ngIf="showChords" >
     <button mat-icon-button (click)="decreaseTon()">
       <img src="../../../../assets/icons/common/minus.png" width="22" height="22" alt="-">

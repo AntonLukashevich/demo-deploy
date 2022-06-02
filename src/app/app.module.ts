@@ -27,7 +27,7 @@ import { HammerGestureConfig, HAMMER_GESTURE_CONFIG} from "@angular/platform-bro
 @Injectable()
 export class LyricsHammerConfig extends HammerGestureConfig{
   override = <any>{
-    'swipe': {direction: Hammer.DIRECTION_HORIZONTAL}
+    'swipe': {direction: Hammer.DIRECTION_ALL}
   }
 }
 

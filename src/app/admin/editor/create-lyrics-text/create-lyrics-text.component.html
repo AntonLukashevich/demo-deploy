@@ -5,8 +5,11 @@
            }">
   <form [formGroup]="textForm" (submit)="selectLyricsText()">
     <div class="form-header-wrapper">
+      <label >Title</label>
       <input formControlName="name" placeholder="Lyrics Title">
+      <label>Tonality</label>
       <input formControlName="tonality" placeholder="Tonality">
+      <label>Comment</label>
       <input formControlName="comment" placeholder="Comment">
     </div>
     <mat-form-field>

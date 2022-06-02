@@ -43,6 +43,7 @@ export class LyricsService {
   }
 
   updateLyrics(lyrics: Lyrics): Observable<Lyrics> {
+    console.log(lyrics);
     return this.http.patch<Lyrics>(`${this.url}/api/lyrics/${lyrics.id}`, lyrics)
   }
 

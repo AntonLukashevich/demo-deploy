@@ -4,7 +4,7 @@ import {EditorService} from "../../editor.service";
 import {Chord} from "../../../interfaces/chord";
 import {LyricsItem} from "../../../interfaces/lyrics-item";
 import {Router} from "@angular/router";
-import {CHORD_CHAIN, CHORDS, POSTFIX_CHAIN} from "../../mock-chords";
+import {CHORD_CHAIN, POSTFIX_CHAIN} from "../../mock-chords";
 import {LyricsService} from "../../../shared/services/lyrics.service";
 import {NotificationService} from "../../../shared/services/notification.service";
 
@@ -63,10 +63,6 @@ export class CreateLyricsChordsComponent implements OnInit {
     return (((this.form.get('items') as FormArray).controls[index] as FormGroup).get('lines') as FormArray).controls;
   }
 
-  getLine(item_index: number, line_index: number): any {
-    return (((this.form.get('items') as FormArray).controls[item_index] as FormGroup).get('lines') as FormArray).controls[line_index];
-  }
-
   addItemControl() {
     (this.form.get('items') as FormArray).push(
       new FormGroup({
@@ -84,7 +80,6 @@ export class CreateLyricsChordsComponent implements OnInit {
           text: new FormControl(null)
       })
     );
-
   }
 
   removeItemControl(index: number) {
@@ -116,8 +111,7 @@ export class CreateLyricsChordsComponent implements OnInit {
     })
   }
 
-
-  private parseChords() {
+  parseChords() {
     this.form.value.items.forEach((item: LyricsItem) => {
       item.lines.forEach((line) => {
         let chords: Chord[] = [];
@@ -126,7 +120,7 @@ export class CreateLyricsChordsComponent implements OnInit {
         lineChords = lineChords.filter(Boolean);
         console.log(lineChords);
         for (let i = 0; i < lineChords.length; i++) {
-          let chord = {position: 0, postfix: "", spaces: 0};
+          let chord = {position: -1, postfix: "", spaces: 0};
           if (lineChords[i].includes(' ')) {
             chord.spaces = lineChords[i].length;
             i++;
@@ -135,17 +129,17 @@ export class CreateLyricsChordsComponent implements OnInit {
           }
           if (this.chordsArray.includes(lineChords[i])) {
             chord.position = this.chordsArray.indexOf(lineChords[i]);
-            i++;
-            if (this.postfixList.includes(lineChords[i])) {
-              chord.postfix = lineChords[i];
+            if (this.postfixList.includes(lineChords[i + 1])) {
+              chord.postfix = lineChords[i + 1];
             }
           }
-          chords.push(chord);
+          console.log('chord: ', chord, 'i: ', i);
+          if(chord.position > -1){
+            chords.push(chord);
+          }
         }
         line.chords = chords;
       });
     });
   }
-
-
 }

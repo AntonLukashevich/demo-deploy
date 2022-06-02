@@ -48,6 +48,7 @@ export class EditLyricsComponent implements OnInit {
 
   updateLyrics() {
     this.parseChords();
+    console.log(this.form.value);
     this.lyricsService.updateLyrics(this.form.value).subscribe((res) => {
       console.log(res);
     });
@@ -79,8 +80,8 @@ export class EditLyricsComponent implements OnInit {
         text: new FormControl(null)
       })
     );
-
   }
+
   removeItemControl(index: number) {
     (this.form.get('items') as FormArray).controls.splice(index, 1);
   }
@@ -104,7 +105,7 @@ export class EditLyricsComponent implements OnInit {
           chordLine = chordLine + (" ").repeat(line.chords[i].spaces);
           chordLine = chordLine.concat("[");
           chordLine = chordLine.concat(this.chordsArray[line.chords[i].position]);
-          chordLine =chordLine.concat("]");
+          chordLine = chordLine.concat("]");
           if(line.chords[i].postfix){
             chordLine = chordLine.concat("[");
             // @ts-ignore
@@ -129,8 +130,9 @@ export class EditLyricsComponent implements OnInit {
         // @ts-ignore
         let lineChords = line.chords.toString().split(/\[|]/);
         lineChords = lineChords.filter(Boolean);
+        console.log(lineChords);
         for (let i = 0; i < lineChords.length; i++) {
-          let chord = {position: 0, postfix: "", spaces: 0};
+          let chord = {position: -1, postfix: "", spaces: 0};
           if (lineChords[i].includes(' ')) {
             chord.spaces = lineChords[i].length;
             i++;
@@ -139,39 +141,17 @@ export class EditLyricsComponent implements OnInit {
           }
           if (this.chordsArray.includes(lineChords[i])) {
             chord.position = this.chordsArray.indexOf(lineChords[i]);
-            i++;
-            if (this.postfixList.includes(lineChords[i])) {
-              chord.postfix = lineChords[i];
+            if (this.postfixList.includes(lineChords[i + 1])) {
+              chord.postfix = lineChords[i + 1];
             }
           }
-          chords.push(chord);
+          console.log('chord: ', chord, 'i: ', i);
+          if(chord.position > -1){
+            chords.push(chord);
+          }
         }
         line.chords = chords;
       });
     });
   }
-
-
-  private prepareBeforeCreate(){
-    this.form.value.items.forEach((item: LyricsItem) =>{
-      item.lines.forEach((line) => {
-        let space = 0;
-        line.chords.forEach((chord, index) =>{
-          if (!chord) {
-            space++;
-          } else {
-            chord.spaces = space;
-            console.log(space);
-            space = 0;
-          }
-        });
-      });
-
-      if (item.iText){
-        // @ts-ignore
-        item.iText = null;
-      }
-    })
-  }
-
 }

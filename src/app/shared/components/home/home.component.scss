@@ -1,5 +1,7 @@
 .home-wrapper {
   //background: none;
+  overflow:hidden;
+  height: calc(100vh - 56px);
 }
 
 .finder {
@@ -47,6 +49,8 @@
     list-style: none;
     padding-left: 0;
     margin: 5px 0;
+    height: calc(100vh - 56px - 46px);
+    overflow-y: scroll;
   }
   .list-item {
     font-size: 16px;

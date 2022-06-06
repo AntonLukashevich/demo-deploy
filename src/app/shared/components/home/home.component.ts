@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       return 0;
     })
 
-    if (this.reverseDirection) {
+    if (!this.reverseDirection) {
       this.lyricsList.reverse();
     }
     this.reverseDirection = !this.reverseDirection;
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       return 0;
     });
 
-    if (this.reverseDirection) {
+    if (!this.reverseDirection) {
       this.lyricsList.reverse();
     }
     this.reverseDirection = !this.reverseDirection;

@@ -67,10 +67,34 @@ export class LyricsService {
 
   isLyrics(nextId: number) {
     if (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))
-      .find((item: any) => item.id.toString() === nextId.toString())) {
+      .find((item: any, index: number) => item.id.toString() === nextId.toString())) {
       return true;
     } else {
       return false;
+    }
+  }
+
+  nextLyricsId(currentId: number) {
+    const currentIndex = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))
+      .findIndex((item: any, index: number) => item.id.toString() === currentId.toString()));
+    const lengthList = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))).length;
+    if((currentIndex + 1) < lengthList){
+      const nextLyrics = JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))[currentIndex + 1];
+      return nextLyrics.id;
+    } else {
+      return currentId;
+    }
+  }
+
+  previousLyricsId(currentId: number) {
+    const currentIndex = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))
+      .findIndex((item: any, index: number) => item.id.toString() === currentId.toString()));
+    const lengthList = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))).length;
+    if((currentIndex - 1) > -1){
+      const nextLyrics = JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))[currentIndex - 1];
+      return nextLyrics.id;
+    } else {
+      return currentId;
     }
   }
 }

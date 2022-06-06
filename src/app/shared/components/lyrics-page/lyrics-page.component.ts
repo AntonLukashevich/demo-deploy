@@ -81,25 +81,13 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
   }
 
   nextLyrics(currentLyricsId: number){
-    console.log('currentLyricsId: ', currentLyricsId);
-    const nextId = currentLyricsId + 1;
-    if(this.lyricsService.isLyrics(nextId)){
-      this.redirectTo('lyrics/' + nextId);
-    } else {
-      console.log('last lyrics');
-    }
-    console.log('nextId: ', nextId);
+    const nextId = this.lyricsService.nextLyricsId(currentLyricsId);
+    this.redirectTo('lyrics/' + nextId);
   }
 
   previousLyrics(currentLyricsId: number){
-    console.log('currentLyricsId: ', currentLyricsId);
-    const previousId = currentLyricsId - 1;
-    if(this.lyricsService.isLyrics(previousId)){
-      this.redirectTo('lyrics/' + previousId);
-    } else {
-      console.log('first lyrics');
-    }
-    console.log('previous')
+    const previousId = this.lyricsService.previousLyricsId(currentLyricsId);
+    this.redirectTo('lyrics/' + previousId);
   }
 
   redirectTo(uri:string){

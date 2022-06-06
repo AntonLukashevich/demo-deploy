@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   lyricsListSub: Subscription | undefined ;
   theme: string = 'light';
   searchTerm: string = '';
+  reverseDirection = false;
   private localStorageLyricsList = 'lyricsList';
 
   constructor(private lyricsService: LyricsService,
@@ -37,4 +38,41 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.lyricsListSub.unsubscribe();
     }
   }
+
+  sortByName(){
+    this.lyricsList.sort(function (a, b) {
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        return 1;
+      }
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      }
+      // a должно быть равным b
+      return 0;
+    })
+
+    if (this.reverseDirection) {
+      this.lyricsList.reverse();
+    }
+    this.reverseDirection = !this.reverseDirection;
+  }
+
+  sortById(){
+    this.lyricsList.sort(function (a, b) {
+      if (a.id > b.id) {
+        return 1;
+      }
+      if (a.id < b.id) {
+        return -1;
+      }
+      // a должно быть равным b
+      return 0;
+    });
+
+    if (this.reverseDirection) {
+      this.lyricsList.reverse();
+    }
+    this.reverseDirection = !this.reverseDirection;
+  }
+
 }

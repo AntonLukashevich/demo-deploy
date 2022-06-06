@@ -1,6 +1,11 @@
 <div class="home-wrapper" >
   <div class="finder">
     <input [(ngModel)]="searchTerm" id="Search" name="Search" type="search" placeholder="Search..." autocomplete="off">
+    <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="sortById()">№ number <mat-icon>swap_vert</mat-icon></button>
+      <button mat-menu-item (click)="sortByName()">Name <mat-icon>sort_by_alpha</mat-icon></button>
+    </mat-menu>
   </div>
 
   <div class="lyrics-list-wrapper" [appTheme]="theme">

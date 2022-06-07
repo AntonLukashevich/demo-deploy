@@ -48,7 +48,6 @@ export class EditLyricsComponent implements OnInit {
 
   updateLyrics() {
     this.parseChords();
-    console.log(this.form.value);
     this.lyricsService.updateLyrics(this.form.value).subscribe((res) => {
       console.log(res);
     });
@@ -130,7 +129,6 @@ export class EditLyricsComponent implements OnInit {
         // @ts-ignore
         let lineChords = line.chords.toString().split(/\[|]/);
         lineChords = lineChords.filter(Boolean);
-        console.log(lineChords);
         for (let i = 0; i < lineChords.length; i++) {
           let chord = {position: -1, postfix: "", spaces: 0};
           if (lineChords[i].includes(' ')) {
@@ -145,7 +143,6 @@ export class EditLyricsComponent implements OnInit {
               chord.postfix = lineChords[i + 1];
             }
           }
-          console.log('chord: ', chord, 'i: ', i);
           if(chord.position > -1){
             chords.push(chord);
           }

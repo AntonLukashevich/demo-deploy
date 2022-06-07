@@ -1,17 +1,29 @@
 <div class="home-wrapper" >
   <div class="finder">
-    <input [(ngModel)]="searchTerm" id="Search" name="Search" type="search" placeholder="Search..." autocomplete="off">
-    <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="sortById()">№ number <mat-icon>swap_vert</mat-icon></button>
-      <button mat-menu-item (click)="sortByName()">Name <mat-icon>sort_by_alpha</mat-icon></button>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>filter_list</mat-icon></button>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button mat-menu-item (click)="sortById()">ID<mat-icon>swap_vert</mat-icon></button>
+      <button mat-menu-item (click)="sortByName()">Name <mat-icon>swap_vert</mat-icon></button>
+      <button mat-menu-item [matMenuTriggerFor]="tags">Tags</button>
     </mat-menu>
+    <mat-menu #tags="matMenu">
+      <mat-selection-list #genres [(ngModel)]="tagFilter">
+        <mat-list-option *ngFor="let genre of genreList"
+                         [value]="genre"
+                         (click)="$event.stopPropagation()"
+        >
+          {{genre}}
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-menu>
+    <input [(ngModel)]="searchTerm" id="Search" name="Search" type="search" placeholder="Search..." autocomplete="off">
   </div>
 
   <div class="lyrics-list-wrapper" [appTheme]="theme">
     <div *ngIf="lyricsList.length; else loading">
       <ul>
-        <ng-container *ngFor="let lyric of (lyricsList | searchFilter: searchTerm )">
+        <ng-container *ngFor="let lyric of (lyricsList | searchFilter: searchTerm | tagFilter: tagFilter)">
           <li>
             <mat-card class="list-item" routerLink="/lyrics/{{lyric.id}}">
               <div>

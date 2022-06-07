@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://demo-lyrics-api.herokuapp.com'
+  //apiUrl: 'http://localhost:3000/'
 };
 
 /*

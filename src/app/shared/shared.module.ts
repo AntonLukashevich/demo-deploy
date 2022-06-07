@@ -19,11 +19,12 @@ import {MatCardModule} from "@angular/material/card";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatButtonModule} from "@angular/material/button";
 import {SearchFilterPipe} from "../pipes/search-filter.pipe";
-import {DatePipe} from "@angular/common";
+import {TagFilterPipe} from "../pipes/tag-filter.pipe";
 
 @NgModule({
   declarations: [
-    SearchFilterPipe
+    SearchFilterPipe,
+    TagFilterPipe
   ],
   imports: [
     HttpClientModule,
@@ -48,6 +49,7 @@ import {DatePipe} from "@angular/common";
   ],
   exports: [
     SearchFilterPipe,
+    TagFilterPipe,
     HttpClientModule,
     MatDialogModule,
     MatSliderModule,

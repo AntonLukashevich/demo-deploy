@@ -3,6 +3,7 @@ import {Lyrics} from "../../../interfaces/lyrics";
 import {LyricsService} from "../../services/lyrics.service";
 import {Subscription} from "rxjs";
 import {ThemeService} from "../../services/settings/theme.service";
+import {GENRES} from "../../mock-genres";
 
 @Component({
   selector: 'app-home',
@@ -14,8 +15,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   lyricsListSub: Subscription | undefined ;
   theme: string = 'light';
   searchTerm: string = '';
+  tagFilter: string[] = [];
   reverseDirection = false;
   private localStorageLyricsList = 'lyricsList';
+  genreList = GENRES;
 
   constructor(private lyricsService: LyricsService,
               private themeService: ThemeService) {

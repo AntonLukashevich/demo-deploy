@@ -28,38 +28,40 @@
           <input type="text" placeholder="Find..." [(ngModel)]="searchStr">
           <button mat-button class="btn-common btn" [routerLink]="['/admin', 'lyrics' , 'create_text']"> <mat-icon>note_add</mat-icon></button>
         </div>
+        <div style="overflow: auto;">
+          <table class="lyrics-table" cellspacing="0">
+            <thead>
+            <tr class="lyrics-header">
+              <th><a (click)="refreshLyricsList()">refresh</a></th>
+              <th style="text-align: right">ID</th>
+              <th style="text-align: left">Title</th>
+              <th style="text-align: left">Genres</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of (lyricsList | searchFilter:searchStr );let idx = index"
+                class="row"
+            >
+              <td style="text-align: center">{{idx + 1}}</td>
+              <td style="text-align: right; color: gray"> {{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item?.tags}}</td>
+              <td class="action-cell">
+                <button mat-icon-button
+                        class="btn-common btn"
+                        [routerLink]="['/admin', 'lyrics', item.id, 'edit']"
+                > <mat-icon>edit</mat-icon></button>
+                <button (click)="removeLyrics(item.id, item.name);"
+                        mat-icon-button
+                        class="btn-common btn"
+                > <mat-icon>delete_forever</mat-icon></button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
 
-        <table class="lyrics-table" cellspacing="0">
-          <thead>
-          <tr class="lyrics-header">
-            <th><a (click)="refreshLyricsList()">refresh</a></th>
-            <th style="text-align: right">ID</th>
-            <th style="text-align: left">Title</th>
-            <th style="text-align: left">Genres</th>
-            <th>Actions</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let item of (lyricsList | searchFilter:searchStr );let idx = index"
-              class="row"
-          >
-            <td style="text-align: center">{{idx + 1}}</td>
-            <td style="text-align: right; color: gray"> {{item.id}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item?.tags}}</td>
-            <td class="action-cell">
-              <button mat-icon-button
-                      class="btn-common btn"
-                      [routerLink]="['/admin', 'lyrics', item.id, 'edit']"
-              > <mat-icon>edit</mat-icon></button>
-              <button (click)="removeLyrics(item.id, item.name);"
-                      mat-icon-button
-                      class="btn-common btn"
-              > <mat-icon>delete_forever</mat-icon></button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
       </div>
     </mat-tab>
     <mat-tab label="User">

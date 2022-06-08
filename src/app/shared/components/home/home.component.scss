@@ -62,6 +62,22 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
+    .line{
+      display: flex;
+      flex-direction: row;
+    }
+    .line-id{
+      width: 15px;
+      text-align: right;
+      margin-right: 7px;
+    }
+    .line-name{
+      width: 280px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 }
 

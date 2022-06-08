@@ -26,9 +26,9 @@
         <ng-container *ngFor="let lyric of (lyricsList | searchFilter: searchTerm | tagFilter: tagFilter)">
           <li>
             <mat-card class="list-item" routerLink="/lyrics/{{lyric.id}}">
-              <div>
-                <span>{{lyric.id}}</span>
-                {{lyric.name}}
+              <div class="line">
+                <div class="line-id">{{lyric.id}}</div>
+                <div class="line-name"> {{lyric.name}}</div>
               </div>
             </mat-card>
           </li>

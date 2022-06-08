@@ -50,7 +50,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       if (a.name.toLowerCase() < b.name.toLowerCase()) {
         return -1;
       }
-      // a должно быть равным b
       return 0;
     })
 
@@ -68,7 +67,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       if (a.id < b.id) {
         return -1;
       }
-      // a должно быть равным b
       return 0;
     });
 

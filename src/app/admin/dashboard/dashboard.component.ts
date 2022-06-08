@@ -8,6 +8,7 @@ import {ThemeService} from "../../shared/services/settings/theme.service";
 import {UsersService} from "../users.service";
 import {User} from "../../interfaces/user";
 import {NotificationService} from "../../shared/services/notification.service";
+import {GENRES} from "../../shared/mock-genres";
 
 @Component({
   selector: 'app-dashboard',
@@ -18,6 +19,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public lyricsList: Lyrics[] = [];
   users: User[] = [];
   searchStr: string = '';
+  tagFilter: string[] = [];
+  genreList = GENRES;
   lyricsListSub: Subscription | undefined ;
   deleteLyricsSub: Subscription | undefined;
   deleteUserSub: Subscription | undefined;

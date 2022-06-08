@@ -11,6 +11,20 @@
       <div *ngIf="lyricsList.length; else loading"
            class="tab-wrapper">
         <div class="tools-wrapper">
+          <button mat-button [matMenuTriggerFor]="menu" class="btn-common btn"><mat-icon>filter_list</mat-icon></button>
+          <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item [matMenuTriggerFor]="tags">Tags</button>
+          </mat-menu>
+          <mat-menu #tags="matMenu">
+            <mat-selection-list #genres [(ngModel)]="tagFilter">
+              <mat-list-option *ngFor="let genre of genreList"
+                               [value]="genre"
+                               (click)="$event.stopPropagation()"
+              >
+                {{genre}}
+              </mat-list-option>
+            </mat-selection-list>
+          </mat-menu>
           <input type="text" placeholder="Find..." [(ngModel)]="searchStr">
           <button mat-button class="btn-common btn" [routerLink]="['/admin', 'lyrics' , 'create_text']"> <mat-icon>note_add</mat-icon></button>
         </div>
@@ -21,6 +35,7 @@
             <th><a (click)="refreshLyricsList()">refresh</a></th>
             <th style="text-align: right">ID</th>
             <th style="text-align: left">Title</th>
+            <th style="text-align: left">Genres</th>
             <th>Actions</th>
           </tr>
           </thead>
@@ -31,6 +46,7 @@
             <td style="text-align: center">{{idx + 1}}</td>
             <td style="text-align: right; color: gray"> {{item.id}}</td>
             <td>{{item.name}}</td>
+            <td>{{item?.tags}}</td>
             <td class="action-cell">
               <button mat-icon-button
                       class="btn-common btn"

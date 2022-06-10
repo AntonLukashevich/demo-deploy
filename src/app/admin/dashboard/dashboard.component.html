@@ -11,7 +11,9 @@
       <div *ngIf="lyricsList.length; else loading"
            class="tab-wrapper">
         <div class="tools-wrapper">
-          <button mat-button [matMenuTriggerFor]="menu" class="btn-common btn"><mat-icon>filter_list</mat-icon></button>
+          <button mat-button [matMenuTriggerFor]="menu" class="btn-common btn">
+            <mat-icon>filter_list</mat-icon>
+          </button>
           <mat-menu #menu="matMenu" xPosition="before">
             <button mat-menu-item [matMenuTriggerFor]="tags">Tags</button>
           </mat-menu>
@@ -26,7 +28,9 @@
             </mat-selection-list>
           </mat-menu>
           <input type="text" placeholder="Find..." [(ngModel)]="searchStr">
-          <button mat-button class="btn-common btn" [routerLink]="['/admin', 'lyrics' , 'create_text']"> <mat-icon>note_add</mat-icon></button>
+          <button mat-button class="btn-common btn" [routerLink]="['/admin', 'lyrics' , 'create_text']">
+            <mat-icon>note_add</mat-icon>
+          </button>
         </div>
         <div style="overflow: auto;">
           <table class="lyrics-table" cellspacing="0" style="">

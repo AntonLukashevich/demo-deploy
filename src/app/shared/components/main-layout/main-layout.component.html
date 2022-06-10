@@ -24,10 +24,14 @@
             [@fadeInOut]="animationState"
             class="text-animation"
       >LYRICS</span>
+
       <span style="display: flex;">
+        <span *ngIf="showRandom" style="margin-right: 5px;">
+          {{max}}
+        </span>
         <img src="../../../../assets/icons/common/icon-sound-wave.png"
              [@fadeInOut]="animationState"
-             width="38" height="38">
+             width="38" height="38" (click)="getRandomInt()">
       </span>
     </div>
   </mat-toolbar>

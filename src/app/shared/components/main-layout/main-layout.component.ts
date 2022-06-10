@@ -24,7 +24,10 @@ export class MainLayoutComponent implements OnInit {
   mode = new FormControl('over');
   toggle = false;
   animationState = false;
-
+  private localStorageLyricsList = 'lyricsList';
+  max = 0;
+  showRandom = false;
+  touchTime = 0;
   constructor(private themeService: ThemeService) {
     this.toggle = false;
   }
@@ -48,4 +51,32 @@ export class MainLayoutComponent implements OnInit {
   animate() {
     this.animationState = !this.animationState;
   }
+
+  getRandomInt() {
+
+
+
+    if (this.touchTime == 0) {
+      // set first click
+      this.touchTime = new Date().getTime();
+    } else {
+      // compare first click to this click and see if they occurred within double click threshold
+      if (((new Date().getTime()) - this.touchTime) < 800) {
+        // double click occurred
+        let range = JSON.parse(<string>localStorage.getItem(this.localStorageLyricsList)).length + 1;
+        let rand = 1 + Math.random() * range;
+        this.max = Math.floor(rand);
+        this.showRandom = true;
+        setTimeout( () => {
+          this.showRandom = false;
+          this.touchTime = 0;
+        }, 1500)
+      } else {
+        // not a double click so set as a new first click
+        this.touchTime = new Date().getTime();
+      }
+    }
+
+  }
+
 }

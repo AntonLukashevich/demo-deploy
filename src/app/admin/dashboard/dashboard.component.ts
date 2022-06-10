@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {LyricsService} from "../../shared/services/lyrics.service";
 import {Lyrics} from "../../interfaces/lyrics";
 import {Subscription} from "rxjs";
@@ -9,6 +9,7 @@ import {UsersService} from "../users.service";
 import {User} from "../../interfaces/user";
 import {NotificationService} from "../../shared/services/notification.service";
 import {GENRES} from "../../shared/mock-genres";
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-dashboard',

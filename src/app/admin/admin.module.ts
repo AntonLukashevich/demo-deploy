@@ -14,6 +14,7 @@ import { EditLyricsComponent } from './edit-lyrics/edit-lyrics.component';
 import {UsersService} from "./users.service";
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -26,25 +27,26 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     UserRegistrationComponent,
     EditUserComponent,
   ],
-  imports: [
-    RouterModule.forChild([
-      {
-        path: '', component: AdminLayoutComponent, children: [
-          {path: '', redirectTo: '/admin/dashboard', pathMatch: 'full'},
-          {path: 'login', component: LoginLayoutComponent},
-          {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-          {path: 'lyrics/create_text', component: CreateLyricsTextComponent},
-          {path: 'lyrics/create_chords', component: CreateLyricsChordsComponent},
-          {path: 'lyrics/:id/edit', component: EditLyricsComponent},
-          {path: 'users/new', component: UserRegistrationComponent},
-          {path: 'users/:id/edit', component: EditUserComponent}
-        ]
-      }
-    ]),
-    SharedModule,
-    CommonModule,
-    ReactiveFormsModule,
-  ],
+    imports: [
+        RouterModule.forChild([
+            {
+                path: '', component: AdminLayoutComponent, children: [
+                    {path: '', redirectTo: '/admin/dashboard', pathMatch: 'full'},
+                    {path: 'login', component: LoginLayoutComponent},
+                    {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+                    {path: 'lyrics/create_text', component: CreateLyricsTextComponent},
+                    {path: 'lyrics/create_chords', component: CreateLyricsChordsComponent},
+                    {path: 'lyrics/:id/edit', component: EditLyricsComponent},
+                    {path: 'users/new', component: UserRegistrationComponent},
+                    {path: 'users/:id/edit', component: EditUserComponent}
+                ]
+            }
+        ]),
+        SharedModule,
+        CommonModule,
+        ReactiveFormsModule,
+        MatPaginatorModule,
+    ],
   exports: [],
   providers: [
     EditorService,

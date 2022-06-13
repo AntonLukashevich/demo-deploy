@@ -1,4 +1,8 @@
-<div class="reg-wrapper">
+<div class="reg-wrapper" [ngClass]="{
+    'reg-wrapper-light': theme === 'light',
+    'reg-wrapper-dark': theme === 'dark',
+    'reg-wrapper-green': theme === 'green'
+  }">
   <h2>Registration</h2>
   <form class="card"  [formGroup]="form" (ngSubmit)="submit()">
     <div
@@ -10,7 +14,12 @@
     <div class="form-control"
          [ngClass]="{ invalid: form.get('email')?.touched && form.get('email')?.invalid }"
     >
-      <input id="email" type="email" formControlName="email" class="reg-field" placeholder="Email">
+      <input id="email" type="email" formControlName="email" class="reg-field" placeholder="Email"
+             [ngClass]="{
+                'reg-field-light': theme === 'light',
+                'reg-field-dark': theme === 'dark',
+                'reg-field-green': theme === 'green'
+      }">
     </div>
 
     <div class="form-control"
@@ -22,7 +31,12 @@
         <small *ngIf="form.get('password')?.errors?.required">please, input password</small>
         <small *ngIf="form.get('password')?.errors?.minlength">it seems, password is too short</small>
       </div>
-      <input id="password" type="password" formControlName="password" class="reg-field" placeholder="Password">
+      <input id="password" type="password" formControlName="password" class="reg-field" placeholder="Password"
+             [ngClass]="{
+                'reg-field-light': theme === 'light',
+                'reg-field-dark': theme === 'dark',
+                'reg-field-green': theme === 'green'
+      }">
 
     </div>
     <br>
@@ -35,12 +49,21 @@
         <small *ngIf="form.get('username')?.errors?.required">please, input username</small>
         <small *ngIf="form.get('username')?.errors?.minlength">it seems, username is too short</small>
       </div>
-      <input id="username" type="text" formControlName="username" class="reg-field" placeholder="Username">
+      <input id="username" type="text" formControlName="username" class="reg-field" placeholder="Username"
+             [ngClass]="{
+                'reg-field-light': theme === 'light',
+                'reg-field-dark': theme === 'dark',
+                'reg-field-green': theme === 'green'
+      }">
     </div>
 
     <button type="submit"
             class="btn btn-dark"
-
+            [ngClass]="{
+                'btn-light': theme === 'light',
+                'btn-dark': theme === 'dark',
+                'btn-green': theme === 'green'
+            }"
     >send
     </button>
   </form>

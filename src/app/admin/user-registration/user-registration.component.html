@@ -1,39 +1,41 @@
 <div class="reg-wrapper">
   <h2>Registration</h2>
   <form class="card"  [formGroup]="form" (ngSubmit)="submit()">
+    <div
+      *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
+      class="validation">
+      <small *ngIf="form.get('email')?.errors?.required">please, input email</small>
+      <small *ngIf="form.get('email')?.errors?.email">it seems, it's not email</small>
+    </div>
     <div class="form-control"
          [ngClass]="{ invalid: form.get('email')?.touched && form.get('email')?.invalid }"
     >
       <input id="email" type="email" formControlName="email" class="reg-field" placeholder="Email">
-      <div
-        *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
-        class="validation">
-        <small *ngIf="form.get('email')?.errors?.required">please, input email</small>
-        <small *ngIf="form.get('email')?.errors?.email">it seems, it's not email</small>
-      </div>
     </div>
+
     <div class="form-control"
          [ngClass]="{ invalid: form.get('password')?.touched && form.get('password')?.invalid }"
     >
-      <input id="password" type="password" formControlName="password" class="reg-field" placeholder="Password">
       <div
         *ngIf="form.get('password')?.touched && form.get('password')?.invalid"
         class="validation">
         <small *ngIf="form.get('password')?.errors?.required">please, input password</small>
         <small *ngIf="form.get('password')?.errors?.minlength">it seems, password is too short</small>
       </div>
+      <input id="password" type="password" formControlName="password" class="reg-field" placeholder="Password">
+
     </div>
     <br>
     <div class="form-control"
          [ngClass]="{ invalid: form.get('username')?.touched && form.get('username')?.invalid }"
     >
-      <input id="username" type="text" formControlName="username" class="reg-field" placeholder="Username">
       <div
         *ngIf="form.get('username')?.touched && form.get('username')?.invalid"
         class="validation">
         <small *ngIf="form.get('username')?.errors?.required">please, input username</small>
         <small *ngIf="form.get('username')?.errors?.minlength">it seems, username is too short</small>
       </div>
+      <input id="username" type="text" formControlName="username" class="reg-field" placeholder="Username">
     </div>
 
     <button type="submit"

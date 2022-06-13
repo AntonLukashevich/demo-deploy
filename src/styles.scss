@@ -72,6 +72,7 @@
   padding: 10px;
   border: 1px solid rgba(211, 211, 211, 0.75);
   background: whitesmoke;
+
   &-add{
     border-radius: 20%;
     &:hover {
@@ -104,6 +105,12 @@
   box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
 }
 
+.btn-back{
+  background: ghostwhite;
+  &:hover{
+    background: white;
+  }
+}
 .loading{
   margin-top: 30%;
   margin-left: 10px;

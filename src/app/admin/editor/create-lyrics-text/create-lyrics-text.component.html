@@ -3,6 +3,9 @@
             'form-wrapper-light': theme === 'light',
             'form-wrapper-green': theme === 'green'
            }">
+  <div>
+    <button mat-flat-button [routerLink]="['/admin']" class="btn btn-back" >&#8592; back</button>
+  </div>
   <form [formGroup]="textForm" (submit)="selectLyricsText()">
     <div class="form-header-wrapper">
       <label >Title</label>

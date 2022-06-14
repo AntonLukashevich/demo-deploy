@@ -1,17 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import {SwUpdate} from "@angular/service-worker";
+import {ThemeService} from "./shared/services/settings/theme.service";
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
       declarations: [
         AppComponent
       ],
-    }).compileComponents();
+      providers: [
+        {provide: SwUpdate, useValue: {}}
+      ]
+    })
   });
 
   it('should create the app', () => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {EditorService} from "../../editor.service";
 import {ThemeService} from "../../../shared/services/settings/theme.service";
+import {GENRES, ITEMS_LIST} from "../../../shared/mock-genres";
 
 
 @Component({
@@ -11,15 +12,12 @@ import {ThemeService} from "../../../shared/services/settings/theme.service";
 })
 export class CreateLyricsTextComponent implements OnInit {
   textForm: FormGroup = new FormGroup({});
-  genreList: string[];
-  itemNameList: string[];
+  genreList = GENRES;
+  itemNameList = ITEMS_LIST;
   theme: string | undefined;
 
   constructor( private editorService: EditorService,
-               private themeService: ThemeService) {
-    this.genreList = editorService.genreList;
-    this.itemNameList = editorService.itemNameList;
-  }
+               private themeService: ThemeService) {}
 
   ngOnInit(): void {
     this.themeService.getCurrentTheme().subscribe( theme => this.theme = theme);

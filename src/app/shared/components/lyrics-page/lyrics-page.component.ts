@@ -33,11 +33,10 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
               private fontService: FontService,
               private themeService: ThemeService,
               public dialog: MatDialog,
-              private router: Router,) {
-    this.root.params.subscribe(params => this.lyricId = params['id']);
-  }
+              private router: Router) {}
 
   ngOnInit(): void {
+    this.root.params.subscribe(params => this.lyricId = params['id']);
     this.fontService.getCurrentLyricFont().subscribe((font) => {
       this.font = font;
     });

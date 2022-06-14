@@ -11,7 +11,6 @@ import {environment} from "../../environments/environment";
 export class EditorService{
   lyricsText = new BehaviorSubject<any>({});
   genreList: string[] = ['Pop', 'Hip hop', 'Rock', 'Rhythm and blues', 'Soul', 'Reggae', 'Country', 'Funk'];
-  itemNameList: string[] = ['couplet', 'chorus', 'bridge', 'interlude'];
   urlAPI = environment.apiUrl;
 
   constructor(private http: HttpClient,

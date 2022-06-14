@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainLayoutComponent } from './main-layout.component';
+import {ThemeService} from "../../services/settings/theme.service";
+import {FontService} from "../../services/settings/font.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {LyricsService} from "../../services/lyrics.service";
+import {MatDialog} from "@angular/material/dialog";
 
 describe('MainLayoutComponent', () => {
   let component: MainLayoutComponent;
@@ -8,15 +13,13 @@ describe('MainLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainLayoutComponent ]
+      declarations: [ MainLayoutComponent ],
+      providers: [
+        {provide: ThemeService, useValue: {}},
+      ]
     })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(MainLayoutComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

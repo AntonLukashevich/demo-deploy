@@ -28,9 +28,8 @@ export class MainLayoutComponent implements OnInit {
   max = 0;
   showRandom = false;
   touchTime = 0;
-  constructor(private themeService: ThemeService) {
-    this.toggle = false;
-  }
+
+  constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
     this.themeService.getCurrentTheme().subscribe((theme) => {
@@ -53,9 +52,6 @@ export class MainLayoutComponent implements OnInit {
   }
 
   getRandomInt() {
-
-
-
     if (this.touchTime == 0) {
       // set first click
       this.touchTime = new Date().getTime();
@@ -76,7 +72,6 @@ export class MainLayoutComponent implements OnInit {
         this.touchTime = new Date().getTime();
       }
     }
-
   }
 
 }

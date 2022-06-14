@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {CHORD_CHAIN, POSTFIX_CHAIN} from "../../mock-chords";
 import {LyricsService} from "../../../shared/services/lyrics.service";
 import {NotificationService} from "../../../shared/services/notification.service";
+import {GENRES, ITEMS_LIST} from "../../../shared/mock-genres";
 
 @Component({
   selector: 'app-create-lyrics-chords',
@@ -15,8 +16,8 @@ import {NotificationService} from "../../../shared/services/notification.service
 })
 export class CreateLyricsChordsComponent implements OnInit {
   lyricsText: any;
-  genreList: string[];
-  itemNameList: string[];
+  genreList = GENRES;
+  itemNameList = ITEMS_LIST;
   form: FormGroup = new FormGroup({});
   chordsArray = CHORD_CHAIN;
   postfixList: string[] = POSTFIX_CHAIN;
@@ -24,10 +25,7 @@ export class CreateLyricsChordsComponent implements OnInit {
   constructor(private editorService: EditorService,
               private router: Router,
               private lyricsService: LyricsService,
-              private notification: NotificationService) {
-    this.genreList = editorService.genreList;
-    this.itemNameList = editorService.itemNameList;
-  }
+              private notification: NotificationService) {}
 
   ngOnInit(): void {
     this.editorService.getLyricsText().subscribe((text) => {

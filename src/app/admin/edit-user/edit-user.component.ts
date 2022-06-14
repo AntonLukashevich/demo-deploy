@@ -27,11 +27,10 @@ export class EditUserComponent implements OnInit, OnDestroy {
   constructor(private userService: UsersService,
               private router: ActivatedRoute,
               private route: Router,
-              private notification: NotificationService) {
-    this.idSub = this.router.params.subscribe(params => this.userId = params['id']);
-  }
+              private notification: NotificationService) {}
 
   ngOnInit(): void {
+    this.idSub = this.router.params.subscribe(params => this.userId = params['id']);
     this.userSub = this.userService.getUserById(this.userId).subscribe( (user) => {
       this.user = user;
       this.editForm.get('id')?.setValue(this.user.id);

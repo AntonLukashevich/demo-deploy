@@ -8,6 +8,7 @@ import {EditorService} from "../editor.service";
 import {Chord} from "../../interfaces/chord";
 import {LyricsLine} from "../../interfaces/lyrics-line";
 import {CHORD_CHAIN, CHORDS, POSTFIX_CHAIN} from "../mock-chords";
+import {GENRES, ITEMS_LIST} from "../../shared/mock-genres";
 
 @Component({
   selector: 'app-edit-lyrics',
@@ -18,23 +19,21 @@ export class EditLyricsComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   // @ts-ignore
   lyrics: Lyrics;
-  genreList: string[];
-  itemNameList: string[];
+  genreList = GENRES;
+  itemNameList = ITEMS_LIST;
   chordsArray = CHORD_CHAIN;
   postfixList: string[] = POSTFIX_CHAIN;
 
   constructor(private lyricsService: LyricsService,
               private router: ActivatedRoute,
               private editorService: EditorService,
-              private route: Router) {
-    this.genreList = editorService.genreList;
-    this.itemNameList = editorService.itemNameList;
+              private route: Router) {}
+
+  ngOnInit(): void {
     this.router.params.subscribe(params => {
       this.lyrics = this.lyricsService.getLyricsById(params['id']);
     });
-  }
 
-  ngOnInit(): void {
     this.form = new FormGroup({
       id: new FormControl(this.lyrics.id),
       name: new FormControl(this.lyrics.name),

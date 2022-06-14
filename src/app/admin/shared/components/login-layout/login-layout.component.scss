@@ -12,11 +12,12 @@
   }
 
   &-dark{
-    background: #333333;;
+    background: #333333;
+    color: white;
   }
 
   &-green{
-    background: whitesmoke;
+    background: ghostwhite;
   }
 
 }
@@ -32,7 +33,7 @@
 
 .login-field{
   display: block;
-  width: 270px;
+  width: 50vh;
   max-width: 330px;
   padding: 6px 16px;
   justify-content: center;
@@ -63,7 +64,8 @@
     box-shadow: 0px 3px 1px -2px rgb(3 169 244 / 20%), 0px 2px 2px 0px rgb(3 169 244 / 14%), 0px 1px 5px 0px rgb(3 169 244 / 12%);
   }
   &-green{
-    border: 3px solid lightgray;
+    border: 2px solid black;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
   }
 }
 
@@ -71,7 +73,7 @@
   display: inline-flex;
   justify-content: center;
   position: relative;
-  width: 270px;
+  width: 50vh;
   max-width: 330px;
   margin-top: 10px;
   box-sizing: border-box;
@@ -104,6 +106,7 @@
   &-green{
     color: white;
     background: rgba(27, 87, 27, 0.85);
+    border: 2px solid black;
   }
 }
 

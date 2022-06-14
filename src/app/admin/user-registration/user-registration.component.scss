@@ -23,8 +23,8 @@
 
 .reg-field{
   display: block;
-  width: 340px;
-  max-width: 400px;
+  width: 50vh;
+  max-width: 330px;
   padding: 6px 16px;
   justify-content: center;
   position: relative;
@@ -63,8 +63,8 @@
   display: inline-flex;
   justify-content: center;
   position: relative;
-  width: 340px;
-  max-width: 400px;
+  width: 50vh;
+  max-width: 330px;
   margin-top: 10px;
   box-sizing: border-box;
   cursor: pointer;

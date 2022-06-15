@@ -12,10 +12,9 @@ import {NotificationService} from "../../../../shared/services/notification.serv
   styleUrls: ['./login-layout.component.scss']
 })
 export class LoginLayoutComponent implements OnInit {
-  loginForm: FormGroup = new FormGroup({});
-  submitted = false;
-  theme: string | undefined;
-  message: string = '';
+  public loginForm: FormGroup = new FormGroup({});
+  public submitted = false;
+  public theme: string | undefined;
 
   constructor( private themeService: ThemeService,
                public authService: AuthService,
@@ -30,7 +29,7 @@ export class LoginLayoutComponent implements OnInit {
     this.themeService.getCurrentTheme().subscribe((theme) => this.theme = theme)
   }
 
-  submit(){
+  public submit(){
     if(this.loginForm.invalid){
       return;
     }

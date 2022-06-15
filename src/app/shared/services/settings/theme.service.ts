@@ -14,11 +14,11 @@ export class ThemeService{
     }
   }
 
-  getCurrentTheme(): BehaviorSubject<string>{
+  public getCurrentTheme(): BehaviorSubject<string>{
     return this.currentTheme;
   }
 
-  setCurrentTheme(theme: string){
+  public setCurrentTheme(theme: string){
     this.currentTheme.next(theme);
     localStorage.setItem('user-current-theme', theme);
   }

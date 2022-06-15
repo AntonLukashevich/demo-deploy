@@ -11,10 +11,10 @@ import {GENRES, ITEMS_LIST} from "../../../shared/mock-genres";
   styleUrls: ['./../editor.scss']
 })
 export class CreateLyricsTextComponent implements OnInit {
-  textForm: FormGroup = new FormGroup({});
-  genreList = GENRES;
-  itemNameList = ITEMS_LIST;
-  theme: string | undefined;
+  public textForm: FormGroup = new FormGroup({});
+  public genreList = GENRES;
+  public itemNameList = ITEMS_LIST;
+  public theme: string | undefined;
 
   constructor( private editorService: EditorService,
                private themeService: ThemeService) {}
@@ -35,12 +35,12 @@ export class CreateLyricsTextComponent implements OnInit {
     })
   }
 
-  selectLyricsText(){
+  public selectLyricsText(){
     console.log(this.textForm.value);
     this.editorService.selectLyricsText(this.textForm.value);
   }
 
-  addItemControl() {
+  public addItemControl() {
     (this.textForm.get('items') as FormArray).push(
       new FormGroup({
         name: new FormControl(null, Validators.required),
@@ -50,11 +50,11 @@ export class CreateLyricsTextComponent implements OnInit {
     )
   }
 
-  removeItemControl(index: number){
+  public removeItemControl(index: number){
     (this.textForm.get('items') as FormArray).controls.splice(index, 1);
   }
 
-  getItems(): any{
+  public getItems(): any{
     return (this.textForm.get('items') as FormArray).controls;
   }
 }

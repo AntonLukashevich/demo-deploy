@@ -15,12 +15,12 @@ import {GENRES, ITEMS_LIST} from "../../../shared/mock-genres";
   styleUrls: ['./../editor.scss']
 })
 export class CreateLyricsChordsComponent implements OnInit {
-  lyricsText: any;
-  genreList = GENRES;
-  itemNameList = ITEMS_LIST;
-  form: FormGroup = new FormGroup({});
-  chordsArray = CHORD_CHAIN;
-  postfixList: string[] = POSTFIX_CHAIN;
+  private lyricsText: any;
+  public genreList = GENRES;
+  public itemNameList = ITEMS_LIST;
+  public form: FormGroup = new FormGroup({});
+  public chordsArray = CHORD_CHAIN;
+  public postfixList: string[] = POSTFIX_CHAIN;
 
   constructor(private editorService: EditorService,
               private router: Router,
@@ -41,7 +41,7 @@ export class CreateLyricsChordsComponent implements OnInit {
     this.prepareBeforeAddChords();
   }
 
-  selectLyrics() {
+  public selectLyrics() {
     this.parseChords();
     this.editorService.createLyrics(this.form.value).subscribe( (res) => {
       console.log(res);
@@ -53,15 +53,15 @@ export class CreateLyricsChordsComponent implements OnInit {
 
   }
 
-  getItems(): any {
+  public getItems(): any {
     return (this.form.get('items') as FormArray).controls;
   }
 
-  getLines(index: number): any {
+  public getLines(index: number): any {
     return (((this.form.get('items') as FormArray).controls[index] as FormGroup).get('lines') as FormArray).controls;
   }
 
-  addItemControl() {
+  public addItemControl() {
     (this.form.get('items') as FormArray).push(
       new FormGroup({
           name: new FormControl(null, Validators.required),
@@ -71,7 +71,7 @@ export class CreateLyricsChordsComponent implements OnInit {
     )
   }
 
-  addLineControl(index: number){
+  public addLineControl(index: number){
     ((this.form.get('items') as FormArray).controls[index].get('lines') as FormArray).push(
       new FormGroup({
           chords: new FormControl(null),
@@ -80,11 +80,11 @@ export class CreateLyricsChordsComponent implements OnInit {
     );
   }
 
-  removeItemControl(index: number) {
+  public removeItemControl(index: number) {
     (this.form.get('items') as FormArray).controls.splice(index, 1);
   }
 
-  removeLinesControl(item_index: number, lines_index: number) {
+  public removeLinesControl(item_index: number, lines_index: number) {
     (((this.form.get('items') as FormArray).controls[item_index] as FormGroup).get('lines') as FormArray).controls.splice(lines_index,1)
   }
 
@@ -109,7 +109,7 @@ export class CreateLyricsChordsComponent implements OnInit {
     })
   }
 
-  parseChords() {
+  private parseChords() {
     this.form.value.items.forEach((item: LyricsItem) => {
       item.lines.forEach((line) => {
         let chords: Chord[] = [];

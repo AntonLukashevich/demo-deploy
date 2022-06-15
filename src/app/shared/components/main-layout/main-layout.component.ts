@@ -20,14 +20,14 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class MainLayoutComponent implements OnInit {
   // @ts-ignore
   @ViewChild('drawer') sidenav: MatSidenav;
-  theme: string = 'light';
+  public theme: string = 'light';
   mode = new FormControl('over');
-  toggle = false;
-  animationState = false;
+  public toggle = false;
+  public animationState = false;
   private localStorageLyricsList = 'lyricsList';
-  max = 0;
-  showRandom = false;
-  touchTime = 0;
+  public max = 0;
+  public showRandom = false;
+  private touchTime = 0;
 
   constructor(private themeService: ThemeService) {}
 
@@ -37,21 +37,21 @@ export class MainLayoutComponent implements OnInit {
     });
   }
 
-  closeSidebar() {
+  public closeSidebar() {
     // @ts-ignore
     this.toggle = false;
     this.sidenav.close().then(r => {});
   }
 
-  setToggle(){
+  public setToggle(){
     this.toggle = !this.toggle;
   }
 
-  animate() {
+  public animate() {
     this.animationState = !this.animationState;
   }
 
-  getRandomInt() {
+  public getRandomInt() {
     if (this.touchTime == 0) {
       // set first click
       this.touchTime = new Date().getTime();
@@ -73,5 +73,4 @@ export class MainLayoutComponent implements OnInit {
       }
     }
   }
-
 }

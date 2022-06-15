@@ -18,16 +18,15 @@ import {MatPaginator} from "@angular/material/paginator";
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   public lyricsList: Lyrics[] = [];
-  users: User[] = [];
-  searchStr: string = '';
-  tagFilter: string[] = [];
-  genreList = GENRES;
-  lyricsListSub: Subscription | undefined ;
-  deleteLyricsSub: Subscription | undefined;
-  deleteUserSub: Subscription | undefined;
-  theme: string | undefined;
+  public users: User[] = [];
+  public searchStr: string = '';
+  public tagFilter: string[] = [];
+  public genreList = GENRES;
+  private lyricsListSub: Subscription | undefined ;
+  private deleteLyricsSub: Subscription | undefined;
+  private deleteUserSub: Subscription | undefined;
+  public theme: string | undefined;
   public endSession: Date | undefined;
-  title: string = '';
 
   constructor(private lyricsService: LyricsService,
               private auth: AuthService,
@@ -60,11 +59,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  refreshLyricsList(){
+  public refreshLyricsList(){
     this.lyricsService.refreshLyricsList();
   }
 
-  removeLyrics(id: string | any, name: string) {
+  public removeLyrics(id: string | any, name: string) {
     if(confirm("Are you sure to delete " + name)){
       this.deleteLyricsSub = this.lyricsService.removeLyrics(id).subscribe( () => {
         this.lyricsList = this.lyricsList.filter(list => list.id !== id);
@@ -74,7 +73,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  removeUser(id: string | any, email: string) {
+  public removeUser(id: string | any, email: string) {
     if(confirm("Are you sure to delete " + email)) {
       this.deleteUserSub = this.usersService.removeUser(id).subscribe(() => {
         this.users = this.users.filter(list => list.id !== id);
@@ -83,20 +82,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  getAuthTokenExp(){
+  private getAuthTokenExp(){
     this.endSession = this.auth.getAuthTokenExp();
     // @ts-ignore
     this.endSession = new Date(Date.parse(this.endSession));
   }
 
-  logout(event: Event) {
+  public logout(event: Event) {
     event.preventDefault();
     this.auth.logout();
     this.notification.showInfo('session has been finished', 'Logout')
     this.router.navigate(['admin' + '/login']);
   }
 
-  getEndSession(){
+  public getEndSession(){
     // @ts-ignore
     return this.endSession.toLocaleString();
   }

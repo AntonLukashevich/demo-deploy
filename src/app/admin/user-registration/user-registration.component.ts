@@ -12,9 +12,9 @@ import {ThemeService} from "../../shared/services/settings/theme.service";
   styleUrls: ['./user-registration.component.scss']
 })
 export class UserRegistrationComponent implements OnInit {
-  form: FormGroup = new FormGroup({});
-  submitted = false;
-  theme: string | undefined;
+  public form: FormGroup = new FormGroup({});
+  public submitted = false;
+  public theme: string | undefined;
 
   constructor(private usersService: UsersService,
               private router: Router,
@@ -30,7 +30,7 @@ export class UserRegistrationComponent implements OnInit {
     this.themeService.getCurrentTheme().subscribe((theme) => this.theme = theme);
   }
 
-  submit() {
+  public submit() {
     if(this.form.invalid){
       return;
     }

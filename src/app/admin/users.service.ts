@@ -11,23 +11,23 @@ export class UsersService {
   constructor(private http: HttpClient) {
   }
 
-  sign_up(userParams: User): Observable<User>{
+  public sign_up(userParams: User): Observable<User>{
     return this.http.post<User>(this.url + '/api/users', userParams);
   }
 
-  getAllUsers():Observable<User[]>{
+  public getAllUsers():Observable<User[]>{
     return this.http.get<User[]>(`${this.url}/api/users`);
   }
 
-  getUserById(id: any):Observable<User>{
+  public getUserById(id: any):Observable<User>{
     return this.http.get<User>(`${this.url}/api/users/${id}`);
   }
 
-  updateUser(user: User): Observable<User>{
+  public updateUser(user: User): Observable<User>{
     return this.http.patch<User>(`${this.url}/api/users/${user.id}`, user)
   }
 
-  removeUser(id: string): Observable<void>{
+  public removeUser(id: string): Observable<void>{
     return this.http.delete<void>(`${this.url}/api/users/${id}`)
   }
 }

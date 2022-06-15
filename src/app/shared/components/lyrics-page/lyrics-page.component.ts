@@ -16,18 +16,18 @@ import {CHORD_CHAIN} from "../../../admin/mock-chords";
   styleUrls: ['./lyrics-page.component.scss']
 })
 export class LyricsPageComponent implements OnInit, OnDestroy  {
-  cordPosition = 0;
-  showChords = false;
-  lyricId: any;
-  chordsArray = CHORD_CHAIN;
-  fontSize: number | undefined;
-  fontSizeChord: number | undefined;
+  private cordPosition = 0;
+  public showChords = false;
+  private lyricId: any;
+  private chordsArray = CHORD_CHAIN;
+  public fontSize: number | undefined;
+  private fontSizeChord: number | undefined;
   // @ts-ignore
-  lyric: Lyrics;
-  font: string | undefined;
-  theme: string = 'light';
+  public lyric: Lyrics;
+  public font: string | undefined;
+  public theme: string = 'light';
+  private lyricsSub: Subscription | undefined;
 
-  lyricsSub: Subscription | undefined;
   constructor(private root: ActivatedRoute,
               private lyricsService: LyricsService,
               private fontService: FontService,
@@ -35,7 +35,7 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
               public dialog: MatDialog,
               private router: Router) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.root.params.subscribe(params => this.lyricId = params['id']);
     this.fontService.getCurrentLyricFont().subscribe((font) => {
       this.font = font;
@@ -48,25 +48,25 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
     this.themeService.getCurrentTheme().subscribe( theme => this.theme = theme);
   }
 
-  toggle() {
+  public toggle() {
     this.showChords = !this.showChords;
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     if(this.lyricsSub){
       this.lyricsSub.unsubscribe();
     }
   }
 
-  increaseTon() {
+  public increaseTon() {
     this.cordPosition++;
   }
 
-  decreaseTon() {
+  public decreaseTon() {
     this.cordPosition--;
   }
 
-  convertLine(chords: Chord[]) {
+  public convertLine(chords: Chord[]) {
     const line = chords.reduce((acc, chord) => {
       const length = this.chordsArray.length;
       const pos = ((chord.position + this.cordPosition) % length + length) % length;
@@ -75,21 +75,21 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
     return line;
   }
 
-  openDialog() {
+  public openDialog() {
     this.dialog.open(LyricInfoComponent, { data: {comment: this.lyric.comment}});
   }
 
-  nextLyrics(currentLyricsId: number){
+  public nextLyrics(currentLyricsId: number){
     const nextId = this.lyricsService.nextLyricsId(currentLyricsId);
     this.redirectTo('lyrics/' + nextId);
   }
 
-  previousLyrics(currentLyricsId: number){
+  public previousLyrics(currentLyricsId: number){
     const previousId = this.lyricsService.previousLyricsId(currentLyricsId);
     this.redirectTo('lyrics/' + previousId);
   }
 
-  redirectTo(uri:string){
+  private redirectTo(uri:string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
       this.router.navigate([uri]));
   }

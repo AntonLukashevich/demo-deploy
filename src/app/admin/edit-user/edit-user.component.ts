@@ -13,11 +13,11 @@ import {NotificationService} from "../../shared/services/notification.service";
 })
 export class EditUserComponent implements OnInit, OnDestroy {
   // @ts-ignore
-  user: User;
-  userId: number | undefined;
-  idSub: Subscription | undefined;
-  userSub: Subscription | undefined;
-  editForm: FormGroup = new FormGroup({
+  private user: User;
+  private userId: number | undefined;
+  public idSub: Subscription | undefined;
+  public userSub: Subscription | undefined;
+  public editForm: FormGroup = new FormGroup({
     id: new FormControl(null),
     email: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required),
@@ -40,7 +40,7 @@ export class EditUserComponent implements OnInit, OnDestroy {
     });
   }
 
-  updateUser(){
+  public updateUser(){
     this.userService.updateUser(this.editForm.value).subscribe();
     this.notification.showSuccess('user has been updated', 'Updated')
     this.route.navigate(['/admin', 'dashboard']);

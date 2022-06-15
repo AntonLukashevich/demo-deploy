@@ -24,20 +24,20 @@ export class FontService{
     }
   }
 
-  getCurrentLyricFont(): BehaviorSubject<string>{
+  public getCurrentLyricFont(): BehaviorSubject<string>{
     return this.currentLyricsFont;
   }
 
-  setCurrentLyricsFont(font: string){
+  public setCurrentLyricsFont(font: string){
     this.currentLyricsFont.next(font);
     localStorage.setItem('user-current-lyrics-font', font);
   }
 
-  getCurrentFontSize():BehaviorSubject<number>{
+  public getCurrentFontSize():BehaviorSubject<number>{
     return this.currentFontSize;
   }
 
-  setCurrentFontSize(size: number){
+  public setCurrentFontSize(size: number){
     this.currentFontSize.next(size);
     localStorage.setItem(this.localStorageForLyricFontSize, String(size));
   }

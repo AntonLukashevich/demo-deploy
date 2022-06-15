@@ -19,7 +19,7 @@ export class LyricsService {
               private notification: NotificationService) {
   }
 
-  getAllLyricsList(): Observable<Lyrics[]> {
+  public getAllLyricsList(): Observable<Lyrics[]> {
     this.http.get<Lyrics[]>(this.url + '/api/lyrics')
       .pipe(
         tap((result: Lyrics[]) => {
@@ -30,7 +30,7 @@ export class LyricsService {
     return this.listLyrics;
   }
 
-  getLyricsById(id: number): any {
+  public getLyricsById(id: number): any {
     if (localStorage.getItem(this.localStorageLyricsList)) {
       const lyricsList = JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)));
       return lyricsList.find((item: any) => item.id.toString() === id.toString());
@@ -42,16 +42,16 @@ export class LyricsService {
     }
   }
 
-  updateLyrics(lyrics: Lyrics): Observable<Lyrics> {
+  public updateLyrics(lyrics: Lyrics): Observable<Lyrics> {
     console.log(lyrics);
     return this.http.patch<Lyrics>(`${this.url}/api/lyrics/${lyrics.id}`, lyrics)
   }
 
-  removeLyrics(id: string): Observable<void> {
+  public removeLyrics(id: string): Observable<void> {
     return this.http.delete<void>(`${this.url}/api/lyrics/${id}`)
   }
 
-  refreshLyricsList() {
+  public refreshLyricsList() {
     if (localStorage.getItem(this.localStorageLyricsList)) {
       localStorage.removeItem('localStorageLyricsList')
     }
@@ -65,16 +65,7 @@ export class LyricsService {
       ).subscribe();
   }
 
-  isLyrics(nextId: number) {
-    if (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))
-      .find((item: any, index: number) => item.id.toString() === nextId.toString())) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  nextLyricsId(currentId: number) {
+  public nextLyricsId(currentId: number) {
     const currentIndex = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))
       .findIndex((item: any, index: number) => item.id.toString() === currentId.toString()));
     const lengthList = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))).length;
@@ -86,7 +77,7 @@ export class LyricsService {
     }
   }
 
-  previousLyricsId(currentId: number) {
+  public previousLyricsId(currentId: number) {
     const currentIndex = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))
       .findIndex((item: any, index: number) => item.id.toString() === currentId.toString()));
     const lengthList = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))).length;

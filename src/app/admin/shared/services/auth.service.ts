@@ -9,7 +9,7 @@ import {environment} from "../../../../environments/environment";
   providedIn: 'root'
 })
 export class AuthService{
-  uri = environment.apiUrl;
+  private uri = environment.apiUrl;
   public error$: BehaviorSubject<string> = new BehaviorSubject<string>('oh no');
 
   constructor(private http: HttpClient) {}
@@ -24,7 +24,7 @@ export class AuthService{
     return <string>localStorage.getItem('user-auth-token');
   }
 
-  login(user: User): Observable<any> {
+  public login(user: User): Observable<any> {
     user.returnSecureToken = true;
     return this.http.post(this.uri + '/auth_user', user)
       .pipe(
@@ -33,11 +33,11 @@ export class AuthService{
       );
   }
 
-  logout() {
+  public logout() {
     this.setToken(null);
   }
 
-  getAuthTokenExp(): any{
+  public getAuthTokenExp(): any{
     if(localStorage.getItem('auth-token-exp')){
       return localStorage.getItem('auth-token-exp');
     } else {
@@ -45,7 +45,7 @@ export class AuthService{
     }
   }
 
-  isAuthenticated(): boolean {
+  public isAuthenticated(): boolean {
     return !!this.token
   }
 

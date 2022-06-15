@@ -12,13 +12,13 @@ import {GENRES} from "../../mock-genres";
 })
 export class HomeComponent implements OnInit, OnDestroy {
   public lyricsList: Lyrics[] = [];
-  lyricsListSub: Subscription | undefined ;
-  theme: string = 'light';
-  searchTerm: string = '';
-  tagFilter: string[] = [];
-  reverseDirection = false;
+  private lyricsListSub: Subscription | undefined ;
+  public theme: string = 'light';
+  public searchTerm: string = '';
+  public tagFilter: string[] = [];
+  private reverseDirection = false;
   private localStorageLyricsList = 'lyricsList';
-  genreList = GENRES;
+  public genreList = GENRES;
 
   constructor(private lyricsService: LyricsService,
               private themeService: ThemeService) {
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  sortByName(){
+  public sortByName(){
     this.lyricsList.sort(function (a, b) {
       if (a.name.toLowerCase() > b.name.toLowerCase()) {
         return 1;
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.reverseDirection = !this.reverseDirection;
   }
 
-  sortById(){
+  public sortById(){
     this.lyricsList.sort(function (a, b) {
       if (a.id > b.id) {
         return 1;
@@ -75,5 +75,4 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     this.reverseDirection = !this.reverseDirection;
   }
-
 }

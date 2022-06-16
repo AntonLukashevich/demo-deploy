@@ -75,4 +75,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     this.reverseDirection = !this.reverseDirection;
   }
+
+  setSearch(search: string | any): void{
+    this.searchTerm = search;
+  }
+
+  setTagsFilter(tags: string | any): void{
+    this.tagFilter = tags;
+  }
 }

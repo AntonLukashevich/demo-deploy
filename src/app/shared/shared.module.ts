@@ -20,33 +20,37 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatButtonModule} from "@angular/material/button";
 import {SearchFilterPipe} from "../pipes/search-filter.pipe";
 import {TagFilterPipe} from "../pipes/tag-filter.pipe";
+import {SearchFormComponent} from "./components/searchForm/searchForm.component";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
     SearchFilterPipe,
-    TagFilterPipe
+    TagFilterPipe,
+    SearchFormComponent
   ],
-  imports: [
-    HttpClientModule,
-    MatDialogModule,
-    MatSliderModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatListModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatCardModule,
-    MatInputModule,
-    MatRadioModule,
-    MatSlideToggleModule,
-    MatTabsModule,
-    MatSelectModule,
-    MatTableModule,
-    MatCheckboxModule,
-  ],
+    imports: [
+        HttpClientModule,
+        MatDialogModule,
+        MatSliderModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatListModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatCardModule,
+        MatInputModule,
+        MatRadioModule,
+        MatSlideToggleModule,
+        MatTabsModule,
+        MatSelectModule,
+        MatTableModule,
+        MatCheckboxModule,
+        CommonModule,
+    ],
   exports: [
     SearchFilterPipe,
     TagFilterPipe,
@@ -69,6 +73,9 @@ import {TagFilterPipe} from "../pipes/tag-filter.pipe";
     MatSelectModule,
     MatTableModule,
     MatCheckboxModule,
+    SearchFormComponent,
   ]
 })
 export class SharedModule {}
+
+

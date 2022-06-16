@@ -11,26 +11,14 @@
       <div *ngIf="lyricsList.length; else loading"
            class="tab-wrapper">
         <div class="tools-wrapper">
-          <button mat-button [matMenuTriggerFor]="menu" class="btn-common btn">
-            <mat-icon>filter_list</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu" xPosition="before">
-            <button mat-menu-item [matMenuTriggerFor]="tags">Tags</button>
-          </mat-menu>
-          <mat-menu #tags="matMenu">
-            <mat-selection-list #genres [(ngModel)]="tagFilter">
-              <mat-list-option *ngFor="let genre of genreList"
-                               [value]="genre"
-                               (click)="$event.stopPropagation()"
-              >
-                {{genre}}
-              </mat-list-option>
-            </mat-selection-list>
-          </mat-menu>
-          <input type="text" placeholder="Find..." [(ngModel)]="searchStr">
-          <button mat-button class="btn-common btn" [routerLink]="['/admin', 'lyrics' , 'create_text']">
-            <mat-icon>note_add</mat-icon>
-          </button>
+          <div style="width: 100%; border-radius: 3px">
+            <app-search-home (changeSearch)="setSearch($event)" (changeTagFilter)="setTagsFilter($event)"></app-search-home>
+          </div>
+<!--          <div style="height: 40px">-->
+            <button mat-button class="btn-common btn" [routerLink]="['/admin', 'lyrics' , 'create_text']">
+              <mat-icon>note_add</mat-icon>
+            </button>
+<!--          </div>-->
         </div>
         <div style="overflow: auto;">
           <table class="lyrics-table" cellspacing="0" style="">

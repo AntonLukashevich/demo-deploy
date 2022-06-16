@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private deleteUserSub: Subscription | undefined;
   public theme: string | undefined;
   public endSession: Date | undefined;
-
+  searchTerm: string = '';
   constructor(private lyricsService: LyricsService,
               private auth: AuthService,
               private router: Router,
@@ -98,5 +98,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public getEndSession(){
     // @ts-ignore
     return this.endSession.toLocaleString();
+  }
+
+  setSearch(search: string | any): void{
+    this.searchTerm = search;
+  }
+
+  setTagsFilter(tags: string | any): void{
+    this.tagFilter = tags;
   }
 }

@@ -16,6 +16,8 @@
 }
 
 .dashboard-wrapper{
+  overflow-y: hidden;
+  height: calc(100vh - 64px);
   &-light{
     color: black;
     background: rgba(255, 255, 255, 0.8);
@@ -63,6 +65,9 @@
   }
 
   tbody{
+    height: 200px;
+    width: 100%;
+
     td{
       padding: 5px;
       border-bottom: 1px solid lightgray;
@@ -112,4 +117,27 @@
     font-size: 17px; display: flex;
     align-items: center;
   }
+}
+
+
+.fixed_header{
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.fixed_header tbody{
+  overflow: auto;
+  height: 610px;
+}
+
+.fixed_header thead {
+  background: black;
+  color:#fff;
+}
+
+.fixed_header th, .fixed_header td {
+  padding: 5px;
+  text-align: left;
+  width: 200px;
 }

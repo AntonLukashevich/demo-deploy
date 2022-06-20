@@ -15,10 +15,17 @@ import {UsersService} from "./users.service";
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {LyricsPanelComponent} from "./dashboard/lyrics-panel/lyrics-panel.component";
+import {UsersPanelComponent} from "./dashboard/users-panel/users-panel.component";
+import {SettingsPanelComponent} from "./dashboard/settings-panel/settings-panel.component";
+
 
 @NgModule({
   declarations: [
     DashboardComponent,
+    LyricsPanelComponent,
+    UsersPanelComponent,
+    SettingsPanelComponent,
     AdminLayoutComponent,
     LoginLayoutComponent,
     CreateLyricsTextComponent,

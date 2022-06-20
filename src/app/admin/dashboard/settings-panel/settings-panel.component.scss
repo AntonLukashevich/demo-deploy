@@ -1,0 +1,9 @@
+.logout-tab{
+  display: flex;
+  justify-content: space-between;
+
+  .session-time{
+    font-size: 17px; display: flex;
+    align-items: center;
+  }
+}

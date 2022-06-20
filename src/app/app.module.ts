@@ -67,10 +67,11 @@ export class LyricsHammerConfig extends HammerGestureConfig{
     }
   ],
 
-  exports: [
-    FocusDirective,
-    ThemeDirective,
-  ],
+    exports: [
+        FocusDirective,
+        ThemeDirective,
+        SettingsComponent,
+    ],
   bootstrap: [AppComponent]
 })
 

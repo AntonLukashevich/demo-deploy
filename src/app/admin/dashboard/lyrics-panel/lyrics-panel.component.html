@@ -1,0 +1,57 @@
+<div *ngIf="lyricsList.length; else loading"
+     class="tab-wrapper">
+  <div class="tools-wrapper" style="overflow-y: hidden">
+    <div style="width: 100%; border-radius: 3px">
+      <app-search-home (changeSearch)="setSearch($event)" (changeTagFilter)="setTagsFilter($event)"></app-search-home>
+    </div>
+    <!--          <div style="height: 40px">-->
+    <button mat-button class="btn-common btn" [routerLink]="['/admin', 'lyrics' , 'create_text']">
+      <mat-icon>note_add</mat-icon>
+    </button>
+    <!--          </div>-->
+  </div>
+  <div style="overflow: auto;">
+    <table class="lyrics-table" cellspacing="0" style="">
+      <thead>
+      <tr class="lyrics-header">
+        <th>
+          <button class="btn-common" (click)="refreshLyricsList()">
+            <mat-icon>refresh</mat-icon>
+          </button>
+        </th>
+        <th style="text-align: right">ID</th>
+        <th style="text-align: left">Title</th>
+        <th style="text-align: left">Genres</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of (lyricsList | searchFilter:searchTerm | tagFilter: tagFilter);let idx = index"
+          class="row"
+      >
+        <td style="text-align: center">{{idx + 1}}</td>
+        <td style="text-align: right; color: gray"> {{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item?.tags}}</td>
+        <td class="action-cell">
+          <button mat-icon-button
+                  class="btn-common btn"
+                  [routerLink]="['/admin', 'lyrics', item.id, 'edit']"
+          > <mat-icon>edit</mat-icon></button>
+          <button (click)="removeLyrics(item.id, item.name);"
+                  mat-icon-button
+                  class="btn-common btn"
+          > <mat-icon>delete_forever</mat-icon></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="loading">
+    <p style="font-size: 18px; font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif">shukau, zaraz use budze</p>
+    <img src="../../../assets/icons/common/loading.png" width="100" height="100" alt="lorem">
+  </div>
+</ng-template>

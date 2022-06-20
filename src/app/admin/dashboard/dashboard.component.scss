@@ -16,8 +16,8 @@
 }
 
 .dashboard-wrapper{
-  overflow-y: hidden;
-  height: calc(100vh - 64px);
+  //overflow-y: hidden;
+  //height: calc(100vh - 64px);
   &-light{
     color: black;
     background: rgba(255, 255, 255, 0.8);
@@ -65,9 +65,6 @@
   }
 
   tbody{
-    height: 200px;
-    width: 100%;
-
     td{
       padding: 5px;
       border-bottom: 1px solid lightgray;
@@ -79,65 +76,8 @@
   }
 }
 
-.tools-wrapper{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  input {
-    width: 70%;
-    height: 26px;
-    outline: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-radius: 3px;
-    font-size: 22px;
-    padding: 5px;
-    padding-left: 30px;
-    &:focus {
-      font-size: 22px;
-      //width: calc(100vw - 24px);
-      margin: 0;
-      border-radius: 3px;
-      box-shadow: 1px 1px 3px 1px rgb(33, 145, 189);
-    }
-  }
-}
-
 .btn{
   border: 2px solid #7b1fa2;
   line-height: 0;
 }
 
-.logout-tab{
-  display: flex;
-  justify-content: space-between;
-
-  .session-time{
-    font-size: 17px; display: flex;
-    align-items: center;
-  }
-}
-
-
-.fixed_header{
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: collapse;
-}
-
-.fixed_header tbody{
-  overflow: auto;
-  height: 610px;
-}
-
-.fixed_header thead {
-  background: black;
-  color:#fff;
-}
-
-.fixed_header th, .fixed_header td {
-  padding: 5px;
-  text-align: left;
-  width: 200px;
-}

@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {NotificationService} from "../../shared/services/notification.service";
+import {ThemeService} from "../../shared/services/settings/theme.service";
 
 @Component({
   selector: 'app-edit-user',
@@ -12,6 +13,7 @@ import {NotificationService} from "../../shared/services/notification.service";
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit, OnDestroy {
+  public theme: string | undefined;
   // @ts-ignore
   private user: User;
   private userId: number | undefined;
@@ -27,7 +29,8 @@ export class EditUserComponent implements OnInit, OnDestroy {
   constructor(private userService: UsersService,
               private router: ActivatedRoute,
               private route: Router,
-              private notification: NotificationService) {}
+              private notification: NotificationService,
+              private themeService: ThemeService) {}
 
   ngOnInit(): void {
     this.idSub = this.router.params.subscribe(params => this.userId = params['id']);
@@ -38,6 +41,7 @@ export class EditUserComponent implements OnInit, OnDestroy {
       this.editForm.get('password')?.setValue(this.user.password);
       this.editForm.get('username')?.setValue(this.user.username);
     });
+    this.themeService.getCurrentTheme().subscribe((theme) => this.theme = theme);
   }
 
   public updateUser(){

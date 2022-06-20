@@ -1,10 +1,18 @@
-<div class="reg-wrapper">
+<div class="reg-wrapper" [ngClass]="{
+    'reg-wrapper-light': theme === 'light',
+    'reg-wrapper-dark': theme === 'dark',
+    'reg-wrapper-green': theme === 'green'
+  }">
   <h2>Edit User</h2>
   <form class="card"  [formGroup]="editForm" (ngSubmit)="updateUser()">
     <div class="form-control"
          [ngClass]="{ invalid: editForm.get('email')?.touched && editForm.get('email')?.invalid }"
     >
-      <input id="email" type="email" formControlName="email" class="reg-field" placeholder="Email">
+      <input id="email" type="email" formControlName="email" class="reg-field" placeholder="Email" [ngClass]="{
+                'reg-field-light': theme === 'light',
+                'reg-field-dark': theme === 'dark',
+                'reg-field-green': theme === 'green'
+      }">
       <div
         *ngIf="editForm.get('email')?.touched && editForm.get('email')?.invalid"
         class="validation">
@@ -15,7 +23,11 @@
     <div class="form-control"
          [ngClass]="{ invalid: editForm.get('password')?.touched && editForm.get('password')?.invalid }"
     >
-      <input id="password" type="password" formControlName="password" class="reg-field" placeholder="Password">
+      <input id="password" type="password" formControlName="password" class="reg-field" placeholder="Password" [ngClass]="{
+                'reg-field-light': theme === 'light',
+                'reg-field-dark': theme === 'dark',
+                'reg-field-green': theme === 'green'
+      }">
       <div
         *ngIf="editForm.get('password')?.touched && editForm.get('password')?.invalid"
         class="validation">
@@ -27,7 +39,11 @@
     <div class="form-control"
          [ngClass]="{ invalid: editForm.get('username')?.touched && editForm.get('username')?.invalid }"
     >
-      <input id="username" type="text" formControlName="username" class="reg-field" placeholder="Username">
+      <input id="username" type="text" formControlName="username" class="reg-field" placeholder="Username" [ngClass]="{
+                'reg-field-light': theme === 'light',
+                'reg-field-dark': theme === 'dark',
+                'reg-field-green': theme === 'green'
+      }">
       <div
         *ngIf="editForm.get('username')?.touched && editForm.get('username')?.invalid"
         class="validation">
@@ -36,7 +52,11 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-dark">edit</button>
+    <button type="submit" class="btn btn-dark" [ngClass]="{
+                'btn-light': theme === 'light',
+                'btn-dark': theme === 'dark',
+                'btn-green': theme === 'green'
+            }">edit</button>
   </form>
 </div>
 

@@ -1,53 +1,36 @@
 <div>
-<div class="wrapper"
->
-  <div class="options-wrapper" [appTheme]="theme"
-       (swipeleft)="nextLyrics(lyric.id)"
-       (swiperight)="previousLyrics(lyric.id)"
-       >
-  <span *ngIf="showChords" >
-    <button mat-icon-button (click)="decreaseTon()">
-      <img src="../../../../assets/icons/common/minus.png" width="22" height="22" alt="-">
-    </button>
-        <strong>{{ lyric.tonality}}</strong>
-    <button mat-icon-button (click)="increaseTon()">
-      <img src="../../../../assets/icons/common/add.png" width="22" height="22" alt="+">
-    </button>
-      <button mat-icon-button>
-        <img src="../../../../assets/icons/common/info.png" (click)="openDialog()" width="22" height="22" alt="I">
-  </button>
-  </span>
-    <button mat-icon-button (click)="toggle()">
-      <img src="../../../../assets/icons/common/icon-chords-settings.png" width="22" height="22" alt="chords" alt="#">
-    </button>
-  </div>
-  <ol class="lyrics-wrapper" [ngClass]="{
-            'default-font': font === 'default',
-            'roboto-font': font === 'roboto',
-            'comfortaa-font': font === 'comfortaa',
-            'lobster-font': font === 'lobster',
-            'comic-font': font === 'comic',
+  <div class="wrapper">
+    <div class="options-wrapper" [appTheme]="theme"
+         (swipeleft)="nextLyrics(lyric.id)"
+         (swiperight)="previousLyrics(lyric.id)"
+    >
+    <span *ngIf="showChords">
+      <button mat-icon-button (click)="decreaseTon()">
+        <img src="../../../../assets/icons/common/minus.png" width="22" height="22" alt="-">
+      </button>
+          <strong>{{ lyric.tonality}}</strong>
+      <button mat-icon-button (click)="increaseTon()">
+        <img src="../../../../assets/icons/common/add.png" width="22" height="22" alt="+">
+      </button>
+        <button mat-icon-button>
+          <img src="../../../../assets/icons/common/info.png" (click)="openDialog()" width="22" height="22" alt="I">
+      </button>
+    </span>
+      <button mat-icon-button (click)="toggle()">
+        <img src="../../../../assets/icons/common/icon-chords-settings.png" width="22" height="22" alt="chords" alt="#">
+      </button>
+    </div>
+    <ol class="lyrics-wrapper" [ngClass]="{
             'lyrics-wrapper-dark': theme === 'dark',
             'lyrics-wrapper-light': theme === 'light',
             'lyrics-wrapper-green': theme === 'green'
            }">
-    <li *ngFor="let item of lyric?.items">
-      <ul>
-        <small>{{item.name}}:</small>
-        <li *ngFor="let line of item.lines" [ngStyle]="{fontSize: fontSize + 'px'}">
-          <span class="chords-line" *ngIf="showChords"
-                [ngStyle]="{fontSize: fontSize + 'px'}"
-                [ngClass]="{
-            'chords-line-dark': theme === 'dark',
-            'chords-line-light': theme === 'light',
-            'chords-line-green': theme === 'green'
-           }">{{convertLine(line.chords)}}</span>
-          <span class="text-line" >{{line.text}}</span>
-        </li>
-      </ul>
-      <br>
-    </li>
-  </ol>
-</div>
-
+      <li *ngFor="let item of lyric?.items">
+        <lyrics-item [item]="item"
+                     [showChords]="showChords"
+                     [cordPosition]="cordPosition"
+        ></lyrics-item>
+      </li>
+    </ol>
+  </div>
 </div>

@@ -16,34 +16,22 @@ import {CHORD_CHAIN} from "../../../admin/mock-chords";
   styleUrls: ['./lyrics-page.component.scss']
 })
 export class LyricsPageComponent implements OnInit, OnDestroy  {
-  private cordPosition = 0;
+  public cordPosition = 0;
   public showChords = false;
   private lyricId: any;
-  private chordsArray = CHORD_CHAIN;
-  public fontSize: number | undefined;
-  private fontSizeChord: number | undefined;
   // @ts-ignore
   public lyric: Lyrics;
-  public font: string | undefined;
   public theme: string = 'light';
   private lyricsSub: Subscription | undefined;
 
   constructor(private root: ActivatedRoute,
               private lyricsService: LyricsService,
-              private fontService: FontService,
               private themeService: ThemeService,
               public dialog: MatDialog,
               private router: Router) {}
 
   public ngOnInit(): void {
     this.root.params.subscribe(params => this.lyricId = params['id']);
-    this.fontService.getCurrentLyricFont().subscribe((font) => {
-      this.font = font;
-    });
-    this.fontService.getCurrentFontSize().subscribe(size => {
-      this.fontSize = size;
-      this.fontSizeChord = this.fontSize - 1;
-    });
     this.lyric = this.lyricsService.getLyricsById(this.lyricId);
     this.themeService.getCurrentTheme().subscribe( theme => this.theme = theme);
   }
@@ -64,15 +52,6 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
 
   public decreaseTon() {
     this.cordPosition--;
-  }
-
-  public convertLine(chords: Chord[]) {
-    const line = chords.reduce((acc, chord) => {
-      const length = this.chordsArray.length;
-      const pos = ((chord.position + this.cordPosition) % length + length) % length;
-      return `${acc}${' '.repeat(chord.spaces)}${this.chordsArray[pos]}${chord.postfix || ''} `
-    }, "");
-    return line;
   }
 
   public openDialog() {

@@ -21,6 +21,8 @@ import {ThemeDirective} from "./directives/theme.directive";
 // @ts-ignore
 import * as Hammer from 'hammerjs';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG} from "@angular/platform-browser";
+import {LyricsToolsComponent} from "./shared/components/lyrics-page/lyrics-tools/lyrics-tools.component";
+import {LyricsItemComponent} from "./shared/components/lyrics-page/lyrics-item/lyrics-item.component";
 
 
 
@@ -42,7 +44,9 @@ export class LyricsHammerConfig extends HammerGestureConfig{
     HomeComponent,
     LyricsPageComponent,
     SettingsComponent,
-    LyricInfoComponent
+    LyricInfoComponent,
+    LyricsToolsComponent,
+    LyricsItemComponent
   ],
   imports: [
     AppRoutingModule,

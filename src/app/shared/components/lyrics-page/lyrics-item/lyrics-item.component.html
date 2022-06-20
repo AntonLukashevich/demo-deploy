@@ -1,0 +1,19 @@
+<ul [ngClass]="{
+            'default-font': font === 'default',
+            'roboto-font': font === 'roboto',
+            'comfortaa-font': font === 'comfortaa',
+            'lobster-font': font === 'lobster',
+            'comic-font': font === 'comic'}">
+  <div class="item-name"><small>{{item?.name}}:</small></div>
+  <li *ngFor="let line of item?.lines" [ngStyle]="{fontSize: fontSize + 'px'}">
+          <span class="chords-line" *ngIf="showChords"
+                [ngStyle]="{fontSize: fontSize + 'px'}"
+                [ngClass]="{
+            'chords-line-dark': theme === 'dark',
+            'chords-line-light': theme === 'light',
+            'chords-line-green': theme === 'green'
+           }">{{convertLine(line.chords)}}</span>
+    <span class="text-line" >{{line.text}}</span>
+  </li>
+</ul>
+<br>

@@ -1,0 +1,20 @@
+<div class="options-wrapper" [appTheme]="theme"
+     (swipeleft)="nextLyrics(1)"
+     (swiperight)="previousLyrics(0)"
+>
+    <span *ngIf="showChords" >
+      <button mat-icon-button >
+        <img src="../../../../assets/icons/common/minus.png" width="22" height="22" alt="-">
+      </button>
+<!--          <strong>{{ }}</strong>-->
+      <button mat-icon-button >
+        <img src="../../../../assets/icons/common/add.png" width="22" height="22" alt="+">
+      </button>
+        <button mat-icon-button>
+          <img src="../../../../assets/icons/common/info.png" (click)="openDialog()" width="22" height="22" alt="I">
+      </button>
+    </span>
+  <button mat-icon-button (click)="toggle()">
+    <img src="../../../../assets/icons/common/icon-chords-settings.png" width="22" height="22" alt="chords" alt="#">
+  </button>
+</div>

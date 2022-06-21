@@ -26,6 +26,7 @@
         >LYRICS</div>
 
         <div style="display: flex;">
+          <div *ngIf="showRandom">{{max}}</div>
           <img src="../../../../assets/icons/common/icon-sound-wave.png"
                [@fadeInOut]="animationState"
                width="30" height="30" (click)="getRandomInt()">

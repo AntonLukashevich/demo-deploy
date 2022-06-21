@@ -52,6 +52,7 @@ export class MainLayoutComponent implements OnInit {
   }
 
   public getRandomInt() {
+    console.log('click')
     if (this.touchTime == 0) {
       // set first click
       this.touchTime = new Date().getTime();

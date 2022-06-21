@@ -30,11 +30,18 @@ mat-list-item.toolbar-item:hover{
 .nav-bar{
   width: 100%;
   display: flex;
-  flex-direction: row;
+}
+.nav-bar-item{
+  width: 100%;
+  display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 
+.nav-bar-menu{
+  display: flex;
+  align-items: flex-end;
+}
 .light{
   background: ghostwhite;
   color: black;

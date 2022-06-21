@@ -4,30 +4,32 @@
   darkToolbar: theme === 'dark',
   greenToolbar: theme === 'green'
   }">
-    <div style="height: 32px;">
-      <div *ngIf="!toggle">
-        <img src="../../../../assets/icons/common/icon-audiobook.png"
-             (click)="drawer.open(); setToggle()"
-             [@fadeInOut]="animationState"
-             width="30" height="30">
-      </div>
-      <div *ngIf="toggle">
-        <img src="../../../../assets/icons/common/cancel.png"
-             (click)="drawer.close(); setToggle()"
-             width="30" height="30">
+    <div class="nav-bar">
+      <div class="nav-bar-menu">
+        <div *ngIf="!toggle" style="display: flex;">
+          <img src="../../../../assets/icons/common/icon-audiobook.png"
+               (click)="drawer.open(); setToggle()"
+               [@fadeInOut]="animationState"
+               width="30" height="30">
         </div>
-    </div>
-    <div class="nav-bar" style="height: 32px;">
-      <div style="font-weight: bold; font-size: 24px;"
-            routerLink="/" (click)="drawer.close(); "
-            [@fadeInOut]="animationState"
-            class="text-animation"
-      >LYRICS</div>
-
-      <div style="display: flex;">
-        <img src="../../../../assets/icons/common/icon-sound-wave.png"
+        <div *ngIf="toggle" style="display: flex;">
+          <img src="../../../../assets/icons/common/cancel.png"
+               (click)="drawer.close(); setToggle()"
+               width="30" height="30">
+        </div>
+      </div>
+      <div class="nav-bar-item" style="width: 100%">
+        <div style="font-weight: bold; font-size: 24px; display: flex;"
+             routerLink="/" (click)="drawer.close(); "
              [@fadeInOut]="animationState"
-             width="30" height="30" (click)="getRandomInt()">
+             class="text-animation"
+        >LYRICS</div>
+
+        <div style="display: flex;">
+          <img src="../../../../assets/icons/common/icon-sound-wave.png"
+               [@fadeInOut]="animationState"
+               width="30" height="30" (click)="getRandomInt()">
+        </div>
       </div>
     </div>
   </mat-toolbar>

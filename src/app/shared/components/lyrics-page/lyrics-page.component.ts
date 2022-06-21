@@ -25,7 +25,6 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
   constructor(private root: ActivatedRoute,
               private lyricsService: LyricsService,
               private themeService: ThemeService,
-              public dialog: MatDialog,
               private router: Router) {}
 
   public ngOnInit(): void {
@@ -34,8 +33,8 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
     this.themeService.getCurrentTheme().subscribe( theme => this.theme = theme);
   }
 
-  public toggle() {
-    this.showChords = !this.showChords;
+  public toggle(value: boolean) {
+    this.showChords = value;
   }
 
   public ngOnDestroy(): void {
@@ -44,17 +43,10 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
     }
   }
 
-  public increaseTon() {
-    this.cordPosition++;
+  public changeTon(value: number){
+    this.cordPosition = value;
   }
 
-  public decreaseTon() {
-    this.cordPosition--;
-  }
-
-  public openDialog() {
-    this.dialog.open(LyricInfoComponent, { data: {comment: this.lyric.comment}});
-  }
 
   public nextLyrics(currentLyricsId: number){
     const nextId = this.lyricsService.nextLyricsId(currentLyricsId);

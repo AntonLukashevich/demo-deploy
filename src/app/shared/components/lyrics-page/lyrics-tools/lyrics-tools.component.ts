@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {ThemeService} from "../../../services/settings/theme.service";
 import {LyricInfoComponent} from "../../lyrics-info/lyric-info.component";
 import {MatDialog} from "@angular/material/dialog";
@@ -12,6 +12,11 @@ import {MatDialog} from "@angular/material/dialog";
 export class LyricsToolsComponent implements OnInit{
   public theme: string = 'light';
   showChords = false;
+  public cordPosition = 0;
+  @Input() tonality: string | undefined;
+  @Input() comment: string | undefined;
+  @Output() changeShowChords = new EventEmitter<boolean>();
+  @Output() changeTonPosition = new EventEmitter<number>();
 
   constructor(private themeService: ThemeService,
               public dialog: MatDialog) {}
@@ -21,21 +26,17 @@ export class LyricsToolsComponent implements OnInit{
   }
 
   public openDialog() {
-    let string = 'this.lyric.comment';
-    this.dialog.open(LyricInfoComponent, { data: {comment: string}});
+    this.dialog.open(LyricInfoComponent, { data: {comment: this.comment}});
   }
 
   public toggle() {
     this.showChords = !this.showChords;
+    this.changeShowChords.emit(this.showChords);
   }
 
-  public nextLyrics(currentLyricsId: number){
-    // const nextId = this.lyricsService.nextLyricsId(currentLyricsId);
-    // this.redirectTo('lyrics/' + nextId);
+  public changeTon(value: number){
+    this.cordPosition = this.cordPosition + value;
+    this.changeTonPosition.emit(this.cordPosition);
   }
 
-  public previousLyrics(currentLyricsId: number){
-    // const previousId = this.lyricsService.previousLyricsId(currentLyricsId);
-    // this.redirectTo('lyrics/' + previousId);
-  }
 }

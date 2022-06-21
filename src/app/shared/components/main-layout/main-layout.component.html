@@ -4,35 +4,32 @@
   darkToolbar: theme === 'dark',
   greenToolbar: theme === 'green'
   }">
-    <div style="padding-top: 5px;">
-      <button mat-icon-button *ngIf="!toggle">
+    <div style="height: 32px;">
+      <div *ngIf="!toggle">
         <img src="../../../../assets/icons/common/icon-audiobook.png"
              (click)="drawer.open(); setToggle()"
              [@fadeInOut]="animationState"
-             width="30" height="30" >
-      </button>
-      <button mat-icon-button *ngIf="toggle" >
+             width="30" height="30">
+      </div>
+      <div *ngIf="toggle">
         <img src="../../../../assets/icons/common/cancel.png"
              (click)="drawer.close(); setToggle()"
-
              width="30" height="30">
-      </button>
+        </div>
     </div>
-    <div class="nav-bar" style="padding-top: 5px;">
-      <span mat-button style="font-weight: bold;"
+    <div class="nav-bar" style="height: 32px;">
+      <div style="font-weight: bold; font-size: 26px;"
             routerLink="/" (click)="drawer.close(); "
             [@fadeInOut]="animationState"
             class="text-animation"
-      >LYRICS</span>
+      >LYRICS</div>
 
-      <span style="display: flex;">
-        <span *ngIf="showRandom" style="margin-right: 5px;">
-          {{max}}
-        </span>
+      <div>
+
         <img src="../../../../assets/icons/common/icon-sound-wave.png"
              [@fadeInOut]="animationState"
-             width="32" height="32" (click)="getRandomInt()">
-      </span>
+             width="30" height="30" (click)="getRandomInt()">
+      </div>
     </div>
   </mat-toolbar>
   <mat-drawer-container

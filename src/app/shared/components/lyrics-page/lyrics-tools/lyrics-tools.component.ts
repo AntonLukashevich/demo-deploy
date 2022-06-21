@@ -12,6 +12,7 @@ import {MatDialog} from "@angular/material/dialog";
 export class LyricsToolsComponent implements OnInit{
   public theme: string = 'light';
   showChords = false;
+
   constructor(private themeService: ThemeService,
               public dialog: MatDialog) {}
 

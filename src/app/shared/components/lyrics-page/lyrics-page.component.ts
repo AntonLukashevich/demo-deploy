@@ -3,12 +3,10 @@ import {Lyrics} from "../../../interfaces/lyrics";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LyricsService} from "../../services/lyrics.service";
 import {Subscription} from "rxjs";
-import {Chord} from "../../../interfaces/chord";
-import {FontService} from "../../services/settings/font.service";
 import {ThemeService} from "../../services/settings/theme.service";
 import {LyricInfoComponent} from "../lyrics-info/lyric-info.component";
 import {MatDialog} from "@angular/material/dialog";
-import {CHORD_CHAIN} from "../../../admin/mock-chords";
+
 
 @Component({
   selector: 'app-lyrics-page',

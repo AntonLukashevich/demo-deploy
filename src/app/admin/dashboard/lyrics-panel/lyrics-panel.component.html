@@ -1,7 +1,7 @@
 <div *ngIf="lyricsList.length; else loading"
      class="tab-wrapper">
-  <div class="tools-wrapper" style="overflow-y: hidden">
-    <div style="width: 100%; border-radius: 3px">
+  <div class="tools-wrapper">
+    <div style="width: 100%;">
       <app-search-home (changeSearch)="setSearch($event)" (changeTagFilter)="setTagsFilter($event)"></app-search-home>
     </div>
     <!--          <div style="height: 40px">-->
@@ -10,7 +10,8 @@
     </button>
     <!--          </div>-->
   </div>
-  <div style="overflow: auto;">
+<!--  <div style="overflow: auto;">-->
+  <div style="">
     <table class="lyrics-table" cellspacing="0" style="">
       <thead>
       <tr class="lyrics-header">

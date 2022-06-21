@@ -4,9 +4,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {LyricsService} from "../../services/lyrics.service";
 import {Subscription} from "rxjs";
 import {ThemeService} from "../../services/settings/theme.service";
-import {LyricInfoComponent} from "../lyrics-info/lyric-info.component";
-import {MatDialog} from "@angular/material/dialog";
-
 
 @Component({
   selector: 'app-lyrics-page',

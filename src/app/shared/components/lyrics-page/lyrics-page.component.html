@@ -1,23 +1,22 @@
-<div>
-  <div class="wrapper">
-    <lyrics-tools (changeShowChords)="toggle($event)"
-                  (changeTonPosition)="changeTon($event)"
-                  [tonality]="lyric.tonality"
-                  [comment]="lyric.comment"
-                  (swipeleft)="nextLyrics(lyric.id)"
-                  (swiperight)="previousLyrics(lyric.id)"
-    ></lyrics-tools>
-    <ol class="lyrics-wrapper" [ngClass]="{
+<div class="wrapper">
+  <lyrics-tools (changeShowChords)="toggle($event)"
+                (changeTonPosition)="changeTon($event)"
+                [tonality]="lyric.tonality"
+                [comment]="lyric.comment"
+                (swipeleft)="nextLyrics(lyric.id)"
+                (swiperight)="previousLyrics(lyric.id)"
+  ></lyrics-tools>
+  <ol class="lyrics-wrapper" [ngClass]="{
             'lyrics-wrapper-dark': theme === 'dark',
             'lyrics-wrapper-light': theme === 'light',
             'lyrics-wrapper-green': theme === 'green'
            }">
-      <li *ngFor="let item of lyric?.items">
-        <lyrics-item [item]="item"
-                     [showChords]="showChords"
-                     [cordPosition]="cordPosition"
-        ></lyrics-item>
-      </li>
-    </ol>
-  </div>
+    <li *ngFor="let item of lyric?.items">
+      <lyrics-item [item]="item"
+                   [showChords]="showChords"
+                   [cordPosition]="cordPosition"
+      ></lyrics-item>
+    </li>
+  </ol>
 </div>
+

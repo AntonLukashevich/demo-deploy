@@ -4,7 +4,7 @@
   darkToolbar: theme === 'dark',
   greenToolbar: theme === 'green'
   }">
-    <div>
+    <div style="padding-top: 5px;">
       <button mat-icon-button *ngIf="!toggle">
         <img src="../../../../assets/icons/common/icon-audiobook.png"
              (click)="drawer.open(); setToggle()"
@@ -18,7 +18,7 @@
              width="30" height="30">
       </button>
     </div>
-    <div class="nav-bar">
+    <div class="nav-bar" style="padding-top: 5px;">
       <span mat-button style="font-weight: bold;"
             routerLink="/" (click)="drawer.close(); "
             [@fadeInOut]="animationState"
@@ -31,7 +31,7 @@
         </span>
         <img src="../../../../assets/icons/common/icon-sound-wave.png"
              [@fadeInOut]="animationState"
-             width="30" height="30" (click)="getRandomInt()">
+             width="32" height="32" (click)="getRandomInt()">
       </span>
     </div>
   </mat-toolbar>

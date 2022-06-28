@@ -9,9 +9,12 @@ import {GENRES} from "../../mock-genres";
 export class SearchFormComponent{
   @Output() changeSearch = new EventEmitter<string>();
   @Output() changeTagFilter = new EventEmitter<string[]>();
-  search: string = '';
+  public search: string = '';
   public tagFilter: string[] = [];
   public genreList = GENRES;
+
+  constructor() {
+  }
 
   getSearch(searchValue: string | any): void{
     this.changeSearch.emit(searchValue.value);

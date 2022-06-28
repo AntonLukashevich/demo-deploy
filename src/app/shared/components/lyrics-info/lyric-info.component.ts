@@ -9,8 +9,7 @@ export interface DialogData {
   selector: 'app-lyric-info',
   templateUrl: './lyric-info.component.html'
 })
-export class LyricInfoComponent implements OnInit {
+export class LyricInfoComponent{
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
-  ngOnInit(): void {}
 }

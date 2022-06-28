@@ -40,7 +40,7 @@ export class MainLayoutComponent implements OnInit {
   public closeSidebar() {
     // @ts-ignore
     this.toggle = false;
-    this.sidenav.close().then(r => {});
+    this.sidenav?.close().then(r => {});
   }
 
   public setToggle(){

@@ -10,13 +10,13 @@ import {MatDialog} from "@angular/material/dialog";
 })
 
 export class LyricsToolsComponent implements OnInit{
+  @Input() public tonality: string | undefined;
+  @Input() public comment: string | undefined;
+  @Output() public changeShowChords = new EventEmitter<boolean>();
+  @Output() public changeTonPosition = new EventEmitter<number>();
   public theme: string = 'light';
-  showChords = false;
+  public showChords = false;
   public cordPosition = 0;
-  @Input() tonality: string | undefined;
-  @Input() comment: string | undefined;
-  @Output() changeShowChords = new EventEmitter<boolean>();
-  @Output() changeTonPosition = new EventEmitter<number>();
 
   constructor(private themeService: ThemeService,
               public dialog: MatDialog) {}

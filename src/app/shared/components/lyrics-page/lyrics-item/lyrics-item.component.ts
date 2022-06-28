@@ -12,14 +12,15 @@ import {FontService} from "../../../services/settings/font.service";
 })
 
 export class LyricsItemComponent implements OnInit{
-  @Input() item: LyricsItem | undefined;
-  @Input() showChords = false;
-  @Input() cordPosition = 0;
-  theme: string = 'light';
+  @Input() public item: LyricsItem | undefined;
+  @Input() public showChords = false;
+  @Input() public cordPosition = 0;
+  public theme: string = 'light';
   private chordsArray = CHORD_CHAIN;
   public fontSize: number | undefined;
   private fontSizeChord: number | undefined;
   public font: string | undefined;
+
   constructor(private themeService: ThemeService,
               private fontService: FontService) {
   }

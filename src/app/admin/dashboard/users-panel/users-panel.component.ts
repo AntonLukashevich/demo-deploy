@@ -12,13 +12,13 @@ import {NotificationService} from "../../../shared/services/notification.service
 export class UsersPanelComponent implements OnInit, OnDestroy{
   public users: User[] = [];
   private deleteUserSub: Subscription | undefined;
-
+  private usersSub: Subscription | undefined;
   constructor(private usersService: UsersService,
               private notification: NotificationService) {
   }
 
   ngOnInit(): void {
-    this.usersService.getAllUsers().subscribe( (users) => {
+    this.usersSub = this.usersService.getAllUsers().subscribe( (users) => {
       this.users = users;
     })
   }
@@ -26,6 +26,10 @@ export class UsersPanelComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     if(this.deleteUserSub){
       this.deleteUserSub.unsubscribe();
+    }
+
+    if(this.usersSub){
+      this.usersSub.unsubscribe();
     }
   }
 

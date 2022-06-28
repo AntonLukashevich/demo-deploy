@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   public theme: string = 'light';
   public searchTerm: string = '';
   public tagFilter: string[] = [];
-  private reverseDirection = false;
   private localStorageLyricsList = 'lyricsList';
   public genreList = GENRES;
 
@@ -42,45 +41,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  public sortByName(){
-    this.lyricsList.sort(function (a, b) {
-      if (a.name.toLowerCase() > b.name.toLowerCase()) {
-        return 1;
-      }
-      if (a.name.toLowerCase() < b.name.toLowerCase()) {
-        return -1;
-      }
-      return 0;
-    })
-
-    if (!this.reverseDirection) {
-      this.lyricsList.reverse();
-    }
-    this.reverseDirection = !this.reverseDirection;
-  }
-
-  public sortById(){
-    this.lyricsList.sort(function (a, b) {
-      if (a.id > b.id) {
-        return 1;
-      }
-      if (a.id < b.id) {
-        return -1;
-      }
-      return 0;
-    });
-
-    if (!this.reverseDirection) {
-      this.lyricsList.reverse();
-    }
-    this.reverseDirection = !this.reverseDirection;
-  }
-
-  setSearch(search: string | any): void{
+  public setSearch(search: string | any): void{
     this.searchTerm = search;
   }
 
-  setTagsFilter(tags: string | any): void{
+  public setTagsFilter(tags: string | any): void{
     this.tagFilter = tags;
   }
 }

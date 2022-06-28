@@ -56,7 +56,8 @@ export class LyricsPageComponent implements OnInit, OnDestroy  {
   }
 
   private redirectTo(uri:string){
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigateByUrl('/', {skipLocationChange: true})
+      .then(()=>
       this.router.navigate([uri]));
   }
 }

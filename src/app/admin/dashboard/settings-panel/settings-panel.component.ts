@@ -26,11 +26,6 @@ export class SettingsPanelComponent implements OnInit{
     this.router.navigate(['admin' + '/login']);
   }
 
-  public getEndSession(){
-    // @ts-ignore
-    return this.endSession.toLocaleString();
-  }
-
   private getAuthTokenExp(){
     this.endSession = this.auth.getAuthTokenExp();
     // @ts-ignore

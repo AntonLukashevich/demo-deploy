@@ -1,13 +1,15 @@
 import {Injectable} from "@angular/core";
 import {User} from "../interfaces/user";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {environment} from "../../environments/environment";
+import {tap} from "rxjs/operators";
+import {Lyrics} from "../interfaces/lyrics";
 
 @Injectable()
 export class UsersService {
   private url: string = environment.apiUrl;
-
+  private userList = new BehaviorSubject<User[]>([]);
   constructor(private http: HttpClient) {
   }
 
@@ -16,7 +18,13 @@ export class UsersService {
   }
 
   public getAllUsers():Observable<User[]>{
-    return this.http.get<User[]>(`${this.url}/api/users`);
+    this.http.get<User[]>(`${this.url}/api/users`)
+      .pipe(
+        tap( (result: User[]) => {
+          this.userList.next(result);
+        })
+    ).subscribe();
+    return this.userList;
   }
 
   public getUserById(id: any):Observable<User>{

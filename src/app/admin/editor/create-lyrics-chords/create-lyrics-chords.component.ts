@@ -6,7 +6,7 @@ import {LyricsItem} from "../../../interfaces/lyrics-item";
 import {Router} from "@angular/router";
 import {CHORD_CHAIN, POSTFIX_CHAIN} from "../../mock-chords";
 import {LyricsService} from "../../../shared/services/lyrics.service";
-import {NotificationService} from "../../../shared/services/notification.service";
+import {NotificationService} from "../../../shared/services/notification/notification.service";
 import {GENRES, ITEMS_LIST} from "../../../shared/mock-genres";
 
 @Component({
@@ -47,7 +47,7 @@ export class CreateLyricsChordsComponent implements OnInit {
       console.log(res);
       this.form.reset();
       this.notification.showSuccess('Lyrics has been added', 'Added')
-      this.lyricsService.refreshLyricsList();
+      this.lyricsService.getAllLyricsList();
     })
     this.router.navigate(['/admin', 'dashboard']);
 

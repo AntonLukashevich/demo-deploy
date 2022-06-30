@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UsersService} from "../users.service";
 import {Router} from "@angular/router";
 import {User} from "../../interfaces/user";
-import {NotificationService} from "../../shared/services/notification.service";
+import {NotificationService} from "../../shared/services/notification/notification.service";
 import {ThemeService} from "../../shared/services/settings/theme.service";
 
 @Component({

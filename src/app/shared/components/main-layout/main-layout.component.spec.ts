@@ -4,6 +4,7 @@ import { MainLayoutComponent } from './main-layout.component';
 import {ThemeService} from "../../services/settings/theme.service";
 import {BehaviorSubject} from "rxjs";
 import {MatSidenav, MatSidenavModule} from "@angular/material/sidenav";
+import {delay} from "rxjs/operators";
 
 describe('MainLayoutComponent', () => {
   let component: MainLayoutComponent;
@@ -69,4 +70,19 @@ describe('MainLayoutComponent', () => {
     expect(component.toggle).toBe(false);
   });
 
+  it('should not detect double click #getRandomInt() ', () => {
+    component.getRandomInt();
+    expect(component.showRandom).withContext('single click').toBe(false);
+  })
+
+  it('should #getRandomInt() detect double click', () => {
+    component.getRandomInt();
+    component.getRandomInt();
+    expect(component.showRandom).withContext('double click').toBe(true);
+    setTimeout( () => {
+      expect(component.showRandom).withContext('time out').toBe(false);
+      // @ts-ignore
+      expect(component.touchTime).withContext('time out').toBe(0);
+    }, 1501);
+  })
 });

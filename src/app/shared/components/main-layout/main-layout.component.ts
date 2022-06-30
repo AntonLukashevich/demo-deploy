@@ -40,7 +40,7 @@ export class MainLayoutComponent implements OnInit {
   public closeSidebar() {
     // @ts-ignore
     this.toggle = false;
-    this.sidenav?.close().then(r => {});
+    this.sidenav?.close();
   }
 
   public setToggle(){
@@ -60,7 +60,7 @@ export class MainLayoutComponent implements OnInit {
       // compare first click to this click and see if they occurred within double click threshold
       if (((new Date().getTime()) - this.touchTime) < 800) {
         // double click occurred
-        let range = JSON.parse(<string>localStorage.getItem(this.localStorageLyricsList)).length + 1;
+        let range = JSON.parse(<string>localStorage.getItem(this.localStorageLyricsList))?.length + 1;
         let rand = 1 + Math.random() * range;
         this.max = Math.floor(rand);
         this.showRandom = true;

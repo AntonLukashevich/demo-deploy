@@ -3,7 +3,7 @@ import { CreateLyricsChordsComponent } from './create-lyrics-chords.component';
 import { Router} from "@angular/router";
 import {LyricsService} from "../../../shared/services/lyrics.service";
 import {EditorService} from "../../editor.service";
-import {NotificationService} from "../../../shared/services/notification.service";
+import {NotificationService} from "../../../shared/services/notification/notification.service";
 
 describe('CreateLyricsChordsComponent', () => {
   let component: CreateLyricsChordsComponent;

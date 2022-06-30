@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthService} from "../../shared/services/auth.service";
 import {Router} from "@angular/router";
-import {NotificationService} from "../../../shared/services/notification.service";
+import {NotificationService} from "../../../shared/services/notification/notification.service";
 
 @Component({
   selector: 'app-settings-panel',

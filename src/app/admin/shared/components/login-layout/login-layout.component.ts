@@ -4,7 +4,7 @@ import {User} from "../../../../interfaces/user";
 import {ThemeService} from "../../../../shared/services/settings/theme.service";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
-import {NotificationService} from "../../../../shared/services/notification.service";
+import {NotificationService} from "../../../../shared/services/notification/notification.service";
 
 @Component({
   selector: 'app-login-layout',

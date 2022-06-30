@@ -4,7 +4,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {Lyrics} from "../../interfaces/lyrics";
 import {tap} from "rxjs/operators";
 import {environment} from "../../../environments/environment";
-import {NotificationService} from "./notification.service";
+import {NotificationService} from "./notification/notification.service";
 
 @Injectable({
   providedIn: 'root'
@@ -51,24 +51,10 @@ export class LyricsService {
     return this.http.delete<void>(`${this.url}/api/lyrics/${id}`)
   }
 
-  public refreshLyricsList() {
-    if (localStorage.getItem(this.localStorageLyricsList)) {
-      localStorage.removeItem('localStorageLyricsList')
-    }
-    this.http.get<Lyrics[]>(this.url + '/api/lyrics')
-      .pipe(
-        tap((result: Lyrics[]) => {
-          this.listLyrics.next(result);
-          localStorage.setItem(this.localStorageLyricsList, JSON.stringify(this.listLyrics.value));
-          this.notification.showInfo('List of Lyrics has been refreshed', 'Lyrics')
-        })
-      ).subscribe();
-  }
-
   public nextLyricsId(currentId: number) {
     const currentIndex = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))
-      .findIndex((item: any, index: number) => item.id.toString() === currentId.toString()));
-    const lengthList = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))).length;
+      ?.findIndex((item: any, index: number) => item.id.toString() === currentId.toString()));
+    const lengthList = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList))))?.length;
     if((currentIndex + 1) < lengthList){
       const nextLyrics = JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))[currentIndex + 1];
       return nextLyrics.id;
@@ -79,8 +65,8 @@ export class LyricsService {
 
   public previousLyricsId(currentId: number) {
     const currentIndex = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))
-      .findIndex((item: any, index: number) => item.id.toString() === currentId.toString()));
-    const lengthList = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))).length;
+      ?.findIndex((item: any, index: number) => item.id.toString() === currentId.toString()));
+    const lengthList = (JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList))))?.length;
     if((currentIndex - 1) > -1){
       const nextLyrics = JSON.parse(<string>(localStorage.getItem(this.localStorageLyricsList)))[currentIndex - 1];
       return nextLyrics.id;

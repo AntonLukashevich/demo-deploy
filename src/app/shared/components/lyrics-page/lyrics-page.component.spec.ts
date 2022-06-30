@@ -89,15 +89,8 @@ describe('LyricsPageComponent', () => {
   it('unsubscribe #lyricsSub after call #ngOnDestroy()', () => {
     component.ngOnDestroy();
     expect(component['lyricsSub']).toBeUndefined();
-  })
-
-  it('should redirect to #nextLyrics()', () => {
-    //expect(component.nextLyrics(2)).not.toBeNull();
   });
 
-  it('should redirect to #previousLyrics()', () => {
-    //expect(component.nextLyrics(2)).not.toBeNull();
-  });
 
   it('should  redirect to #nextLyrics()', () => {
     let nextId  = 3;
@@ -115,7 +108,7 @@ describe('LyricsPageComponent', () => {
     let url = 'lyrics/' + nextId;
     const navigateSpy = spyOn(router, 'navigate');
     component.previousLyrics(currentId);
-    const  expectedUrl = navigateSpy.calls.first().args[0];
+    const  expectedUrl = navigateSpy.calls.first()?.args[0];
     // @ts-ignore
     //expect(expectedUrl).toHaveBeenCalledWith(url);
     expect(expectedUrl).toBe(url);

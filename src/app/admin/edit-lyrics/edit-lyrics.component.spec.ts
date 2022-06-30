@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditLyricsComponent } from './edit-lyrics.component';
 import {ThemeService} from "../../shared/services/settings/theme.service";
-import {NotificationService} from "../../shared/services/notification.service";
+import {NotificationService} from "../../shared/services/notification/notification.service";
 import {UsersService} from "../users.service";
 import {LyricsService} from "../../shared/services/lyrics.service";
 import {AuthService} from "../shared/services/auth.service";

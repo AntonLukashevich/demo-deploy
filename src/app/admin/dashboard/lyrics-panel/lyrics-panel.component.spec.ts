@@ -1,6 +1,6 @@
 import {LyricsPanelComponent} from "./lyrics-panel.component";
 import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
-import {NotificationService} from "../../../shared/services/notification.service";
+import {NotificationService} from "../../../shared/services/notification/notification.service";
 import {LyricsService} from "../../../shared/services/lyrics.service";
 import {LYRICS_MOCK} from "../../../shared/mock-lyrics";
 import {BehaviorSubject} from "rxjs";

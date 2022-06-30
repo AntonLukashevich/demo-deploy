@@ -1,6 +1,6 @@
 import {SettingsPanelComponent} from "./settings-panel.component";
 import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
-import {NotificationService} from "../../../shared/services/notification.service";
+import {NotificationService} from "../../../shared/services/notification/notification.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../shared/services/auth.service";
 

@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from "@angular/core";
 import {UsersService} from "../../users.service";
 import {User} from "../../../interfaces/user";
 import {Subscription} from "rxjs";
-import {NotificationService} from "../../../shared/services/notification.service";
+import {NotificationService} from "../../../shared/services/notification/notification.service";
 
 @Component({
   selector: 'app-users-panel',

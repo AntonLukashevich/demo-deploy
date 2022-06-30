@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginLayoutComponent } from './login-layout.component';
 import {Router} from "@angular/router";
-import {NotificationService} from "../../../../shared/services/notification.service";
+import {NotificationService} from "../../../../shared/services/notification/notification.service";
 import {ThemeService} from "../../../../shared/services/settings/theme.service";
 import {ToastrService} from "ngx-toastr";
 import {HttpClient} from "@angular/common/http";

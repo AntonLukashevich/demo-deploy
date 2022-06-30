@@ -3,7 +3,7 @@ import {Lyrics} from "../../../interfaces/lyrics";
 import {LyricsService} from "../../../shared/services/lyrics.service";
 import {Subscription} from "rxjs";
 import {GENRES} from "../../../shared/mock-genres";
-import {NotificationService} from "../../../shared/services/notification.service";
+import {NotificationService} from "../../../shared/services/notification/notification.service";
 
 @Component({
   selector: 'app-lyrics-panel',
@@ -39,7 +39,7 @@ export class LyricsPanelComponent implements OnInit, OnDestroy{
   }
 
   public refreshLyricsList(){
-    this.lyricsService.refreshLyricsList();
+    this.lyricsService.getAllLyricsList();
   }
 
   public removeLyrics(id: string | any, name: string) {

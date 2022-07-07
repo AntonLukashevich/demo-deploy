@@ -42,8 +42,7 @@ export class UserRegistrationComponent implements OnInit {
       username: this.form.value.username,
     }
 
-    this.usersService.sign_up(user).subscribe((res:any) => {
-        console.log(res);
+    this.usersService.signUp(user).subscribe((res:any) => {
         this.form.reset();
         this.notification.showSuccess('user has been added', 'Added')
         this.router.navigate(['admin' + '/dashboard']);

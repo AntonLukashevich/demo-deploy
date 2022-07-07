@@ -7,12 +7,15 @@ import {LYRICS_MOCK} from "../mock-lyrics";
 
 describe('LyricsService', () => {
   let service: LyricsService;
-  let lyrics = LYRICS_MOCK;
+  let lyricsList = LYRICS_MOCK;
+  let singleLyrics = lyricsList[0];
+  let localStorageLyricsList = 'lyricsList';
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-         LyricsService,
+          LyricsService,
         {provide: NotificationService, useValue: {}}
       ]
     })
@@ -26,29 +29,47 @@ describe('LyricsService', () => {
   it('should #getAllLyricsList()',
     fakeAsync(() => {
       service.getAllLyricsList().subscribe((lyrics) => {
-        console.log(lyrics);
-        expect(lyrics).toBeTruthy();
+        // @ts-ignore
+        expect(service.listLyrics.value).toBe(lyrics);
+        localStorage.setItem(localStorageLyricsList, JSON.stringify(lyrics));
+        expect(JSON.parse(<string>localStorage.getItem(localStorageLyricsList))).toBeTruthy();
       });
-      // @ts-ignore
-      //expect(service.listLyrics.value.length).toBeGreaterThan(0);
     })
   )
 
   it('should #getLyricsById()',
     fakeAsync(() => {
       service.getLyricsById(1).subscribe((lyrics: any) => {
-        expect(lyrics).toBeTruthy();
+        expect(lyrics.id).toBe(1);
       });
     })
-  )
+  );
+
+  it('should update lyrics', fakeAsync( () => {
+    // @ts-ignore
+    service.updateLyrics(singleLyrics).subscribe( (res) => {
+      expect(res.id).toBe(LYRICS_MOCK[0].id);
+    })
+  }));
+
+  it('should removeLyrics lyrics', fakeAsync( () => {
+    // @ts-ignore
+    service.removeLyrics(singleLyrics.id).subscribe( (res) => {
+      expect(res).toBe(undefined);
+    })
+  }));
 
   it('should return #nextLyricsId()', () => {
     let id = service.nextLyricsId(1);
     expect(id).toBeGreaterThanOrEqual(1);
-  })
+    expect(JSON.parse(<string>localStorage.getItem(localStorageLyricsList))).toBeTruthy();
+  });
 
   it('should return #previousLyricsId()', () => {
     let id = service.previousLyricsId(2);
     expect(id).toBeLessThanOrEqual(2);
-  })
+    expect(JSON.parse(<string>localStorage.getItem(localStorageLyricsList))).toBeTruthy();
+  });
+
+
 })

@@ -3,8 +3,7 @@ import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing'
 import { MainLayoutComponent } from './main-layout.component';
 import {ThemeService} from "../../services/settings/theme.service";
 import {BehaviorSubject} from "rxjs";
-import {MatSidenav, MatSidenavModule} from "@angular/material/sidenav";
-import {delay} from "rxjs/operators";
+import {MatSidenav} from "@angular/material/sidenav";
 
 describe('MainLayoutComponent', () => {
   let component: MainLayoutComponent;

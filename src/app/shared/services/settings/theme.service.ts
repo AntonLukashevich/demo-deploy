@@ -6,13 +6,8 @@ import {BehaviorSubject} from "rxjs";
 })
 export class ThemeService{
   private currentTheme = new BehaviorSubject<string>('light');
-  private localStorageForTheme = 'user-current-theme';
 
-  constructor() {
-    if(localStorage.getItem(this.localStorageForTheme)){
-      this.currentTheme.next(<string>localStorage.getItem(this.localStorageForTheme));
-    }
-  }
+  constructor() { }
 
   public getCurrentTheme(): BehaviorSubject<string>{
     return this.currentTheme;

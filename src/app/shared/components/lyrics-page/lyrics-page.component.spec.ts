@@ -109,8 +109,6 @@ describe('LyricsPageComponent', () => {
     const navigateSpy = spyOn(router, 'navigate');
     component.previousLyrics(currentId);
     const  expectedUrl = navigateSpy.calls.first()?.args[0];
-    // @ts-ignore
-    //expect(expectedUrl).toHaveBeenCalledWith(url);
     expect(expectedUrl).toBe(url);
   });
 });

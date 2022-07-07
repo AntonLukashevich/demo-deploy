@@ -90,14 +90,14 @@ export class EditLyricsComponent implements OnInit {
 
   private prepare() {
     // @ts-ignore
-    this.lyrics.items.forEach((item: LyricsItem, index: number) => {
+    this.lyrics?.items.forEach((item: LyricsItem, index: number) => {
       (this.form.get('items') as FormArray).push(
         new FormGroup({
           name: new FormControl(item.name),
           lines: new FormArray([])
         })
       );
-      item.lines.forEach((line: LyricsLine) => {
+      item?.lines.forEach((line: LyricsLine) => {
         let chordLine: string = ' ';
         for( let i = 0; i < line.chords.length; i++){
           chordLine = chordLine + (" ").repeat(line.chords[i].spaces);

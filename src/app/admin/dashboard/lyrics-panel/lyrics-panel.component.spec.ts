@@ -19,8 +19,7 @@ describe('LyricsPanelComponent', () => {
         {
           provide: LyricsService,
           useValue: {
-            getAllLyricsList: () => new BehaviorSubject(lyrics),
-            // refreshLyricsList: () => new BehaviorSubject(lyrics)
+            getAllLyricsList: () => new BehaviorSubject(lyrics)
           }
         },
       ]
@@ -59,7 +58,4 @@ describe('LyricsPanelComponent', () => {
     expect(component.refreshLyricsList).toHaveBeenCalled();
   })
 
-  it('should remove lyrics by id', () => {
-
-  })
 })

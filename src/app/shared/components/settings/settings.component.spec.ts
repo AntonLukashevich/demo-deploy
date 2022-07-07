@@ -2,7 +2,6 @@ import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing'
 
 import { SettingsComponent } from './settings.component';
 import {ThemeService} from "../../services/settings/theme.service";
-
 import {FontService} from "../../services/settings/font.service";
 import {MatMenuModule} from "@angular/material/menu";
 import {BehaviorSubject} from "rxjs";

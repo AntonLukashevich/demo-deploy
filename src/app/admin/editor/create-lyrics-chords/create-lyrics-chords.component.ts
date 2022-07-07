@@ -29,6 +29,7 @@ export class CreateLyricsChordsComponent implements OnInit {
 
   ngOnInit(): void {
     this.editorService.getLyricsText().subscribe((text) => {
+      console.log(text);
       this.lyricsText = text;
     });
     this.form = new FormGroup({
@@ -43,10 +44,11 @@ export class CreateLyricsChordsComponent implements OnInit {
 
   public selectLyrics() {
     this.parseChords();
+    console.log(this.form.value);
     this.editorService.createLyrics(this.form.value).subscribe( (res) => {
       console.log(res);
       this.form.reset();
-      this.notification.showSuccess('Lyrics has been added', 'Added')
+      this.notification.showSuccess('Lyrics has been added', 'Added');
       this.lyricsService.getAllLyricsList();
     })
     this.router.navigate(['/admin', 'dashboard']);
@@ -89,7 +91,7 @@ export class CreateLyricsChordsComponent implements OnInit {
   }
 
   private prepareBeforeAddChords() {
-    this.lyricsText.items.forEach((item: LyricsItem, index: number) => {
+    this.lyricsText?.items.forEach((item: LyricsItem, index: number) => {
       (this.form.get('items') as FormArray).push(
         new FormGroup({
           name: new FormControl(item.name),
@@ -110,13 +112,12 @@ export class CreateLyricsChordsComponent implements OnInit {
   }
 
   private parseChords() {
-    this.form.value.items.forEach((item: LyricsItem) => {
-      item.lines.forEach((line) => {
+    this.form.value?.items.forEach((item: LyricsItem) => {
+      item?.lines.forEach((line) => {
         let chords: Chord[] = [];
         // @ts-ignore
-        let lineChords = line.chords.toString().split(/\[|]/);
+        let lineChords = line?.chords.toString().split(/\[|]/);
         lineChords = lineChords.filter(Boolean);
-        console.log(lineChords);
         for (let i = 0; i < lineChords.length; i++) {
           let chord = {position: -1, postfix: "", spaces: 0};
           if (lineChords[i].includes(' ')) {
@@ -131,7 +132,6 @@ export class CreateLyricsChordsComponent implements OnInit {
               chord.postfix = lineChords[i + 1];
             }
           }
-          console.log('chord: ', chord, 'i: ', i);
           if(chord.position > -1){
             chords.push(chord);
           }

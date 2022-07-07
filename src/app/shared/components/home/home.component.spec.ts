@@ -4,8 +4,7 @@ import { HomeComponent } from './home.component';
 import {ThemeService} from "../../services/settings/theme.service";
 import {LyricsService} from "../../services/lyrics.service";
 import {MatMenuModule} from "@angular/material/menu";
-import {BehaviorSubject, Observable} from "rxjs";
-import {Lyrics} from "../../../interfaces/lyrics";
+import {BehaviorSubject} from "rxjs";
 import {LYRICS_MOCK} from "../../mock-lyrics";
 
 describe('HomeComponent', () => {
@@ -14,7 +13,6 @@ describe('HomeComponent', () => {
   let themeService: ThemeService;
   let lyricsService: LyricsService;
   let lyrics = LYRICS_MOCK;
-  let store: { [x: string]: string | null; };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -45,16 +43,11 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-
-  it('should get an Item', () => {
-
-  });
-
   it('should set theme after call ngOnInit', fakeAsync( () => {
     component.ngOnInit();
     tick();
     expect(component.theme).toBe(themeService.getCurrentTheme().value);
-  }))
+  }));
 
   it('should set lyricsList after call ngOnInit', fakeAsync( () => {
     component.ngOnInit();

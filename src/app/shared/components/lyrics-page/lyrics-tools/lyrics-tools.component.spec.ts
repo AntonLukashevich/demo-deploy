@@ -74,9 +74,9 @@ describe('LyricsToolsComponent', () => {
     })
   )
 
-  it('should open dialog with comment', () => {
-    component.openDialog();
-    expect(component.openDialog).toHaveBeenCalled();
-  })
+  // it('should open dialog with comment', () => {
+  //   component.openDialog();
+  //   expect(component.openDialog).toHaveBeenCalled();
+  // })
 })
 

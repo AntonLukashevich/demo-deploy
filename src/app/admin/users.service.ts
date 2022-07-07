@@ -13,7 +13,7 @@ export class UsersService {
   constructor(private http: HttpClient) {
   }
 
-  public sign_up(userParams: User): Observable<User>{
+  public signUp(userParams: User): Observable<User>{
     return this.http.post<User>(this.url + '/api/users', userParams);
   }
 

@@ -33,6 +33,7 @@ export class EditUserComponent implements OnInit, OnDestroy {
               private themeService: ThemeService) {}
 
   ngOnInit(): void {
+    this.themeService.getCurrentTheme().subscribe((theme) => this.theme = theme);
     this.idSub = this.router.params.subscribe(params => this.userId = params['id']);
     this.userSub = this.userService.getUserById(this.userId).subscribe( (user) => {
       this.user = user;
@@ -41,13 +42,13 @@ export class EditUserComponent implements OnInit, OnDestroy {
       this.editForm.get('password')?.setValue(this.user.password);
       this.editForm.get('username')?.setValue(this.user.username);
     });
-    this.themeService.getCurrentTheme().subscribe((theme) => this.theme = theme);
   }
 
   public updateUser(){
-    this.userService.updateUser(this.editForm.value).subscribe();
-    this.notification.showSuccess('user has been updated', 'Updated')
-    this.route.navigate(['/admin', 'dashboard']);
+    this.userService.updateUser(this.editForm.value).subscribe( (res) => {
+      this.notification.showSuccess(`user:${res.email}  has been updated`, 'Updated')
+      this.route.navigate(['/admin', 'dashboard']);
+    } );
   }
 
   ngOnDestroy(): void {

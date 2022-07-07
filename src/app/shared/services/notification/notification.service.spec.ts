@@ -1,4 +1,3 @@
-import {LyricsService} from "../lyrics.service";
 import {TestBed} from "@angular/core/testing";
 import {ToastrModule, ToastrService} from "ngx-toastr";
 import {NotificationService} from "./notification.service";

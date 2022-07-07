@@ -47,4 +47,13 @@ describe('UsersPanelComponent', () => {
     expect(component['usersSub']).toBeUndefined();
   });
 
+  it('should #removeUser', () => {
+    fixture.detectChanges();
+    let len = component.users.length;
+    component.removeUser(1, 'user@user.com');
+    expect(component.users.length).toBe(len);
+    userService.removeUser('1').subscribe((res) => {
+      expect(res).toBeUndefined();
+    })
+  });
 })
